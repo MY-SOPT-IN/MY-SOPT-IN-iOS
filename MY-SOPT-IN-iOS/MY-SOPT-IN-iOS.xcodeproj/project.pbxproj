@@ -18,6 +18,10 @@
 		6B44E4992A12743400E9CAF9 /* FontLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44E4982A12743400E9CAF9 /* FontLiteral.swift */; };
 		6B44E49B2A1296A700E9CAF9 /* ColorLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44E49A2A1296A700E9CAF9 /* ColorLiteral.swift */; };
 		6B44E49D2A12A01D00E9CAF9 /* ImageLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44E49C2A12A01D00E9CAF9 /* ImageLiteral.swift */; };
+		6B44E49F2A12A72C00E9CAF9 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44E49E2A12A72C00E9CAF9 /* UIStackView+.swift */; };
+		6B44E4A12A12A75400E9CAF9 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44E4A02A12A75400E9CAF9 /* UIView+.swift */; };
+		6B44E4A32A12A86300E9CAF9 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44E4A22A12A86300E9CAF9 /* UILabel+.swift */; };
+		6B44E4A52A12A8EB00E9CAF9 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44E4A42A12A8EB00E9CAF9 /* UITextField+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		6B44E4982A12743400E9CAF9 /* FontLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiteral.swift; sourceTree = "<group>"; };
 		6B44E49A2A1296A700E9CAF9 /* ColorLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLiteral.swift; sourceTree = "<group>"; };
 		6B44E49C2A12A01D00E9CAF9 /* ImageLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiteral.swift; sourceTree = "<group>"; };
+		6B44E49E2A12A72C00E9CAF9 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
+		6B44E4A02A12A75400E9CAF9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		6B44E4A22A12A86300E9CAF9 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		6B44E4A42A12A8EB00E9CAF9 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,10 @@
 		6B44E4862A126D4100E9CAF9 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				6B44E49E2A12A72C00E9CAF9 /* UIStackView+.swift */,
+				6B44E4A02A12A75400E9CAF9 /* UIView+.swift */,
+				6B44E4A22A12A86300E9CAF9 /* UILabel+.swift */,
+				6B44E4A42A12A8EB00E9CAF9 /* UITextField+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -291,9 +303,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B44E4A32A12A86300E9CAF9 /* UILabel+.swift in Sources */,
+				6B44E4A52A12A8EB00E9CAF9 /* UITextField+.swift in Sources */,
+				6B44E49F2A12A72C00E9CAF9 /* UIStackView+.swift in Sources */,
 				6B44E4992A12743400E9CAF9 /* FontLiteral.swift in Sources */,
 				6B44E49D2A12A01D00E9CAF9 /* ImageLiteral.swift in Sources */,
 				6B27D7542A126B5A0033BB21 /* ViewController.swift in Sources */,
+				6B44E4A12A12A75400E9CAF9 /* UIView+.swift in Sources */,
 				6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */,
 				6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */,
 				6B44E49B2A1296A700E9CAF9 /* ColorLiteral.swift in Sources */,
