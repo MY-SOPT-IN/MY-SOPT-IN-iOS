@@ -35,7 +35,7 @@ struct ImageLiterals {
         static let add_ic_bell = UIImage(named: "add_ic_bell.png")
         static let add_ic_lock = UIImage(named: "add_ic_lock.png")
         static let add_ic_meditation = UIImage(named: "add_ic_meditation.png")
-        static let add_ic_milk = UII mage(named: "add_ic_milk.png")
+        static let add_ic_milk = UIImage(named: "add_ic_milk.png")
         static let add_ic_newspaper = UIImage(named: "add_ic_newspaper.png")
         static let add_ic_dinosaur = UIImage(named: "add_ic_dinosaur.png")
         static let add_ic_edit = UIImage(named: "add_ic_edit.png")
