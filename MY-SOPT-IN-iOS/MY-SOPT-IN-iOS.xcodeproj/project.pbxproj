@@ -12,6 +12,10 @@
 		6B27D7542A126B5A0033BB21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7532A126B5A0033BB21 /* ViewController.swift */; };
 		6B27D7592A126B5B0033BB21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B27D7582A126B5B0033BB21 /* Assets.xcassets */; };
 		6B27D75C2A126B5B0033BB21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B27D75A2A126B5B0033BB21 /* LaunchScreen.storyboard */; };
+		6B44E4952A12732A00E9CAF9 /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B44E4922A12732A00E9CAF9 /* Pretendard-Bold.ttf */; };
+		6B44E4962A12732A00E9CAF9 /* Pretendard-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B44E4932A12732A00E9CAF9 /* Pretendard-ExtraBold.ttf */; };
+		6B44E4972A12732A00E9CAF9 /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B44E4942A12732A00E9CAF9 /* Pretendard-Regular.ttf */; };
+		6B44E4992A12743400E9CAF9 /* FontLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44E4982A12743400E9CAF9 /* FontLiteral.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		6B27D7582A126B5B0033BB21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B27D75B2A126B5B0033BB21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B27D75D2A126B5B0033BB21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B44E4922A12732A00E9CAF9 /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.ttf"; sourceTree = "<group>"; };
+		6B44E4932A12732A00E9CAF9 /* Pretendard-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.ttf"; sourceTree = "<group>"; };
+		6B44E4942A12732A00E9CAF9 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.ttf"; sourceTree = "<group>"; };
+		6B44E4982A12743400E9CAF9 /* FontLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiteral.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +109,7 @@
 			children = (
 				6B44E48E2A126FCA00E9CAF9 /* Base */,
 				6B44E4862A126D4100E9CAF9 /* Extension */,
-				6B44E48C2A126E4900E9CAF9 /* Literals */,
+				6B44E48C2A126E4900E9CAF9 /* Literal */,
 				6B44E4872A126D4600E9CAF9 /* Resource */,
 				6B44E4882A126D5900E9CAF9 /* Protocol */,
 				6B44E48D2A126F8700E9CAF9 /* Utils */,
@@ -135,6 +143,9 @@
 		6B44E4892A126D8D00E9CAF9 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				6B44E4922A12732A00E9CAF9 /* Pretendard-Bold.ttf */,
+				6B44E4932A12732A00E9CAF9 /* Pretendard-ExtraBold.ttf */,
+				6B44E4942A12732A00E9CAF9 /* Pretendard-Regular.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -155,11 +166,12 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		6B44E48C2A126E4900E9CAF9 /* Literals */ = {
+		6B44E48C2A126E4900E9CAF9 /* Literal */ = {
 			isa = PBXGroup;
 			children = (
+				6B44E4982A12743400E9CAF9 /* FontLiteral.swift */,
 			);
-			path = Literals;
+			path = Literal;
 			sourceTree = "<group>";
 		};
 		6B44E48D2A126F8700E9CAF9 /* Utils */ = {
@@ -259,7 +271,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B27D75C2A126B5B0033BB21 /* LaunchScreen.storyboard in Resources */,
+				6B44E4952A12732A00E9CAF9 /* Pretendard-Bold.ttf in Resources */,
+				6B44E4972A12732A00E9CAF9 /* Pretendard-Regular.ttf in Resources */,
 				6B27D7592A126B5B0033BB21 /* Assets.xcassets in Resources */,
+				6B44E4962A12732A00E9CAF9 /* Pretendard-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B44E4992A12743400E9CAF9 /* FontLiteral.swift in Sources */,
 				6B27D7542A126B5A0033BB21 /* ViewController.swift in Sources */,
 				6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */,
 				6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */,
