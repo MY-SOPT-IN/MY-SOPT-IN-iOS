@@ -33,7 +33,7 @@ final class TabBarController: UITabBarController {
     
     private func setViewController() {
         
-        let homeViewController = UIViewController()
+        let homeViewController = MainPageViewController()
         homeViewController.tabBarItem = UITabBarItem(title: "홈", image: ImageLiterals.TabBar.home, tag: 0)
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
         
