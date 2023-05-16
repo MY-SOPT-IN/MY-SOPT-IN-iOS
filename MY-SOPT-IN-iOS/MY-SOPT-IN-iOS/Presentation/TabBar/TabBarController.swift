@@ -11,13 +11,12 @@ import SnapKit
 
 final class TabBarController: UITabBarController {
     
-    // MARK: - Properties
-
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        hiddenNavigationBar()
         setStyle()
         setViewController()
     }
@@ -25,6 +24,9 @@ final class TabBarController: UITabBarController {
     // MARK: - Methods
     
     private func setStyle() {
+        
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
         
         self.tabBar.backgroundColor = .white
         self.tabBar.tintColor = .Primary.primary
@@ -64,7 +66,8 @@ final class TabBarController: UITabBarController {
                            myProfileNavigationController]
     }
     
-    // MARK: - @objc Function
-
-
+    private func hiddenNavigationBar() {
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 }
