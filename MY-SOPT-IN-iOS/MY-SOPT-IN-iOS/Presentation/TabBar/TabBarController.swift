@@ -16,18 +16,17 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hiddenNavigationBar()
         setStyle()
         setViewController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        hiddenNavigationBar()
     }
     
     // MARK: - Methods
     
     private func setStyle() {
-        
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        
         self.tabBar.backgroundColor = .white
         self.tabBar.tintColor = .Primary.primary
         self.tabBar.unselectedItemTintColor = .Gray.gray_800
