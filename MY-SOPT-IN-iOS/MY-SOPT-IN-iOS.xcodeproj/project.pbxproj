@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D74F2A126B5A0033BB21 /* AppDelegate.swift */; };
 		6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7512A126B5A0033BB21 /* SceneDelegate.swift */; };
-		6B27D7542A126B5A0033BB21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7532A126B5A0033BB21 /* ViewController.swift */; };
+		6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7532A126B5A0033BB21 /* MainPageViewController.swift */; };
 		6B27D7592A126B5B0033BB21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B27D7582A126B5B0033BB21 /* Assets.xcassets */; };
 		6B27D75C2A126B5B0033BB21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B27D75A2A126B5B0033BB21 /* LaunchScreen.storyboard */; };
 		6B44E4952A12732A00E9CAF9 /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B44E4922A12732A00E9CAF9 /* Pretendard-Bold.ttf */; };
@@ -24,13 +24,14 @@
 		6B44E4A52A12A8EB00E9CAF9 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44E4A42A12A8EB00E9CAF9 /* UITextField+.swift */; };
 		6B44E4AB2A12AACF00E9CAF9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6B44E4AA2A12AACF00E9CAF9 /* SnapKit */; };
 		6B44E4AE2A12AAED00E9CAF9 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 6B44E4AD2A12AAED00E9CAF9 /* Then */; };
+		6BAFCD242A136B0D00994100 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD232A136B0D00994100 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6B27D74C2A126B5A0033BB21 /* MY-SOPT-IN-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MY-SOPT-IN-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B27D74F2A126B5A0033BB21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B27D7512A126B5A0033BB21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6B27D7532A126B5A0033BB21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6B27D7532A126B5A0033BB21 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		6B27D7582A126B5B0033BB21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B27D75B2A126B5B0033BB21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B27D75D2A126B5B0033BB21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,6 +45,7 @@
 		6B44E4A02A12A75400E9CAF9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		6B44E4A22A12A86300E9CAF9 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		6B44E4A42A12A8EB00E9CAF9 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		6BAFCD232A136B0D00994100 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 		6B44E48A2A126DA300E9CAF9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				6BAFCD222A136AC800994100 /* TabBar */,
 				6B44E48F2A12707A00E9CAF9 /* MainPage */,
 				6B44E48B2A126DDB00E9CAF9 /* Component */,
 			);
@@ -222,7 +225,7 @@
 		6B44E4902A12709E00E9CAF9 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				6B27D7532A126B5A0033BB21 /* ViewController.swift */,
+				6B27D7532A126B5A0033BB21 /* MainPageViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -232,6 +235,14 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		6BAFCD222A136AC800994100 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				6BAFCD232A136B0D00994100 /* TabBarController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,10 +328,11 @@
 			files = (
 				6B44E4A32A12A86300E9CAF9 /* UILabel+.swift in Sources */,
 				6B44E4A52A12A8EB00E9CAF9 /* UITextField+.swift in Sources */,
+				6BAFCD242A136B0D00994100 /* TabBarController.swift in Sources */,
 				6B44E49F2A12A72C00E9CAF9 /* UIStackView+.swift in Sources */,
 				6B44E4992A12743400E9CAF9 /* FontLiteral.swift in Sources */,
 				6B44E49D2A12A01D00E9CAF9 /* ImageLiteral.swift in Sources */,
-				6B27D7542A126B5A0033BB21 /* ViewController.swift in Sources */,
+				6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */,
 				6B44E4A12A12A75400E9CAF9 /* UIView+.swift in Sources */,
 				6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */,
 				6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */,
