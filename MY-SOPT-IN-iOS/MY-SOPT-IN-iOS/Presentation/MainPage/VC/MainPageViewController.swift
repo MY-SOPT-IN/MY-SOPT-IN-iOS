@@ -15,6 +15,8 @@ class MainPageViewController: UIViewController {
     // MARK: - Properties
     
     private var topBar = MainPageTopBarView()
+    private var selectDateView = SelectDateView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private var routineView = UITableView()
 
     // MARK: - View Life Cycle
     
@@ -29,14 +31,29 @@ class MainPageViewController: UIViewController {
     
     func setStyle() {
         view.backgroundColor = .Gray.gray_50
+        
+        routineView.backgroundColor = .Mono.white
     }
     func setLayout() {
-        view.addSubviews(topBar)
+        view.addSubviews(topBar,
+                         selectDateView,
+                         routineView)
         
         topBar.snp.makeConstraints {
-            $0.height.equalTo(44)
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(88)
+            $0.top.leading.trailing.equalToSuperview()
+        }
+        
+        selectDateView.snp.makeConstraints {
+            $0.height.equalTo(65)
+            $0.top.equalTo(topBar.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(15)
+        }
+        
+        routineView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(100)
+            $0.top.equalTo(selectDateView.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(15)
         }
     }
 

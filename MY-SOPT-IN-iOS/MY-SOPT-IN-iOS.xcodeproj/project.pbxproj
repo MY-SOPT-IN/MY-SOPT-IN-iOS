@@ -28,6 +28,7 @@
 		6BAFCD2C2A153C1300994100 /* MainPageTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD2B2A153C1300994100 /* MainPageTopBarView.swift */; };
 		6BAFCD2E2A1541CB00994100 /* MainPageRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD2D2A1541CB00994100 /* MainPageRoutineViewController.swift */; };
 		6BAFCD302A15438F00994100 /* MainPageRecallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD2F2A15438F00994100 /* MainPageRecallViewController.swift */; };
+		6BF052DE2A15570300893084 /* SelectDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF052DD2A15570300893084 /* SelectDateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		6BAFCD2B2A153C1300994100 /* MainPageTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainPageTopBarView.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/VC/MainPageTopBarView.swift"; sourceTree = SOURCE_ROOT; };
 		6BAFCD2D2A1541CB00994100 /* MainPageRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRoutineViewController.swift; sourceTree = "<group>"; };
 		6BAFCD2F2A15438F00994100 /* MainPageRecallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRecallViewController.swift; sourceTree = "<group>"; };
+		6BF052DD2A15570300893084 /* SelectDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectDateView.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/VC/SelectDateView.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				6BAFCD2B2A153C1300994100 /* MainPageTopBarView.swift */,
+				6BF052DD2A15570300893084 /* SelectDateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				6B44E49D2A12A01D00E9CAF9 /* ImageLiteral.swift in Sources */,
 				6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */,
 				6B44E4A12A12A75400E9CAF9 /* UIView+.swift in Sources */,
+				6BF052DE2A15570300893084 /* SelectDateView.swift in Sources */,
 				6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */,
 				6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */,
 				6B44E49B2A1296A700E9CAF9 /* ColorLiteral.swift in Sources */,
