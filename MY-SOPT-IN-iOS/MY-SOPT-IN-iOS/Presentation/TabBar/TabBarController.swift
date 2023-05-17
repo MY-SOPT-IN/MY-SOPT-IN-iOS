@@ -37,6 +37,7 @@ final class TabBarController: UITabBarController {
         let homeViewController = MainPageViewController()
         homeViewController.tabBarItem = UITabBarItem(title: "홈", image: ImageLiterals.TabBar.home, tag: 0)
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
+        homeNavigationController.setNavigationBarHidden(true, animated: true)
         
         let routineViewController = UIViewController()
         routineViewController.view.backgroundColor = .Gray.gray_50
