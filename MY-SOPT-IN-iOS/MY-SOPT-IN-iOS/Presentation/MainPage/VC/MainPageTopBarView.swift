@@ -1,8 +1,8 @@
 //
-//  MainPageViewController.swift
+//  MainPageTopBarView.swift
 //  MY-SOPT-IN-iOS
 //
-//  Created by 김다예 on 2023/05/15.
+//  Created by 김다예 on 2023/05/18.
 //
 
 import UIKit
@@ -10,21 +10,24 @@ import UIKit
 import SnapKit
 import Then
 
-class MainPageViewController: UIViewController {
+class MainPageTopBarView: UIView {
 
     // MARK: - Properties
-    
-    private var topBar = MainPageTopBarView()
 
     // MARK: - View Life Cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         setStyle()
         setLayout()
     }
-
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Methods
     
     func setStyle() {
@@ -33,8 +36,6 @@ class MainPageViewController: UIViewController {
     func setLayout() {}
 
     // MARK: - @objc Function
-    
-    // MARK: - Network
+
 
 }
-

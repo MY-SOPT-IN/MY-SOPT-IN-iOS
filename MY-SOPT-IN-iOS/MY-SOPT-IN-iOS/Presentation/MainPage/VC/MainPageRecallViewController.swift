@@ -1,8 +1,8 @@
 //
-//  MainPageViewController.swift
+//  MainPageRecallViewController.swift
 //  MY-SOPT-IN-iOS
 //
-//  Created by 김다예 on 2023/05/15.
+//  Created by 김다예 on 2023/05/18.
 //
 
 import UIKit
@@ -10,11 +10,9 @@ import UIKit
 import SnapKit
 import Then
 
-class MainPageViewController: UIViewController {
+class MainPageRecallViewController: UIViewController {
 
     // MARK: - Properties
-    
-    private var topBar = MainPageTopBarView()
 
     // MARK: - View Life Cycle
     
@@ -37,4 +35,3 @@ class MainPageViewController: UIViewController {
     // MARK: - Network
 
 }
-

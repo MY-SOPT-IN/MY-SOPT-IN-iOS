@@ -25,6 +25,9 @@
 		6B44E4AB2A12AACF00E9CAF9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6B44E4AA2A12AACF00E9CAF9 /* SnapKit */; };
 		6B44E4AE2A12AAED00E9CAF9 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 6B44E4AD2A12AAED00E9CAF9 /* Then */; };
 		6BAFCD242A136B0D00994100 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD232A136B0D00994100 /* TabBarController.swift */; };
+		6BAFCD2C2A153C1300994100 /* MainPageTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD2B2A153C1300994100 /* MainPageTopBarView.swift */; };
+		6BAFCD2E2A1541CB00994100 /* MainPageRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD2D2A1541CB00994100 /* MainPageRoutineViewController.swift */; };
+		6BAFCD302A15438F00994100 /* MainPageRecallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD2F2A15438F00994100 /* MainPageRecallViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		6B44E4A22A12A86300E9CAF9 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		6B44E4A42A12A8EB00E9CAF9 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		6BAFCD232A136B0D00994100 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		6BAFCD2B2A153C1300994100 /* MainPageTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainPageTopBarView.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/VC/MainPageTopBarView.swift"; sourceTree = SOURCE_ROOT; };
+		6BAFCD2D2A1541CB00994100 /* MainPageRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRoutineViewController.swift; sourceTree = "<group>"; };
+		6BAFCD2F2A15438F00994100 /* MainPageRecallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRecallViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				6B27D7532A126B5A0033BB21 /* MainPageViewController.swift */,
+				6BAFCD2D2A1541CB00994100 /* MainPageRoutineViewController.swift */,
+				6BAFCD2F2A15438F00994100 /* MainPageRecallViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -233,6 +241,7 @@
 		6B44E4912A1270A500E9CAF9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6BAFCD2B2A153C1300994100 /* MainPageTopBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,9 +336,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B44E4A32A12A86300E9CAF9 /* UILabel+.swift in Sources */,
+				6BAFCD302A15438F00994100 /* MainPageRecallViewController.swift in Sources */,
 				6B44E4A52A12A8EB00E9CAF9 /* UITextField+.swift in Sources */,
 				6BAFCD242A136B0D00994100 /* TabBarController.swift in Sources */,
 				6B44E49F2A12A72C00E9CAF9 /* UIStackView+.swift in Sources */,
+				6BAFCD2C2A153C1300994100 /* MainPageTopBarView.swift in Sources */,
 				6B44E4992A12743400E9CAF9 /* FontLiteral.swift in Sources */,
 				6B44E49D2A12A01D00E9CAF9 /* ImageLiteral.swift in Sources */,
 				6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */,
@@ -337,6 +348,7 @@
 				6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */,
 				6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */,
 				6B44E49B2A1296A700E9CAF9 /* ColorLiteral.swift in Sources */,
+				6BAFCD2E2A1541CB00994100 /* MainPageRoutineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
