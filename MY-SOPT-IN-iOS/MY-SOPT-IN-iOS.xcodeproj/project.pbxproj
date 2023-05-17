@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		250C939F2A13A319005599DA /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250C939E2A13A319005599DA /* BottomSheetViewController.swift */; };
+		250C93A12A13A4E0005599DA /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250C93A02A13A4E0005599DA /* BottomSheetView.swift */; };
 		6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D74F2A126B5A0033BB21 /* AppDelegate.swift */; };
 		6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7512A126B5A0033BB21 /* SceneDelegate.swift */; };
 		6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7532A126B5A0033BB21 /* MainPageViewController.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		250C939E2A13A319005599DA /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		250C93A02A13A4E0005599DA /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BottomSheetView.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/VC/BottomSheetView.swift"; sourceTree = SOURCE_ROOT; };
 		6B27D74C2A126B5A0033BB21 /* MY-SOPT-IN-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MY-SOPT-IN-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B27D74F2A126B5A0033BB21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B27D7512A126B5A0033BB21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				6B27D7532A126B5A0033BB21 /* MainPageViewController.swift */,
+				250C939E2A13A319005599DA /* BottomSheetViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 		6B44E4912A1270A500E9CAF9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				250C93A02A13A4E0005599DA /* BottomSheetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,6 +339,8 @@
 				6B44E4992A12743400E9CAF9 /* FontLiteral.swift in Sources */,
 				6B44E49D2A12A01D00E9CAF9 /* ImageLiteral.swift in Sources */,
 				6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */,
+				250C939F2A13A319005599DA /* BottomSheetViewController.swift in Sources */,
+				250C93A12A13A4E0005599DA /* BottomSheetView.swift in Sources */,
 				6B44E4A12A12A75400E9CAF9 /* UIView+.swift in Sources */,
 				6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */,
 				6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */,
