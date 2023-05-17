@@ -26,7 +26,7 @@ class MainPageRecallViewController: UIViewController {
     // MARK: - Methods
     
     func setStyle() {
-        self.backgroundColor = .Mono.white
+        view.backgroundColor = .Gray.gray_50
     }
     func setLayout() {}
 
