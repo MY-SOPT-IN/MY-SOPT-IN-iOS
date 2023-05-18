@@ -15,6 +15,7 @@ class BottomSheetView: UIView {
     // MARK: - UI Components
     
     lazy var editButton = makeButton(title: "수정하기", image: ImageLiterals.Icon.add_ic_edit)
+    
     lazy var copyButton = makeButton(title: "복사하기", image: ImageLiterals.Icon.add_ic_copy)
     
     lazy var restButton = UIButton().then {
@@ -39,8 +40,19 @@ class BottomSheetView: UIView {
     }
     
     lazy var completeButton = makeButton(title: "완료하기", image: ImageLiterals.Icon.add_ic_check)
+    
     lazy var statisticsButton = makeButton(title: "월별 통계 보기", image: ImageLiterals.Icon.add_ic_bar)
-    lazy var deleteButton = makeButton(title: "전체 삭제하기", image: ImageLiterals.Icon.add_ic_delete, tintColor: UIColor.Semantic.semantic_red)
+    
+    lazy var deleteButton = UIButton().then {
+        $0.setTitle("전체 삭제하기", for: .normal)
+        $0.setTitleColor(UIColor.Semantic.semantic_red, for: .normal)
+        $0.titleLabel?.font = UIFont.bodyFont()
+        let deleteImage = ImageLiterals.Icon.add_ic_delete?.withRenderingMode(.alwaysTemplate)
+        $0.setImage(deleteImage, for: .normal)
+        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)
+        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: -6)
+        $0.tintColor = UIColor.Semantic.semantic_red
+    }
     
     // MARK: - Initialization
     
@@ -69,12 +81,12 @@ class BottomSheetView: UIView {
         
         editButton.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.equalToSuperview()
         }
         
         copyButton.snp.makeConstraints {
             $0.top.equalTo(editButton.snp.bottom).offset(36)
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.equalToSuperview()
         }
         
         restButton.snp.makeConstraints {
@@ -96,18 +108,10 @@ class BottomSheetView: UIView {
             $0.top.equalTo(statisticsButton.snp.bottom).offset(36)
             $0.leading.equalToSuperview()
         }
-        
-        // 버튼의 텍스트와 영역 모두를 눌러도 버튼이 눌리도록 설정
-        let contentEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 150)
-        editButton.contentEdgeInsets = contentEdgeInsets
-        copyButton.contentEdgeInsets = contentEdgeInsets
-        restButton.contentEdgeInsets = contentEdgeInsets
-        completeButton.contentEdgeInsets = contentEdgeInsets
-        statisticsButton.contentEdgeInsets = contentEdgeInsets
-        deleteButton.contentEdgeInsets = contentEdgeInsets
     }
     
-    private func makeButton(title: String, image: UIImage? = nil, tintColor: UIColor? = nil) -> UIButton {
+    private
+    func makeButton(title: String, image: UIImage? = nil, tintColor: UIColor? = nil) -> UIButton {
         let button = UIButton().then {
             $0.setTitle(title, for: .normal)
             $0.setTitleColor(UIColor.Gray.gray_900, for: .normal)

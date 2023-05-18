@@ -13,6 +13,7 @@
 		250DDF462A15B9B3008B8661 /* RoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250DDF452A15B9B3008B8661 /* RoutineView.swift */; };
 		250DDF482A15BA0C008B8661 /* EditRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250DDF472A15BA0C008B8661 /* EditRoutineViewController.swift */; };
 		250DDF4A2A15BA28008B8661 /* AddRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250DDF492A15BA28008B8661 /* AddRoutineViewController.swift */; };
+		250DDF572A169122008B8661 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250DDF562A169121008B8661 /* CustomAlertViewController.swift */; };
 		6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D74F2A126B5A0033BB21 /* AppDelegate.swift */; };
 		6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7512A126B5A0033BB21 /* SceneDelegate.swift */; };
 		6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7532A126B5A0033BB21 /* MainPageViewController.swift */; };
@@ -35,11 +36,12 @@
 
 /* Begin PBXFileReference section */
 		250C939E2A13A319005599DA /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
-		250C93A02A13A4E0005599DA /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BottomSheetView.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/VC/BottomSheetView.swift"; sourceTree = SOURCE_ROOT; };
+		250C93A02A13A4E0005599DA /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BottomSheetView.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/Views/BottomSheetView.swift"; sourceTree = SOURCE_ROOT; };
 		250DDF422A15AFC1008B8661 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
-		250DDF452A15B9B3008B8661 /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutineView.swift; path = "MY-SOPT-IN-iOS/Global/Extension/RoutineView.swift"; sourceTree = SOURCE_ROOT; };
+		250DDF452A15B9B3008B8661 /* RoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutineView.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/Views/RoutineView.swift"; sourceTree = SOURCE_ROOT; };
 		250DDF472A15BA0C008B8661 /* EditRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoutineViewController.swift; sourceTree = "<group>"; };
 		250DDF492A15BA28008B8661 /* AddRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineViewController.swift; sourceTree = "<group>"; };
+		250DDF562A169121008B8661 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		6B27D74C2A126B5A0033BB21 /* MY-SOPT-IN-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MY-SOPT-IN-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B27D74F2A126B5A0033BB21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B27D7512A126B5A0033BB21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 		6B44E4902A12709E00E9CAF9 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				250DDF562A169121008B8661 /* CustomAlertViewController.swift */,
 				6B27D7532A126B5A0033BB21 /* MainPageViewController.swift */,
 				250C939E2A13A319005599DA /* BottomSheetViewController.swift */,
 				250DDF472A15BA0C008B8661 /* EditRoutineViewController.swift */,
@@ -249,8 +252,8 @@
 		6B44E4912A1270A500E9CAF9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				250C93A02A13A4E0005599DA /* BottomSheetView.swift */,
 				250DDF452A15B9B3008B8661 /* RoutineView.swift */,
+				250C93A02A13A4E0005599DA /* BottomSheetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 			files = (
 				6B44E4A32A12A86300E9CAF9 /* UILabel+.swift in Sources */,
 				250DDF432A15AFC1008B8661 /* UIButton+.swift in Sources */,
+				250DDF572A169122008B8661 /* CustomAlertViewController.swift in Sources */,
 				6B44E4A52A12A8EB00E9CAF9 /* UITextField+.swift in Sources */,
 				6BAFCD242A136B0D00994100 /* TabBarController.swift in Sources */,
 				6B44E49F2A12A72C00E9CAF9 /* UIStackView+.swift in Sources */,

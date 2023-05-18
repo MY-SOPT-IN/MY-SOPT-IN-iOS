@@ -48,4 +48,8 @@ struct ImageLiterals {
         static let add_ic_dots_menu = UIImage(named: "add_ic_dots_menu.png")
         static let add_ic_bar = UIImage(named: "add_ic_bar.png")
     }
+    
+    struct AlertImage {
+        static let exclamation = UIImage(named: "alert.png")
+    }
 }

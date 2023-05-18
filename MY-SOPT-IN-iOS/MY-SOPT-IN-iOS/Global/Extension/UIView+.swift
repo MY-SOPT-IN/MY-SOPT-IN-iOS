@@ -20,4 +20,10 @@ extension UIView {
         self.clipsToBounds = true
         self.layer.cornerRadius = radius
     }
+    
+    func roundCorners(cornerRadius: CGFloat, maskedCorners: CACornerMask) {
+          clipsToBounds = true
+          layer.cornerRadius = cornerRadius
+          layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
+      }
 }
