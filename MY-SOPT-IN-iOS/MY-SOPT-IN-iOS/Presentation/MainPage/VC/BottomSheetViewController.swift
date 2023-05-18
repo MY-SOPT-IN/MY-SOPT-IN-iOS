@@ -20,6 +20,7 @@ class BottomSheetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         setupNavigationBar()
         
@@ -31,14 +32,18 @@ class BottomSheetViewController: UIViewController {
         bottomSheetView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(62)
             $0.leading.equalToSuperview().offset(33)
+            $0.height.equalToSuperview()
         }
+        
+        bottomSheetView.editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
     }
     
-    // MARK: - setUI
+    // MARK: - Setup
     
     private func setupNavigationBar() {
-        let navBar = UINavigationBar()
-        navBar.translatesAutoresizingMaskIntoConstraints = false
+        let navBar = UINavigationBar().then {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
         view.addSubview(navBar)
         
         navBar.snp.makeConstraints {
@@ -52,8 +57,9 @@ class BottomSheetViewController: UIViewController {
         let closeButton = UIBarButtonItem(image: ImageLiterals.Icon.add_ic_x, style: .plain, target: self, action: #selector(closeButtonTapped))
         closeButton.tintColor = UIColor.Gray.gray_900
         
-        let navItem = UINavigationItem()
-        navItem.rightBarButtonItem = closeButton
+        let navItem = UINavigationItem().then {
+            $0.rightBarButtonItem = closeButton
+        }
         
         navBar.setItems([navItem], animated: false)
     }
@@ -64,4 +70,11 @@ class BottomSheetViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc private func editButtonTapped() {
+        guard let presentingViewController = self.presentingViewController else { return }
+
+        self.dismiss(animated: true) {
+            presentingViewController.present(EditRoutineViewController(), animated: true, completion: nil)
+        }
+    }
 }
