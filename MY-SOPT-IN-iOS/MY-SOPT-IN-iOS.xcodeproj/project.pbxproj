@@ -29,6 +29,8 @@
 		6BAFCD2E2A1541CB00994100 /* MainPageRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD2D2A1541CB00994100 /* MainPageRoutineViewController.swift */; };
 		6BAFCD302A15438F00994100 /* MainPageRecallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD2F2A15438F00994100 /* MainPageRecallViewController.swift */; };
 		6BF052DE2A15570300893084 /* SelectDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF052DD2A15570300893084 /* SelectDateView.swift */; };
+		6BF052E22A16B09700893084 /* MainPageRoutineTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF052E12A16B09700893084 /* MainPageRoutineTVC.swift */; };
+		6BF052E92A16BE3400893084 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF052E82A16BE3400893084 /* Routine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		6BAFCD2D2A1541CB00994100 /* MainPageRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRoutineViewController.swift; sourceTree = "<group>"; };
 		6BAFCD2F2A15438F00994100 /* MainPageRecallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRecallViewController.swift; sourceTree = "<group>"; };
 		6BF052DD2A15570300893084 /* SelectDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectDateView.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/VC/SelectDateView.swift"; sourceTree = SOURCE_ROOT; };
+		6BF052E12A16B09700893084 /* MainPageRoutineTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainPageRoutineTVC.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/VC/MainPageRoutineTVC.swift"; sourceTree = SOURCE_ROOT; };
+		6BF052E82A16BE3400893084 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +228,7 @@
 		6B44E48F2A12707A00E9CAF9 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				6BF052E52A16BD8900893084 /* Model */,
 				6B44E4912A1270A500E9CAF9 /* Views */,
 				6B44E4902A12709E00E9CAF9 /* VC */,
 			);
@@ -245,6 +250,7 @@
 			children = (
 				6BAFCD2B2A153C1300994100 /* MainPageTopBarView.swift */,
 				6BF052DD2A15570300893084 /* SelectDateView.swift */,
+				6BF052E12A16B09700893084 /* MainPageRoutineTVC.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,6 +261,14 @@
 				6BAFCD232A136B0D00994100 /* TabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		6BF052E52A16BD8900893084 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6BF052E82A16BE3400893084 /* Routine.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,11 +355,13 @@
 				6B44E4A32A12A86300E9CAF9 /* UILabel+.swift in Sources */,
 				6BAFCD302A15438F00994100 /* MainPageRecallViewController.swift in Sources */,
 				6B44E4A52A12A8EB00E9CAF9 /* UITextField+.swift in Sources */,
+				6BF052E92A16BE3400893084 /* Routine.swift in Sources */,
 				6BAFCD242A136B0D00994100 /* TabBarController.swift in Sources */,
 				6B44E49F2A12A72C00E9CAF9 /* UIStackView+.swift in Sources */,
 				6BAFCD2C2A153C1300994100 /* MainPageTopBarView.swift in Sources */,
 				6B44E4992A12743400E9CAF9 /* FontLiteral.swift in Sources */,
 				6B44E49D2A12A01D00E9CAF9 /* ImageLiteral.swift in Sources */,
+				6BF052E22A16B09700893084 /* MainPageRoutineTVC.swift in Sources */,
 				6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */,
 				6B44E4A12A12A75400E9CAF9 /* UIView+.swift in Sources */,
 				6BF052DE2A15570300893084 /* SelectDateView.swift in Sources */,

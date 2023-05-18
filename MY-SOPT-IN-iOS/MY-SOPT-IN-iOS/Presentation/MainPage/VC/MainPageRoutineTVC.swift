@@ -1,0 +1,130 @@
+//
+//  MainPageRoutineTVC.swift
+//  MY-SOPT-IN-iOS
+//
+//  Created by 김다예 on 2023/05/19.
+//
+
+import UIKit
+
+class MainPageRoutineTVC: UITableViewCell {
+
+    // MARK: - Properties
+
+    static let identifier = "MainPageRoutineCell"
+    
+    let whenDoRoutineView = UIView()
+    let routineContentView = UIView()
+    let doRoutineButton = UIButton()
+    
+    private let indexLabel = UILabel()
+    private let whenDoRoutineLabel = UILabel()
+    private let routineContentLabel = UILabel()
+    
+    // MARK: - View Life Cycle
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setStyle()
+        setHierarchy()
+        setLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configCell(index: Int, _ routine: Routine){
+        indexLabel.text = String(index)
+        whenDoRoutineLabel.text = routine.whendo
+        routineContentLabel.text = routine.content
+    }
+    
+    // MARK: - Methods
+
+    func setStyle() {
+        
+        contentView.backgroundColor = .Gray.gray_50
+        selectionStyle = .none
+
+        indexLabel.do {
+            $0.font = .caption2Font()
+            $0.textColor = .Mono.black
+        }
+        
+        whenDoRoutineView.do {
+            $0.backgroundColor = .Mono.white
+            $0.layer.borderColor = UIColor.Gray.gray_200.cgColor
+            $0.layer.borderWidth = 1
+        }
+        
+        routineContentView.do {
+            $0.backgroundColor = .Mono.white
+            $0.layer.borderColor = UIColor.Gray.gray_200.cgColor
+            $0.layer.borderWidth = 1
+        }
+        
+        doRoutineButton.do {
+            $0.backgroundColor = .Mono.white
+            $0.layer.borderColor = UIColor.Gray.gray_200.cgColor
+            $0.layer.borderWidth = 1
+        }
+        
+        whenDoRoutineLabel.do {
+            $0.font = .bodyFont()
+            $0.textColor = .Mono.black
+        }
+        
+        routineContentLabel.do {
+            $0.font = .bodyFont()
+            $0.textColor = .Mono.black
+        }
+    }
+    
+    func setHierarchy() {
+        contentView.addSubviews(indexLabel,
+                                whenDoRoutineView,
+                                routineContentView,
+                                doRoutineButton)
+        
+        whenDoRoutineView.addSubview(whenDoRoutineLabel)
+        routineContentView.addSubview(routineContentLabel)
+    }
+    
+    func setLayout() {
+        
+        indexLabel.snp.makeConstraints {
+            $0.width.equalTo(5)
+            $0.centerY.leading.equalToSuperview()
+        }
+        
+        whenDoRoutineView.snp.makeConstraints {
+            $0.height.equalTo(50)
+            $0.width.equalTo(93)
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(indexLabel.snp.trailing).offset(7)
+        }
+        
+        routineContentView.snp.makeConstraints {
+            $0.height.equalTo(50)
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(whenDoRoutineView.snp.trailing)
+            $0.trailing.equalTo(doRoutineButton.snp.leading)
+        }
+        
+        doRoutineButton.snp.makeConstraints {
+            $0.height.equalTo(50)
+            $0.width.equalTo(46)
+            $0.centerY.trailing.equalToSuperview()
+        }
+        
+        whenDoRoutineLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
+        routineContentLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+    }
+}
