@@ -33,13 +33,27 @@ class BottomSheetView: UIView {
     }
     
     let restButton = UIButton().then {
-        $0.setTitle("쉬어가기", for: .normal)
+        $0.setTitle("쉬어가기 \n'쉬고 있는 루틴'에 넣어두고 당분간 하지 않아요", for: .normal)
         $0.setTitleColor(UIColor.Gray.gray_900, for: .normal)
         $0.titleLabel?.font = UIFont.bodyFont()
+        $0.titleLabel?.lineBreakMode = .byWordWrapping
+        $0.titleLabel?.numberOfLines = 0
+        
+        let attributedText = NSMutableAttributedString(string: $0.currentTitle ?? "")
+        let newlineRange = ($0.currentTitle as NSString?)?.range(of: "\n")
+        
+        if let range = newlineRange {
+            attributedText.addAttributes([.font: UIFont.body2Font(), .foregroundColor: UIColor.Gray.gray_700], range: NSRange(location: range.location + 1, length: attributedText.length - range.location - 1))
+        }
+        
+        $0.setAttributedTitle(attributedText, for: .normal)
+        
         $0.setImage(ImageLiterals.Icon.add_ic_leaf, for: .normal)
         $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)
-        $0.titleEdgeInsets = UIEdgeInsets(top:0, left: 6, bottom: 0, right: -6)
+        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: -6)
     }
+
+    
     let completeButton = UIButton().then {
         $0.setTitle("완료하기", for: .normal)
         $0.setTitleColor(UIColor.Gray.gray_900, for: .normal)
@@ -77,8 +91,8 @@ class BottomSheetView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupSubviews()
+        fatalError("init(coder:) has not been implemented")
+
     }
     
     // MARK: - Setup
@@ -109,7 +123,7 @@ class BottomSheetView: UIView {
         }
         
         completeButton.snp.makeConstraints {
-            $0.top.equalTo(restButton.snp.bottom).offset(36)
+            $0.top.equalTo(restButton.snp.bottom).offset(48)
             $0.leading.equalToSuperview()
         }
         
