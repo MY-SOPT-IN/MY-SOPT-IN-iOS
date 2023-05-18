@@ -27,6 +27,7 @@ class BottomSheetViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        view.layer.cornerRadius = 25
         setupNavigationBar()
         
         if let sheetPresentationController = sheetPresentationController {
@@ -38,9 +39,12 @@ class BottomSheetViewController: UIViewController {
             $0.top.equalToSuperview().offset(62)
             $0.leading.equalToSuperview().offset(33)
             $0.height.equalToSuperview()
+            $0.width.equalTo(100)
         }
         
         bottomSheetView.editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+        bottomSheetView.deleteButton.addTarget(self, action: #selector(showCustomAlert), for: .touchUpInside)
+
     }
     
     
@@ -85,7 +89,17 @@ class BottomSheetViewController: UIViewController {
             self.delegate?.didTapButtonInBottomSheet() // 델리게이트 메서드 호출
         }
     }
+    
+    @objc
+    private func showCustomAlert() {
+        guard let presentingViewController = self.presentingViewController else { return }
+
+        self.dismiss(animated: true) {
+            let customAlertVC = CustomAlertViewController()
+            customAlertVC.modalPresentationStyle = .overFullScreen
+            presentingViewController.present(customAlertVC, animated: true, completion: nil)
+        }
+    }
 }
 
-// VC2가 dismiss 되었을 때 VC1이 알게 한다.
-// VC1
+
