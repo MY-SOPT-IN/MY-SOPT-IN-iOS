@@ -47,6 +47,12 @@ struct ImageLiterals {
         static let add_ic_arrow = UIImage(named: "add_ic_arrow.png")
         static let add_ic_dots_menu = UIImage(named: "add_ic_dots_menu.png")
         static let add_ic_bar = UIImage(named: "add_ic_bar.png")
+        static let add_ic_calender = UIImage(named: "calender.png")
+        static let add_ic_question = UIImage(named: "question.png")
+        static let add_ic_vector = UIImage(named: "add_ic_vector")
+//        static let add_ic_sun = UIImage(namd: "add_ic_sun")
+//        static let add_ic_coffee = UIImage(namd: "add_ic_coffee")
+//        static let add_ic_moon = UIImage(namd: "add_ic_moon")
     }
     
     struct AlertImage {

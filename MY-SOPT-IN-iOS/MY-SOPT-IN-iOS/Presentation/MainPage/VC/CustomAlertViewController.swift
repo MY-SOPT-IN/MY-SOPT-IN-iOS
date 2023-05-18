@@ -113,17 +113,16 @@ class CustomAlertViewController: UIViewController {
             $0.height.equalTo(53)
         }
         
-        alertView.addSubview(verticalWall)
-        verticalWall.snp.makeConstraints {
+        alertView.addSubview(horizontalWall)
+        horizontalWall.snp.makeConstraints {
             $0.height.equalTo(1)
             $0.bottom.equalTo(cancelButton.snp.top)
             $0.trailing.leading.equalToSuperview()
         }
-        
-        alertView.addSubview(horizontalWall)
-        horizontalWall.snp.makeConstraints {
+        alertView.addSubview(verticalWall)
+        verticalWall.snp.makeConstraints {
             $0.width.equalTo(1)
-            $0.top.equalTo(verticalWall.snp.top)
+            $0.top.equalTo(horizontalWall.snp.top)
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
