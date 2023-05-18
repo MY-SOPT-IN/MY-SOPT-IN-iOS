@@ -4,16 +4,21 @@
 //
 //  Created by 천성우 on 2023/05/16.
 //
-
 import UIKit
 
 import SnapKit
 import Then
 
+protocol BottomSheetDelegate: AnyObject {
+    func didTapButtonInBottomSheet()
+}
+
+
 class BottomSheetViewController: UIViewController {
     
     // MARK: - Properties
     
+    weak var delegate: BottomSheetDelegate?
     private let bottomSheetView = BottomSheetView()
     
     // MARK: - View Life Cycle
@@ -37,6 +42,10 @@ class BottomSheetViewController: UIViewController {
         
         bottomSheetView.editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
     }
+    
+    
+    
+    
     
     // MARK: - Setup
     
@@ -70,11 +79,13 @@ class BottomSheetViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc private func editButtonTapped() {
-        guard let presentingViewController = self.presentingViewController else { return }
-
+    @objc
+    private func editButtonTapped() {
         self.dismiss(animated: true) {
-            presentingViewController.present(EditRoutineViewController(), animated: true, completion: nil)
+            self.delegate?.didTapButtonInBottomSheet() // 델리게이트 메서드 호출
         }
     }
 }
+
+// VC2가 dismiss 되었을 때 VC1이 알게 한다.
+// VC1
