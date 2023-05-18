@@ -21,12 +21,26 @@ class MainPageViewController: UIViewController {
     lazy var recallViewController = MainPageRecallViewController()
     
     lazy var viewControllers = [routineViewController, recallViewController]
+    
+    // MARK: - Target
+    
+    private func target() {
+        topBar.routineLabel.do {
+            $0.isUserInteractionEnabled = true
+            $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchRoutineSegment)))
+        }
+        topBar.recallLabel.do {
+            $0.isUserInteractionEnabled = true
+            $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchRecallSegment)))
+        }
+    }
 
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        target()
         setStyle()
         setLayout()
     }
@@ -70,25 +84,47 @@ class MainPageViewController: UIViewController {
 
     // MARK: - @objc Function
     
+    @objc func touchRoutineSegment(sender: UITapGestureRecognizer) {
+        pageController.setViewControllers([routineViewController], direction: .reverse, animated: true, completion: nil)
+        topBar.updateIndicator(index: 0)
+    }
+    
+    @objc func touchRecallSegment(sender: UITapGestureRecognizer) {
+        pageController.setViewControllers([recallViewController], direction: .forward, animated: true, completion: nil)
+        topBar.updateIndicator(index: 1)
+    }
+    
     // MARK: - Network
 
 }
 
-extension MainPageViewController: UIPageViewControllerDelegate {}
+extension MainPageViewController: UIPageViewControllerDelegate {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            if previousViewControllers is [MainPageRecallViewController] {
+                topBar.updateIndicator(index: 0)
+            } else if previousViewControllers is [MainPageRoutineViewController] {
+                topBar.updateIndicator(index: 1)
+            }
+        }
+    }
+}
 extension MainPageViewController: UIPageViewControllerDataSource {
     
+    // FIXME: - index가 2개이므로 더 간결하게 줄일 수 있지 않을까..?
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let index = viewControllers.firstIndex(of: viewController ) else { return nil }
-        let previousIndex = index - 1
-        if previousIndex < 0 { return nil }
-        return viewControllers[previousIndex]
+        if viewController is MainPageRecallViewController {
+            return viewControllers[0]
+        }
+        return nil
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let index = viewControllers.firstIndex(of: viewController ) else { return nil }
-        let nextIndex = index + 1
-        if nextIndex > viewControllers.count - 1 { return nil }
-        return viewControllers[nextIndex]
+        if viewController is MainPageRoutineViewController {
+            return viewControllers[1]
+        }
+        return nil
     }
-
 }

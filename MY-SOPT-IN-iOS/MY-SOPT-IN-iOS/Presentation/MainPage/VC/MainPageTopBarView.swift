@@ -65,6 +65,7 @@ final class MainPageTopBarView: UIView {
             $0.backgroundColor = .Gray.gray_200
         }
     }
+    
     func setLayout() {
         
         self.addSubviews(stackView,
@@ -89,6 +90,33 @@ final class MainPageTopBarView: UIView {
         dividingLine.snp.makeConstraints {
             $0.height.equalTo(1.5)
             $0.bottom.leading.trailing.equalToSuperview()
+        }
+    }
+    
+    func updateIndicator(index: Int) {
+        switch index {
+        case 0:
+            indicator.snp.remakeConstraints {
+                $0.height.equalTo(3)
+                $0.width.equalTo(114)
+                $0.bottom.equalToSuperview()
+                $0.centerX.equalTo(routineLabel.snp.centerX)
+            }
+            UIView.animate(withDuration: 0.2, animations: {
+                self.layoutIfNeeded()
+            })
+        case 1:
+            indicator.snp.remakeConstraints {
+                $0.height.equalTo(3)
+                $0.width.equalTo(114)
+                $0.bottom.equalToSuperview()
+                $0.centerX.equalTo(recallLabel.snp.centerX)
+            }
+            UIView.animate(withDuration: 0.2, animations: {
+                self.layoutIfNeeded()
+            })
+        default:
+            print("Paging Index Error")
         }
     }
 
