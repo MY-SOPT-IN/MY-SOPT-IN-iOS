@@ -50,9 +50,9 @@ struct ImageLiterals {
         static let add_ic_calender = UIImage(named: "calender.png")
         static let add_ic_question = UIImage(named: "question.png")
         static let add_ic_vector = UIImage(named: "add_ic_vector")
-//        static let add_ic_sun = UIImage(namd: "add_ic_sun")
-//        static let add_ic_coffee = UIImage(namd: "add_ic_coffee")
-//        static let add_ic_moon = UIImage(namd: "add_ic_moon")
+        static let add_ic_sun = UIImage(named: "add_ic_sun")
+        static let add_ic_coffee = UIImage(named: "add_ic_coffee")
+        static let add_ic_moon = UIImage(named: "add_ic_moon")
     }
     
     struct AlertImage {
