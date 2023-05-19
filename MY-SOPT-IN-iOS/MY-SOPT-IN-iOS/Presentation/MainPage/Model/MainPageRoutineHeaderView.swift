@@ -11,11 +11,14 @@ class MainPageRoutineHeaderView: UIStackView {
 
     // MARK: - Properties
 
-    var selectDateView = SelectDateView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    var selectDateView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var dateView = UIView()
-    
-    private var dataLabel = UILabel()
+    private var dateLabel = UILabel()
     private var editFilterLabel = UILabel()
+    
+    let flowLayout = UICollectionViewFlowLayout()
+    let itemSpacing: CGFloat = 16
+    private let itemCount: Int = 7
     
     // MARK: - View Life Cycle
 
@@ -35,8 +38,22 @@ class MainPageRoutineHeaderView: UIStackView {
     private func setStyle() {
         self.axis = .vertical
         self.distribution = .fillEqually
+        
+        selectDateView.do {
+            $0.backgroundColor = .clear
+            $0.showsHorizontalScrollIndicator = false
+            $0.collectionViewLayout = flowLayout
+        }
+        
+        flowLayout.do{
+            $0.itemSize = CGSize(width: ((UIScreen.main.bounds.width - itemSpacing * CGFloat(itemCount + 1)) / CGFloat(itemCount)) , height: 65)
+            $0.minimumLineSpacing = itemSpacing
+            $0.scrollDirection = .horizontal
+            $0.headerReferenceSize = CGSize(width: itemSpacing, height: 65)
+            $0.footerReferenceSize = CGSize(width: itemSpacing, height: 65)
+        }
 
-        dataLabel.do {
+        dateLabel.do {
             $0.text = "2023년 5월 19일"
             $0.font = .title2Font()
             $0.textColor = .Gray.gray_800
@@ -61,10 +78,10 @@ class MainPageRoutineHeaderView: UIStackView {
             $0.leading.trailing.equalToSuperview()
         }
         
-        dateView.addSubviews(dataLabel,
+        dateView.addSubviews(dateLabel,
                              editFilterLabel)
         
-        dataLabel.snp.makeConstraints {
+        dateLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(20)
         }

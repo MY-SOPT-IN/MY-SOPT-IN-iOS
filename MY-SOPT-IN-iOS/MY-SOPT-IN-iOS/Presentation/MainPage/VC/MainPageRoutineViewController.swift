@@ -36,7 +36,8 @@ class MainPageRoutineViewController: UIViewController {
         headerView.selectDateView.delegate = self
         headerView.selectDateView.dataSource = self
         headerView.selectDateView.register(SelectDateCVC.self, forCellWithReuseIdentifier: SelectDateCVC.identifier)
-
+        headerView.selectDateView.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectDateHeaderFooter.identifier)
+        headerView.selectDateView.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier)
     }
     
     func setStyle() {
@@ -105,6 +106,20 @@ extension MainPageRoutineViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectDateCVC.identifier, for: indexPath) as? SelectDateCVC else { return UICollectionViewCell() }
         cell.configCell(date: dateDummy[indexPath.item])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectDateHeaderFooter.identifier, for: indexPath) as? SelectDateHeaderFooter else {
+                return SelectDateHeaderFooter()
+            }
+            return header
+        } else {
+            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier, for: indexPath) as? SelectDateHeaderFooter else {
+                return SelectDateHeaderFooter()
+            }
+            return footer
+        }
     }
 }
 
