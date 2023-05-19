@@ -35,9 +35,18 @@ class MainPageRoutineHeaderView: UIStackView {
     private func setStyle() {
         self.axis = .vertical
         self.distribution = .fillEqually
-        // MARK: - 뷰 확인용 색 지정
-        selectDateView.backgroundColor = .Mono.white
-        dateView.backgroundColor = .Gray.gray_100
+
+        dataLabel.do {
+            $0.text = "2023년 5월 19일"
+            $0.font = .title2Font()
+            $0.textColor = .Gray.gray_800
+        }
+        
+        editFilterLabel.do {
+            $0.text = " 편집 | 필터 "
+            $0.font = .bodyFont()
+            $0.textColor = .Gray.gray_500
+        }
     }
     
     private func setLayout() {
@@ -47,8 +56,21 @@ class MainPageRoutineHeaderView: UIStackView {
         selectDateView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
         }
+        
         dateView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
+        }
+        
+        dateView.addSubviews(dataLabel,
+                             editFilterLabel)
+        
+        dataLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().inset(20)
+        }
+        editFilterLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(15)
         }
     }
     
