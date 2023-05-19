@@ -8,9 +8,20 @@
 import UIKit
 
 class AddRoutineViewController: UIViewController {
+    private let addRoutine = RoutineView()
 
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "루틴 추가하기"
+        view.backgroundColor = .white
+        title = "루틴 추가하기"
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.topItem?.title = ""
+
+        view.addSubview(addRoutine)
+        addRoutine.snp.makeConstraints {
+            $0.top.leading.bottom.trailing.equalToSuperview()
+        }
     }
 }

@@ -12,20 +12,24 @@ import Then
 
 class RoutineView: UIView {
     
+    // MARK: - UI Components
+    
     private let routineNameTextField = UITextField().then {
-        $0.placeholder = "루틴 이름"
-        $0.textColor = UIColor.Gray.gray_400
+        $0.attributedPlaceholder = NSAttributedString(string: "루틴 이름", attributes: [NSAttributedString.Key.foregroundColor: UIColor.Gray.gray_400])
+        $0.textColor = UIColor.Gray.gray_900
         $0.font = UIFont.bodyFont()
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
         $0.leftViewMode = .always
         $0.backgroundColor = .white
-        // 텍스트 필드의 스타일을 설정합니다.
     }
     
-    private let addButton = UIImageView(frame: CGRect(x: 0, y: 0, width: 56, height: 56)).then{
+    private let completeSection = UIView(frame: CGRect(x: 0, y: 0, width: 56, height: 56)).then{
         $0.backgroundColor = .white
     }
     
+    private let completeImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)).then{
+        $0.image = ImageLiterals.Icon.add_ic_checkbox
+    }
     private let secondSection = UIView().then{
         $0.backgroundColor = .white
     }
@@ -52,7 +56,7 @@ class RoutineView: UIView {
     private let exampleLabel = UILabel().then{
         $0.text = "ex) 8:00/출근길/ALL"
         $0.font = UIFont.bodyFont()
-        $0.textColor = UIColor.Gray.gray_900
+        $0.textColor = UIColor.Gray.gray_500
     }
     private let whenButton = UIButton().then{
         $0.setImage(ImageLiterals.Icon.add_ic_vector, for: .normal)
@@ -142,17 +146,17 @@ class RoutineView: UIView {
     }
     
     private let sunButton = UIButton().then{
-//        $0.setImage(ImageLiterals.Icon.add_ic_sun, for: .normal)
+        $0.setImage(ImageLiterals.Icon.add_ic_sun, for: .normal)
         $0.tintColor = UIColor.Gray.gray_200
     }
 
     private let coffeeButton = UIButton().then{
-//        $0.setImage(ImageLiterals.Icon.add_ic_coffee, for: .normal)
+        $0.setImage(ImageLiterals.Icon.add_ic_coffee, for: .normal)
         $0.tintColor = UIColor.Gray.gray_200
     }
     
     private let moonButton = UIButton().then{
-//        $0.setImage(ImageLiterals.Icon.add_ic_moon, for: .normal)
+        $0.setImage(ImageLiterals.Icon.add_ic_moon, for: .normal)
         $0.tintColor = UIColor.Gray.gray_200
     }
     
@@ -187,6 +191,15 @@ class RoutineView: UIView {
         $0.backgroundColor = UIColor.Gray.gray_100
     }
     
+    private let saveButton = UIButton().then(){
+        $0.setTitle("시작하기", for: .normal)
+        $0.titleLabel?.font = UIFont.subtitleFont()
+        $0.setTitleColor(UIColor.Primary.primary_900, for: .normal)
+        $0.backgroundColor = UIColor.Primary.primary
+    }
+    
+    // MARK: - Initialization
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.Gray.gray_50
@@ -198,11 +211,14 @@ class RoutineView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - setUI
+    
     private func setupViews() {
 
         addSubviews(
             routineNameTextField,
-            addButton,
+            completeSection,
+            completeImage,
             secondSection,
             alarmImage,
             alarmLabel,
@@ -238,7 +254,8 @@ class RoutineView: UIView {
             horizontalWall3,
             horizontalWall4,
             horizontalWall5,
-            horizontalWall6
+            horizontalWall6,
+            saveButton
         )
     }
     
@@ -247,16 +264,23 @@ class RoutineView: UIView {
         routineNameTextField.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.leading.equalToSuperview().offset(18)
-            $0.trailing.equalTo(addButton.snp.leading).offset(-7)
+            $0.trailing.equalTo(completeSection.snp.leading).offset(-7)
             $0.width.equalTo(280)
             $0.height.equalTo(56)        }
         
-        addButton.snp.makeConstraints {
+        completeSection.snp.makeConstraints {
             $0.centerY.equalTo(routineNameTextField)
             $0.trailing.equalToSuperview().offset(-16)
             $0.width.equalTo(56)
             $0.height.equalTo(56)
         }
+        
+        completeImage.snp.makeConstraints{
+            $0.centerY.equalTo(completeSection)
+            $0.top.leading.equalTo(completeSection).offset(18)
+
+        }
+        
         
         secondSection.snp.makeConstraints{
             $0.top.equalTo(routineNameTextField.snp.bottom).offset(8)
@@ -455,6 +479,12 @@ class RoutineView: UIView {
             $0.top.equalTo(horizontalWall6.snp.bottom).offset(17)
             $0.trailing.equalTo(thirdSection.snp.trailing).offset(-34)
 
+        }
+        
+        saveButton.snp.makeConstraints{
+            $0.bottom.equalToSuperview()
+            $0.width.equalTo(375)
+            $0.height.equalTo(71)
         }
     }
 }

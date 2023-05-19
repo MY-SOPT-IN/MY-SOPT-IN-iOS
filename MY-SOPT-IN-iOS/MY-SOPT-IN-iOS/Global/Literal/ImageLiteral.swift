@@ -53,6 +53,7 @@ struct ImageLiterals {
         static let add_ic_sun = UIImage(named: "add_ic_sun")
         static let add_ic_coffee = UIImage(named: "add_ic_coffee")
         static let add_ic_moon = UIImage(named: "add_ic_moon")
+        static let add_ic_addButton = UIImage(named: "add_ic_addButton")
     }
     
     struct AlertImage {

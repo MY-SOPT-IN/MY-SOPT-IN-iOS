@@ -10,39 +10,65 @@ import UIKit
 import SnapKit
 import Then
 
-class MainPageViewController: UIViewController, BottomSheetDelegate{
+class MainPageViewController: UIViewController, BottomSheetDelegate {
     
-    let tabcell = UIButton().then{
-        $0.setTitle("일단 버튼이에용", for: .normal)
+    // MARK: - Properties
+    
+    let tabcell = UIButton().then {
+        $0.setTitle("일단 바텀시트 올라오는 버튼", for: .normal)
         $0.setTitleColor(UIColor.Gray.gray_900, for: .normal)
-        $0.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(presentToBottomSheet), for: .touchUpInside)
+    }
+    
+    let addButton = UIButton().then {
+        $0.setImage(ImageLiterals.Icon.add_ic_addButton, for: .normal)
+        $0.addTarget(self, action: #selector(pushToAddRoutine), for: .touchUpInside)
     }
 
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(tabcell)
+        view.addSubviews(
+            tabcell,
+            addButton
+        )
 
-        tabcell.snp.makeConstraints{
+        tabcell.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
+        }
+        addButton.snp.makeConstraints {
+            $0.top.equalTo(tabcell.snp.bottom).offset(30)
+            $0.centerX.equalTo(tabcell)
         }
     }
     
+    // MARK: - BottomSheetDelegate
     
-    func showBottomSheet(){
-        let bottomsheet = BottomSheetViewController()
-        bottomsheet.delegate = self
-        self.present(bottomsheet, animated: true, completion: nil)
+    func showBottomSheet() {
+        let bottomSheet = BottomSheetViewController()
+        bottomSheet.delegate = self
+        present(bottomSheet, animated: true, completion: nil)
     }
     
+    func didTapButtonInBottomSheet() {
+        let editViewController = EditRoutineViewController()
+        editViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(editViewController, animated: true)
+    }
+    
+    // MARK: - Action Methods
+    
     @objc
-    private func buttonTapped() {
+    private func presentToBottomSheet() {
         showBottomSheet()
     }
     
-    func didTapButtonInBottomSheet(){
-        let editViewController = EditRoutineViewController()
-        self.navigationController?.pushViewController(editViewController, animated: true)
+    @objc
+    private func pushToAddRoutine() {
+        let addRoutineViewController = AddRoutineViewController()
+        addRoutineViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(addRoutineViewController, animated: true)
     }
-    
 }

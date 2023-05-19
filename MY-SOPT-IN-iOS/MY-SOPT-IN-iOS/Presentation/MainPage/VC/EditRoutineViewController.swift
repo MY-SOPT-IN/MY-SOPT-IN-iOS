@@ -11,6 +11,8 @@ class EditRoutineViewController: UIViewController {
 
     private let editRoutine = RoutineView()
     
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -22,8 +24,7 @@ class EditRoutineViewController: UIViewController {
                 
         view.addSubview(editRoutine)
         editRoutine.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin) // 뷰의 safeAreaLayoutGuide의 topMargin에 맞춥니다.
-
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
             $0.leading.bottom.trailing.equalToSuperview()
             
         }
