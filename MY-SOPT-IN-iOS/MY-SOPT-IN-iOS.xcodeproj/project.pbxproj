@@ -32,6 +32,7 @@
 		6BF052E22A16B09700893084 /* MainPageRoutineTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF052E12A16B09700893084 /* MainPageRoutineTVC.swift */; };
 		6BF052E92A16BE3400893084 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF052E82A16BE3400893084 /* Routine.swift */; };
 		6BF052EB2A173A6900893084 /* MainPageRoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF052EA2A173A6900893084 /* MainPageRoutineHeaderView.swift */; };
+		6BF052ED2A1745BC00893084 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF052EC2A1745BC00893084 /* CALayer+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		6BF052E12A16B09700893084 /* MainPageRoutineTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainPageRoutineTVC.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/VC/MainPageRoutineTVC.swift"; sourceTree = SOURCE_ROOT; };
 		6BF052E82A16BE3400893084 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		6BF052EA2A173A6900893084 /* MainPageRoutineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainPageRoutineHeaderView.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/Model/MainPageRoutineHeaderView.swift"; sourceTree = SOURCE_ROOT; };
+		6BF052EC2A1745BC00893084 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				6B44E4A02A12A75400E9CAF9 /* UIView+.swift */,
 				6B44E4A22A12A86300E9CAF9 /* UILabel+.swift */,
 				6B44E4A42A12A8EB00E9CAF9 /* UITextField+.swift */,
+				6BF052EC2A1745BC00893084 /* CALayer+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				6B44E49D2A12A01D00E9CAF9 /* ImageLiteral.swift in Sources */,
 				6BF052E22A16B09700893084 /* MainPageRoutineTVC.swift in Sources */,
 				6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */,
+				6BF052ED2A1745BC00893084 /* CALayer+.swift in Sources */,
 				6B44E4A12A12A75400E9CAF9 /* UIView+.swift in Sources */,
 				6BF052DE2A15570300893084 /* SelectDateView.swift in Sources */,
 				6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */,
