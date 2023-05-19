@@ -39,8 +39,12 @@ class SelectDateCVC: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configCell() {
-        
+    func configCell(date: Date) {
+        dateCircleView.backgroundColor = date.color
+        guard let dateDate = date.dateComponents.date else { return }
+        dateLabel.text = DateFormatter().string(from: dateDate)
+        print(DateFormatter().string(from: dateDate))
+        print(date.color)
     }
     
     func setStyle() {

@@ -11,7 +11,7 @@ class MainPageRoutineHeaderView: UIStackView {
 
     // MARK: - Properties
 
-    private var selectDateView = SelectDateView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    var selectDateView = SelectDateView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var dateView = UIView()
     
     private var dataLabel = UILabel()

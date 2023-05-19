@@ -17,18 +17,27 @@ class MainPageRoutineViewController: UIViewController {
     private var headerView = MainPageRoutineHeaderView()
     private var routineView = UITableView()
     
-    private let dummy = Routine.dummy()
+    private let dateDummy = Date.dummy()
+    private let routineDummy = Routine.dummy()
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        target()
         setStyle()
         setLayout()
     }
     
     // MARK: - Methods
+    
+    func target() {
+        headerView.selectDateView.delegate = self
+        headerView.selectDateView.dataSource = self
+        headerView.selectDateView.register(SelectDateCVC.self, forCellWithReuseIdentifier: SelectDateCVC.identifier)
+
+    }
     
     func setStyle() {
         view.backgroundColor = .Gray.gray_50
@@ -45,43 +54,58 @@ class MainPageRoutineViewController: UIViewController {
             $0.tableHeaderView?.frame.size.height = 130
         }
     }
-
-
-func setLayout() {
-    view.addSubviews(routineView)
     
-    // FIXME: - bottomInset 수정 필요
     
-    routineView.snp.makeConstraints {
-        $0.bottom.equalToSuperview().inset(89)
-        $0.top.leading.trailing.equalToSuperview()
+    func setLayout() {
+        view.addSubviews(routineView)
+        
+        // FIXME: - bottomInset 수정 필요
+        
+        routineView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(89)
+            $0.top.leading.trailing.equalToSuperview()
+        }
     }
-}
-
-// MARK: - @objc Function
-
-// MARK: - Network
-
+    
+    // MARK: - @objc Function
+    
+    // MARK: - Network
+    
 }
 
 extension MainPageRoutineViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dummy.count
+        return routineDummy.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainPageRoutineTVC.identifier, for: indexPath) as? MainPageRoutineTVC else { return UITableViewCell() }
-        if indexPath.row == 0 && indexPath.row == dummy.count - 1 {
-            cell.configCell(index: indexPath.row, dummy[indexPath.row], isFirstCell: true, isLastCell: true)
+        if indexPath.row == 0 && indexPath.row == routineDummy.count - 1 {
+            cell.configCell(index: indexPath.row, routineDummy[indexPath.row], isFirstCell: true, isLastCell: true)
         } else if indexPath.row == 0 {
-            cell.configCell(index: indexPath.row, dummy[indexPath.row], isFirstCell: true)
-        } else if indexPath.row == dummy.count - 1 {
-            cell.configCell(index: indexPath.row, dummy[indexPath.row], isLastCell: true)
+            cell.configCell(index: indexPath.row, routineDummy[indexPath.row], isFirstCell: true)
+        } else if indexPath.row == routineDummy.count - 1 {
+            cell.configCell(index: indexPath.row, routineDummy[indexPath.row], isLastCell: true)
         } else {
-            cell.configCell(index: indexPath.row, dummy[indexPath.row])
+            cell.configCell(index: indexPath.row, routineDummy[indexPath.row])
         }
         return cell
     }
 }
+
 extension MainPageRoutineViewController: UITableViewDelegate { }
 
+extension MainPageRoutineViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        dateDummy.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectDateCVC.identifier, for: indexPath) as? SelectDateCVC else { return UICollectionViewCell() }
+        cell.configCell(date: dateDummy[indexPath.item])
+        return cell
+    }
+}
+
+extension MainPageRoutineViewController: UICollectionViewDelegate { }
