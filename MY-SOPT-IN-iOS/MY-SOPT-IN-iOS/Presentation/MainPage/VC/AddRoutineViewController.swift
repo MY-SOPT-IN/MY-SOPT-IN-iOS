@@ -21,7 +21,8 @@ class AddRoutineViewController: UIViewController {
 
         view.addSubview(addRoutine)
         addRoutine.snp.makeConstraints {
-            $0.top.leading.bottom.trailing.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
+            $0.leading.bottom.trailing.equalToSuperview()
         }
     }
 }
