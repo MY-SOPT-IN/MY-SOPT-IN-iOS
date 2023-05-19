@@ -71,7 +71,15 @@ extension MainPageRoutineViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainPageRoutineTVC.identifier, for: indexPath) as? MainPageRoutineTVC else { return UITableViewCell() }
-        cell.configCell(index: indexPath.row, dummy[indexPath.row])
+        if indexPath.row == 0 && indexPath.row == dummy.count - 1 {
+            cell.configCell(index: indexPath.row, dummy[indexPath.row], isFirstCell: true, isLastCell: true)
+        } else if indexPath.row == 0 {
+            cell.configCell(index: indexPath.row, dummy[indexPath.row], isFirstCell: true)
+        } else if indexPath.row == dummy.count - 1 {
+            cell.configCell(index: indexPath.row, dummy[indexPath.row], isLastCell: true)
+        } else {
+            cell.configCell(index: indexPath.row, dummy[indexPath.row])
+        }
         return cell
     }
 }

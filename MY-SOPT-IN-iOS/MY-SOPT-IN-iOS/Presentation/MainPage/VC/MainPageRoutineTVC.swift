@@ -21,6 +21,20 @@ class MainPageRoutineTVC: UITableViewCell {
     private let whenDoRoutineLabel = UILabel()
     private let routineContentLabel = UILabel()
     
+    private enum FirstLastCell {
+        case first
+        case last
+        
+        var maskedCorner: CACornerMask {
+            switch self{
+            case .first:
+                return [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+            case .last:
+                return [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+            }
+        }
+    }
+    
     // MARK: - View Life Cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -35,10 +49,16 @@ class MainPageRoutineTVC: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configCell(index: Int, _ routine: Routine){
+    func configCell(index: Int, _ routine: Routine, isFirstCell: Bool = false, isLastCell: Bool = false){
         indexLabel.text = String(index)
         whenDoRoutineLabel.text = routine.whendo
         routineContentLabel.text = routine.content
+        if isFirstCell {
+            makeCellRound(firstLastCell: FirstLastCell.first)
+        }
+        if isLastCell {
+            makeCellRound(firstLastCell: FirstLastCell.last)
+        }
     }
     
     // MARK: - Methods
@@ -75,6 +95,7 @@ class MainPageRoutineTVC: UITableViewCell {
         whenDoRoutineLabel.do {
             $0.font = .bodyFont()
             $0.textColor = .Mono.black
+            $0.textAlignment = .center
         }
         
         routineContentLabel.do {
@@ -123,12 +144,19 @@ class MainPageRoutineTVC: UITableViewCell {
         }
         
         whenDoRoutineLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         
         routineContentLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(10)
-            $0.centerY.equalToSuperview()
+            $0.trailing.top.bottom.equalToSuperview()
+        }
+    }
+    
+    private func makeCellRound(firstLastCell: FirstLastCell) {
+        [whenDoRoutineView, routineContentView, doRoutineButton].forEach {
+            $0.layer.cornerRadius = 5
+            $0.layer.maskedCorners = firstLastCell.maskedCorner
         }
     }
 }
