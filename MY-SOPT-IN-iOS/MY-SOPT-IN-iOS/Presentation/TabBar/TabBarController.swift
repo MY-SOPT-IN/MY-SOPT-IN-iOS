@@ -38,8 +38,8 @@ final class TabBarController: UITabBarController {
         homeViewController.tabBarItem = UITabBarItem(title: "홈", image: ImageLiterals.TabBar.home, tag: 0)
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
         
-        let routineViewController = UIViewController()
-        routineViewController.view.backgroundColor = .Gray.gray_50
+        let routineViewController = RecommendRoutineViewController()
+//        routineViewController.view.backgroundColor = .Gray.gray_50
         routineViewController.tabBarItem = UITabBarItem(title: "루틴추천", image: ImageLiterals.TabBar.like, tag: 1)
         let routineNavigationController = UINavigationController(rootViewController: routineViewController)
         

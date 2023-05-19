@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		146BBB4A2A17EEEB00A6C21A /* RecommendRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BBB492A17EEEB00A6C21A /* RecommendRoutineViewController.swift */; };
+		146BBB4D2A17F0DF00A6C21A /* TotalRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BBB4C2A17F0DF00A6C21A /* TotalRoutineViewController.swift */; };
 		6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D74F2A126B5A0033BB21 /* AppDelegate.swift */; };
 		6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7512A126B5A0033BB21 /* SceneDelegate.swift */; };
 		6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7532A126B5A0033BB21 /* MainPageViewController.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		146BBB492A17EEEB00A6C21A /* RecommendRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendRoutineViewController.swift; sourceTree = "<group>"; };
+		146BBB4C2A17F0DF00A6C21A /* TotalRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalRoutineViewController.swift; sourceTree = "<group>"; };
 		6B27D74C2A126B5A0033BB21 /* MY-SOPT-IN-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MY-SOPT-IN-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B27D74F2A126B5A0033BB21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B27D7512A126B5A0033BB21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +65,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		146BBB482A17EEBE00A6C21A /* RecommendRoutine */ = {
+			isa = PBXGroup;
+			children = (
+				146BBB492A17EEEB00A6C21A /* RecommendRoutineViewController.swift */,
+			);
+			path = RecommendRoutine;
+			sourceTree = "<group>";
+		};
+		146BBB4B2A17F0AC00A6C21A /* TotalRoutine */ = {
+			isa = PBXGroup;
+			children = (
+				146BBB4C2A17F0DF00A6C21A /* TotalRoutineViewController.swift */,
+			);
+			path = TotalRoutine;
+			sourceTree = "<group>";
+		};
 		6B27D7432A126B5A0033BB21 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +195,8 @@
 		6B44E48A2A126DA300E9CAF9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				146BBB4B2A17F0AC00A6C21A /* TotalRoutine */,
+				146BBB482A17EEBE00A6C21A /* RecommendRoutine */,
 				6BAFCD222A136AC800994100 /* TabBar */,
 				6B44E48F2A12707A00E9CAF9 /* MainPage */,
 				6B44E48B2A126DDB00E9CAF9 /* Component */,
@@ -328,6 +350,7 @@
 			files = (
 				6B44E4A32A12A86300E9CAF9 /* UILabel+.swift in Sources */,
 				6B44E4A52A12A8EB00E9CAF9 /* UITextField+.swift in Sources */,
+				146BBB4D2A17F0DF00A6C21A /* TotalRoutineViewController.swift in Sources */,
 				6BAFCD242A136B0D00994100 /* TabBarController.swift in Sources */,
 				6B44E49F2A12A72C00E9CAF9 /* UIStackView+.swift in Sources */,
 				6B44E4992A12743400E9CAF9 /* FontLiteral.swift in Sources */,
@@ -336,6 +359,7 @@
 				6B44E4A12A12A75400E9CAF9 /* UIView+.swift in Sources */,
 				6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */,
 				6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */,
+				146BBB4A2A17EEEB00A6C21A /* RecommendRoutineViewController.swift in Sources */,
 				6B44E49B2A1296A700E9CAF9 /* ColorLiteral.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
