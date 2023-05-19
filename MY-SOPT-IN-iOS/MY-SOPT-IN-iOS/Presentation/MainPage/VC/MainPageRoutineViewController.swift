@@ -14,7 +14,7 @@ class MainPageRoutineViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var selectDateView = SelectDateView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private var headerView = MainPageRoutineHeaderView()
     private var routineView = UITableView()
     
     private let dummy = Routine.dummy()
@@ -41,24 +41,20 @@ class MainPageRoutineViewController: UIViewController {
             $0.rowHeight = 50
             $0.separatorStyle = .none
             $0.backgroundColor = .Gray.gray_50
+            $0.tableHeaderView = headerView
+            $0.tableHeaderView?.frame.size.height = 130
         }
     }
 
 
 func setLayout() {
-    view.addSubviews(selectDateView,
-                     routineView)
+    view.addSubviews(routineView)
     
-    selectDateView.snp.makeConstraints {
-        $0.height.equalTo(65)
-        $0.top.equalToSuperview().inset(10)
-        $0.leading.trailing.equalToSuperview().inset(15)
-    }
+    // FIXME: - bottomInset 수정 필요
     
     routineView.snp.makeConstraints {
-        $0.bottom.equalToSuperview().inset(100)
-        $0.top.equalTo(selectDateView.snp.bottom).offset(10)
-        $0.leading.trailing.equalToSuperview().inset(15)
+        $0.bottom.equalToSuperview().inset(89)
+        $0.top.leading.trailing.equalToSuperview()
     }
 }
 

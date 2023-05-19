@@ -51,6 +51,7 @@ class MainPageRoutineTVC: UITableViewCell {
         indexLabel.do {
             $0.font = .caption2Font()
             $0.textColor = .Mono.black
+            $0.textAlignment = .center
         }
         
         whenDoRoutineView.do {
@@ -95,15 +96,16 @@ class MainPageRoutineTVC: UITableViewCell {
     func setLayout() {
         
         indexLabel.snp.makeConstraints {
-            $0.width.equalTo(5)
-            $0.centerY.leading.equalToSuperview()
+            $0.width.equalTo(15)
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().inset(15)
         }
         
         whenDoRoutineView.snp.makeConstraints {
             $0.height.equalTo(50)
             $0.width.equalTo(93)
             $0.centerY.equalToSuperview()
-            $0.leading.equalTo(indexLabel.snp.trailing).offset(7)
+            $0.leading.equalTo(indexLabel.snp.trailing).offset(5)
         }
         
         routineContentView.snp.makeConstraints {
@@ -116,7 +118,8 @@ class MainPageRoutineTVC: UITableViewCell {
         doRoutineButton.snp.makeConstraints {
             $0.height.equalTo(50)
             $0.width.equalTo(46)
-            $0.centerY.trailing.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(15)
         }
         
         whenDoRoutineLabel.snp.makeConstraints {
@@ -124,7 +127,8 @@ class MainPageRoutineTVC: UITableViewCell {
         }
         
         routineContentLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.leading.equalToSuperview().inset(10)
+            $0.centerY.equalToSuperview()
         }
     }
 }
