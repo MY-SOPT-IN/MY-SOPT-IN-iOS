@@ -17,7 +17,7 @@ class MainPageRoutineViewController: UIViewController {
     private var headerView = MainPageRoutineHeaderView()
     private var routineView = UITableView()
     
-    private let dateDummy = Date.dummy()
+    private let dateDummy = Dates.dummy()
     private let routineDummy = Routine.dummy()
     
     // MARK: - View Life Cycle
