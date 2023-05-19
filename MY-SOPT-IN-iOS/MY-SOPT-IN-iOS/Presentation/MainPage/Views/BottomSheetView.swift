@@ -65,7 +65,7 @@ class BottomSheetView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Setup
+    // MARK: - setUI
     
     private func setupSubviews() {
         let buttonSpacing: CGFloat = 20  // 버튼 사이의 간격

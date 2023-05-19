@@ -42,8 +42,8 @@ class BottomSheetViewController: UIViewController {
             $0.width.equalTo(100)
         }
         
-        bottomSheetView.editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
-        bottomSheetView.deleteButton.addTarget(self, action: #selector(showCustomAlert), for: .touchUpInside)
+        bottomSheetView.editButton.addTarget(self, action: #selector(pushToEditRoutine), for: .touchUpInside)
+        bottomSheetView.deleteButton.addTarget(self, action: #selector(presentToCustomAlert), for: .touchUpInside)
 
     }
     
@@ -67,7 +67,7 @@ class BottomSheetViewController: UIViewController {
         navBar.setBackgroundImage(UIImage(), for: .default)
         navBar.shadowImage = UIImage()
         
-        let closeButton = UIBarButtonItem(image: ImageLiterals.Icon.add_ic_x, style: .plain, target: self, action: #selector(closeButtonTapped))
+        let closeButton = UIBarButtonItem(image: ImageLiterals.Icon.add_ic_x, style: .plain, target: self, action: #selector(dismissBottomSheet))
         closeButton.tintColor = UIColor.Gray.gray_900
         
         let navItem = UINavigationItem().then {
@@ -79,19 +79,20 @@ class BottomSheetViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc private func closeButtonTapped() {
+    // dismissBottomSheet
+    @objc private func dismissBottomSheet() {
         dismiss(animated: true, completion: nil)
     }
     
     @objc
-    private func editButtonTapped() {
+    private func pushToEditRoutine() {
         self.dismiss(animated: true) {
             self.delegate?.didTapButtonInBottomSheet() // 델리게이트 메서드 호출
         }
     }
     
     @objc
-    private func showCustomAlert() {
+    private func presentToCustomAlert() {
         guard let presentingViewController = self.presentingViewController else { return }
 
         self.dismiss(animated: true) {

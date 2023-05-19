@@ -10,6 +10,7 @@ import SnapKit
 import Then
 
 class CustomAlertViewController: UIViewController {
+    
     // MARK: - Properties
     
     private let alertView = UIView().then {
@@ -40,14 +41,14 @@ class CustomAlertViewController: UIViewController {
         $0.setTitle("아니", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.body2Font()
-        $0.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(dismissCustomAlert), for: .touchUpInside)
     }
     
     private let deleteButton = UIButton().then {
         $0.setTitle("삭제할래", for: .normal)
         $0.titleLabel?.font = UIFont.body2Font()
         $0.setTitleColor(UIColor.Semantic.semantic_red, for: .normal)
-        $0.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(touchdeleteButton), for: .touchUpInside)
     }
     
     private let verticalWall = UIView().then {
@@ -130,11 +131,13 @@ class CustomAlertViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc private func cancelButtonTapped() {
+    @objc
+    private func dismissCustomAlert() {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc private func deleteButtonTapped() {
+    @objc
+    private func touchdeleteButton() {
         // 삭제 버튼 액션 처리
         dismiss(animated: true, completion: nil)
     }
