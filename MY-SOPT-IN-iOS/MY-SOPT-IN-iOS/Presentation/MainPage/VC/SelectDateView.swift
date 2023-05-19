@@ -26,6 +26,7 @@ class SelectDateView: UICollectionView {
     func setStyle() {
         self.backgroundColor = .Mono.white
     }
+    
     func setLayout() {}
 
     // MARK: - @objc Function
