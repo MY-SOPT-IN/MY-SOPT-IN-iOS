@@ -47,5 +47,6 @@ struct ImageLiterals {
         static let add_ic_arrow = UIImage(named: "add_ic_arrow.png")
         static let add_ic_dots_menu = UIImage(named: "add_ic_dots_menu.png")
         static let add_ic_bar = UIImage(named: "add_ic_bar.png")
+        static let add_ic_calendar = UIImage(named: "add_ic_calendar")
     }
 }
