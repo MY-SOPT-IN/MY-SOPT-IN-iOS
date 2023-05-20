@@ -36,7 +36,7 @@ import Then
 //         )
 
 class MainPageViewController: UIViewController {
-
+    
     // MARK: - Properties
     
     private let topBar = MainPageTopBarView()
@@ -59,7 +59,7 @@ class MainPageViewController: UIViewController {
             $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchRecallSegment)))
         }
     }
-
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -106,7 +106,7 @@ class MainPageViewController: UIViewController {
             pageController.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
     }
-
+    
     // MARK: - @objc Function
     
     @objc func touchRoutineSegment(sender: UITapGestureRecognizer) {
@@ -120,45 +120,45 @@ class MainPageViewController: UIViewController {
     }
     
     // MARK: - Network
-
-//         tabcell.snp.makeConstraints {
-//             $0.centerX.centerY.equalToSuperview()
-//         }
-//         addButton.snp.makeConstraints {
-//             $0.top.equalTo(tabcell.snp.bottom).offset(30)
-//             $0.centerX.equalTo(tabcell)
-//         }
-//     }
     
-//     // MARK: - BottomSheetDelegate
+    //         tabcell.snp.makeConstraints {
+    //             $0.centerX.centerY.equalToSuperview()
+    //         }
+    //         addButton.snp.makeConstraints {
+    //             $0.top.equalTo(tabcell.snp.bottom).offset(30)
+    //             $0.centerX.equalTo(tabcell)
+    //         }
+    //     }
     
-//     func showBottomSheet() {
-//         let bottomSheet = BottomSheetViewController()
-//         bottomSheet.delegate = self
-//         present(bottomSheet, animated: true, completion: nil)
-//     }
+    //     // MARK: - BottomSheetDelegate
     
-//     func didTapButtonInBottomSheet() {
-//         let editViewController = EditRoutineViewController()
-//         editViewController.hidesBottomBarWhenPushed = true
-//         self.navigationController?.pushViewController(editViewController, animated: true)
-//     }
+    //     func showBottomSheet() {
+    //         let bottomSheet = BottomSheetViewController()
+    //         bottomSheet.delegate = self
+    //         present(bottomSheet, animated: true, completion: nil)
+    //     }
     
-//     // MARK: - Action Methods
+    //     func didTapButtonInBottomSheet() {
+    //         let editViewController = EditRoutineViewController()
+    //         editViewController.hidesBottomBarWhenPushed = true
+    //         self.navigationController?.pushViewController(editViewController, animated: true)
+    //     }
     
-//     @objc
-//     private func presentToBottomSheet() {
-//         showBottomSheet()
-//     }
+    //     // MARK: - Action Methods
     
-//     @objc
-//     private func pushToAddRoutine() {
-//         let addRoutineViewController = AddRoutineViewController()
-//         addRoutineViewController.hidesBottomBarWhenPushed = true
-//         navigationController?.pushViewController(addRoutineViewController, animated: true)
-//     }
-// }
-
+    //     @objc
+    //     private func presentToBottomSheet() {
+    //         showBottomSheet()
+    //     }
+    
+    //     @objc
+    //     private func pushToAddRoutine() {
+    //         let addRoutineViewController = AddRoutineViewController()
+    //         addRoutineViewController.hidesBottomBarWhenPushed = true
+    //         navigationController?.pushViewController(addRoutineViewController, animated: true)
+    //     }
+    // }
+}
 extension MainPageViewController: UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
@@ -189,3 +189,4 @@ extension MainPageViewController: UIPageViewControllerDataSource {
         return nil
     }
 }
+
