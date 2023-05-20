@@ -30,16 +30,33 @@ final class TotalRoutineViewController: UIViewController {
         return label
     }()
     
+    private lazy var calendarButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageLiterals.Icon.add_ic_calendar, for: .normal)
+        button.addTarget(self, action: #selector(showDatePicker), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.showsVerticalScrollIndicator = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.allowsSelection = false
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
+    }()
+    
+    private let containerView = UIView()
+    
+    private lazy var datePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .date
+        picker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+        return picker
     }()
     
     // MARK: - View Life Cycle
@@ -49,11 +66,34 @@ final class TotalRoutineViewController: UIViewController {
         setBackgroundColor()
         setLayout()
         registerCells()
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        containerView.frame = CGRect(x: calendarButton.frame.maxX - 200, y: calendarButton.frame.maxY, width: 200, height: 200)
+        datePicker.frame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: 200)
     }
     
     private func registerCells() {
         tableView.register(TotalRoutineTableViewCell.self, forCellReuseIdentifier: TotalRoutineTableViewCell.className)
         tableView.register(TotalRoutineHeaderView.self, forHeaderFooterViewReuseIdentifier: TotalRoutineHeaderView.className)
+    }
+    
+    @objc private func showDatePicker() {
+        containerView.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.containerView.frame.size.height = self.datePicker.frame.height
+        }
+    }
+        
+    @objc private func datePickerValueChanged() {
+        let selectedDate = datePicker.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let formattedDate = dateFormatter.string(from: selectedDate)
+        containerView.isHidden = true
+        print("Selected Date: \(formattedDate)")
     }
 }
 
@@ -67,7 +107,11 @@ extension TotalRoutineViewController {
     
     private func setLayout() {
         view.addSubviews(naviBar, tableView)
-        naviBar.addSubviews(backButton, naviTitle)
+        naviBar.addSubviews(backButton, naviTitle, calendarButton)
+        
+        containerView.isHidden = true
+        view.addSubview(containerView)
+        containerView.addSubview(datePicker)
         
         naviBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -84,6 +128,12 @@ extension TotalRoutineViewController {
         
         naviTitle.snp.makeConstraints {
             $0.center.equalToSuperview()
+        }
+        
+        calendarButton.snp.makeConstraints {
+            $0.top.equalTo(backButton)
+            $0.trailing.equalToSuperview().inset(24)
+            $0.size.equalTo(18)
         }
         
         tableView.snp.makeConstraints {
@@ -124,6 +174,8 @@ extension TotalRoutineViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: TotalRoutineHeaderView.className) as? TotalRoutineHeaderView else { return nil }
+        
+        // 수정 버튼을 눌렀을 때
         view.editButtonTappedClosure = {[weak self] in
             print("edit")
             // 루틴 수정 뷰로

@@ -41,7 +41,6 @@ final class TotalRoutineHeaderView: UITableViewHeaderFooterView {
     @objc private func editButtonDidTapped() {
         editButtonTappedClosure?()
     }
-    
 }
 
 extension TotalRoutineHeaderView {
