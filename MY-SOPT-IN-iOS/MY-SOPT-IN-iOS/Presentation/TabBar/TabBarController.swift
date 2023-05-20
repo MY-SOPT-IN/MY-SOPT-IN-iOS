@@ -47,7 +47,7 @@ final class TabBarController: UITabBarController {
         routineViewController.tabBarItem = UITabBarItem(title: "루틴추천", image: ImageLiterals.TabBar.like, tag: 1)
         let routineNavigationController = UINavigationController(rootViewController: routineViewController)
         
-        let achieveViewController = UIViewController()
+        let achieveViewController = AchieveViewController()
         achieveViewController.view.backgroundColor = .Gray.gray_100
         achieveViewController.tabBarItem = UITabBarItem(title: "성취", image: ImageLiterals.TabBar.achieve, tag: 2)
         let achieveNavigationController = UINavigationController(rootViewController: achieveViewController)
