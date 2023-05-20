@@ -37,6 +37,15 @@ final class TotalRoutineViewController: UIViewController {
         return button
     }()
     
+    private lazy var doneButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("완료", for: .normal)
+        button.setTitleColor(UIColor.Gray.gray_900, for: .normal)
+        button.addTarget(self, action: #selector(datePickerDone), for: .touchUpInside)
+        button.isHidden = true
+        return button
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.showsVerticalScrollIndicator = true
@@ -50,12 +59,14 @@ final class TotalRoutineViewController: UIViewController {
         return tableView
     }()
     
-    private let containerView = UIView()
-    
     private lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
+        picker.preferredDatePickerStyle = .inline
+        picker.backgroundColor = .white
+        picker.tintColor = .Gray.gray_900
         picker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+        picker.isHidden = true
         return picker
     }()
     
@@ -66,13 +77,11 @@ final class TotalRoutineViewController: UIViewController {
         setBackgroundColor()
         setLayout()
         registerCells()
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        containerView.frame = CGRect(x: calendarButton.frame.maxX - 200, y: calendarButton.frame.maxY, width: 200, height: 200)
-        datePicker.frame = CGRect(x: 0, y: 0, width: containerView.frame.width, height: 200)
+        datePicker.frame = CGRect(x: tableView.frame.maxX - 350, y: calendarButton.frame.maxY + 80, width: 150, height: 150)
     }
     
     private func registerCells() {
@@ -81,9 +90,10 @@ final class TotalRoutineViewController: UIViewController {
     }
     
     @objc private func showDatePicker() {
-        containerView.isHidden = false
         UIView.animate(withDuration: 0.3) {
-            self.containerView.frame.size.height = self.datePicker.frame.height
+            self.calendarButton.isHidden = true
+            self.doneButton.isHidden = false
+            self.datePicker.isHidden = false
         }
     }
         
@@ -92,8 +102,14 @@ final class TotalRoutineViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let formattedDate = dateFormatter.string(from: selectedDate)
-        containerView.isHidden = true
         print("Selected Date: \(formattedDate)")
+        self.dismiss(animated: false)
+    }
+    
+    @objc private func datePickerDone(_ sender: UIButton) {
+        datePicker.isHidden = true
+        calendarButton.isHidden = false
+        doneButton.isHidden = true
     }
 }
 
@@ -106,12 +122,8 @@ extension TotalRoutineViewController {
     }
     
     private func setLayout() {
-        view.addSubviews(naviBar, tableView)
-        naviBar.addSubviews(backButton, naviTitle, calendarButton)
-        
-        containerView.isHidden = true
-        view.addSubview(containerView)
-        containerView.addSubview(datePicker)
+        view.addSubviews(naviBar, tableView, datePicker)
+        naviBar.addSubviews(backButton, naviTitle, calendarButton, doneButton)
         
         naviBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -134,6 +146,11 @@ extension TotalRoutineViewController {
             $0.top.equalTo(backButton)
             $0.trailing.equalToSuperview().inset(24)
             $0.size.equalTo(18)
+        }
+        
+        doneButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(24)
         }
         
         tableView.snp.makeConstraints {
