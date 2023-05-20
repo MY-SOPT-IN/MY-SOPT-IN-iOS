@@ -14,6 +14,10 @@ class RoutineView: UIView {
     
     // MARK: - UI Components
     
+//    private let navigationView = UIView().then {
+//        $0.backgroundColor = .red
+//    }
+    
     private let routineNameTextField = UITextField().then {
         $0.attributedPlaceholder = NSAttributedString(string: "루틴 이름", attributes: [NSAttributedString.Key.foregroundColor: UIColor.Gray.gray_400])
         $0.textColor = UIColor.Gray.gray_900
@@ -216,6 +220,7 @@ class RoutineView: UIView {
     private func setupViews() {
 
         addSubviews(
+//            navigationView,
             routineNameTextField,
             completeSection,
             completeImage,
@@ -261,12 +266,15 @@ class RoutineView: UIView {
     
     private func setupLayout() {
         
+
+        
         routineNameTextField.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.leading.equalToSuperview().offset(18)
             $0.trailing.equalTo(completeSection.snp.leading).offset(-7)
-            $0.width.equalTo(280)
-            $0.height.equalTo(56)        }
+            $0.height.equalTo(56)
+            
+        }
         
         completeSection.snp.makeConstraints {
             $0.centerY.equalTo(routineNameTextField)

@@ -55,7 +55,7 @@ class MainPageViewController: UIViewController, BottomSheetDelegate {
     func didTapButtonInBottomSheet() {
         let editViewController = EditRoutineViewController()
         editViewController.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(editViewController, animated: true)
+        self.navigationController?.pushViewController(editViewController, animated: true)
     }
     
     // MARK: - Action Methods

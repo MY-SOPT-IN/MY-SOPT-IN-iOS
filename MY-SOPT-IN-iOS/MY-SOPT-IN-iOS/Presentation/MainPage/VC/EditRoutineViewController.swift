@@ -19,12 +19,13 @@ class EditRoutineViewController: UIViewController {
         self.title = "루틴 수정하기"
         navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.topItem?.title = ""
+        navigationController?.isNavigationBarHidden = true
 
   
                 
         view.addSubview(editRoutine)
         editRoutine.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
+            $0.height.equalTo(UIScreen.main.bounds.height)
             $0.leading.bottom.trailing.equalToSuperview()
             
         }
