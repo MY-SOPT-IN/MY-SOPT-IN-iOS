@@ -35,6 +35,7 @@ class MainPageRoutineViewController: UIViewController {
     func target() {
         headerView.selectDateView.delegate = self
         headerView.selectDateView.dataSource = self
+        headerView.selectDateView.isPagingEnabled = true
         headerView.selectDateView.register(SelectDateCVC.self, forCellWithReuseIdentifier: SelectDateCVC.identifier)
         headerView.selectDateView.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectDateHeaderFooter.identifier)
         headerView.selectDateView.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier)

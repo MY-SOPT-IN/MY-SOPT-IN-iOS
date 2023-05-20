@@ -29,13 +29,20 @@ extension Dates {
     }
     
     static func dummy() -> [Dates] {
-        var date: [Dates] = [Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 15)),
-                            Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 16)),
-                            Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 17)),
-                            Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 18)),
-                            Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 19)),
-                            Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 20)),
-                            Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 21))]
+        var date: [Dates] = [Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 15), color: .Semantic.semantic_red),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 16)),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 17)),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 18)),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 19)),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 20)),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 21)),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 22), color: .Semantic.semantic_red),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 23)),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 24)),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 25)),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 26)),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 27)),
+                             Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 28))]
         return date
     }
 }
