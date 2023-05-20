@@ -21,13 +21,15 @@ final class TabBarController: UITabBarController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         hiddenNavigationBar()
     }
     
     // MARK: - Methods
     
     private func setStyle() {
-        self.tabBar.backgroundColor = .white
+        self.tabBar.backgroundColor = .Mono.white
         self.tabBar.tintColor = .Primary.primary
         self.tabBar.unselectedItemTintColor = .Gray.gray_800
     }
@@ -38,6 +40,7 @@ final class TabBarController: UITabBarController {
         let homeViewController = MainPageViewController()
         homeViewController.tabBarItem = UITabBarItem(title: "홈", image: ImageLiterals.TabBar.home, tag: 0)
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
+        homeNavigationController.setNavigationBarHidden(true, animated: true)
         
         let routineViewController = UIViewController()
         routineViewController.view.backgroundColor = .Gray.gray_50
