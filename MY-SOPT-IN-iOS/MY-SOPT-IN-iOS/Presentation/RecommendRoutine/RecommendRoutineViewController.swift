@@ -29,6 +29,7 @@ final class RecommendRoutineViewController: UIViewController {
     private func moreButtonDidTapped() {
         let totalRoutineVC = TotalRoutineViewController()
         navigationController?.pushViewController(totalRoutineVC, animated: true)
+        navigationController?.navigationBar.isHidden = true
     }
 }
 
