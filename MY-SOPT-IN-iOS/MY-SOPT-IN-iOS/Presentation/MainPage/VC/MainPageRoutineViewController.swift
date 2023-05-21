@@ -16,9 +16,12 @@ class MainPageRoutineViewController: UIViewController {
     
     private var headerView = MainPageRoutineHeaderView()
     private var routineView = UITableView()
+    private var bezierView: MainPageRoutineBorderView?
     
     private let dateDummy = Dates.dummy()
     private let routineDummy = Routine.dummy()
+    
+    private let routineTableViewHeaderHeight: CGFloat = 130
     
     // MARK: - View Life Cycle
     
@@ -29,6 +32,7 @@ class MainPageRoutineViewController: UIViewController {
         setStyle()
         setLayout()
     }
+    
     
     // MARK: - Methods
     
@@ -53,8 +57,10 @@ class MainPageRoutineViewController: UIViewController {
             $0.separatorStyle = .none
             $0.backgroundColor = .Gray.gray_50
             $0.tableHeaderView = headerView
-            $0.tableHeaderView?.frame.size.height = 130
+            $0.tableHeaderView?.frame.size.height = routineTableViewHeaderHeight
         }
+        
+        setBazierView()
     }
     
     
@@ -67,6 +73,15 @@ class MainPageRoutineViewController: UIViewController {
             $0.bottom.equalToSuperview().inset(89)
             $0.top.leading.trailing.equalToSuperview()
         }
+        
+        guard let border = bezierView else { return }
+        routineView.addSubview(border)
+    }
+    
+    func setBazierView() {
+        bezierView = MainPageRoutineBorderView(frame: CGRect(x: MainPageRoutineTVC.routineBorderLeading, y: routineTableViewHeaderHeight, width: MainPageRoutineTVC.routineBorderWidth, height: routineView.rowHeight * CGFloat(routineDummy.count)))
+        bezierView?.backgroundColor = .clear
+        bezierView?.makeRounded(radius: 5)
     }
     
     // MARK: - @objc Function

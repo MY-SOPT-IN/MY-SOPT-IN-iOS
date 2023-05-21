@@ -12,6 +12,8 @@ class MainPageRoutineTVC: UITableViewCell {
     // MARK: - Properties
 
     static let identifier = "MainPageRoutineCell"
+    static let routineBorderWidth: CGFloat = UIScreen.main.bounds.size.width - 45 - 139
+    static let routineBorderLeading: CGFloat = 125
     
     let whenDoRoutineView = UIView()
     let routineContentView = UIView()
