@@ -28,6 +28,30 @@ extension Dates {
         return Calendar.current.veryShortWeekdaySymbols[day]
     }
     
+    static func pdummy(current: [Dates] = dummy()) -> [Dates] {
+        var date = [Dates]()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd-e"    //e는 1~7(sun~sat)
+        formatter.locale = Locale(identifier: "ko")
+
+        let myDateComponents = current[0].dateComponents
+        let calendar = Calendar.current
+        guard let myDate = calendar.date(from: myDateComponents) else { return [Dates]() }
+        
+        var startDay = myDate.addingTimeInterval( -(86400 * 7))
+
+        for _ in 0...6 {
+            let startDayString = formatter.string(from: startDay).components(separatedBy: "-")
+            guard let y = Int(startDayString[0]), let m = Int(startDayString[1]), let d = Int(startDayString[2]) else { break }
+            startDay = startDay.addingTimeInterval(86400)
+
+            date.append(Dates(dateComponents: DateComponents(year: y, month: m, day: d)))
+        }
+        
+        return date
+    }
+    
     static func dummy() -> [Dates] {
         var date = [Dates]()
         
@@ -51,4 +75,29 @@ extension Dates {
         
         return date
     }
+    
+    static func ndummy(current: [Dates] = dummy()) -> [Dates] {
+        var date = [Dates]()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd-e"    //e는 1~7(sun~sat)
+        formatter.locale = Locale(identifier: "ko")
+
+        let myDateComponents = current[0].dateComponents
+        let calendar = Calendar.current
+        guard let myDate = calendar.date(from: myDateComponents) else { return [Dates]() }
+        
+        var startDay = myDate.addingTimeInterval(86400 * 7)
+
+        for _ in 0...6 {
+            let startDayString = formatter.string(from: startDay).components(separatedBy: "-")
+            guard let y = Int(startDayString[0]), let m = Int(startDayString[1]), let d = Int(startDayString[2]) else { break }
+            startDay = startDay.addingTimeInterval(86400)
+
+            date.append(Dates(dateComponents: DateComponents(year: y, month: m, day: d)))
+        }
+        
+        return date
+    }
+    
 }

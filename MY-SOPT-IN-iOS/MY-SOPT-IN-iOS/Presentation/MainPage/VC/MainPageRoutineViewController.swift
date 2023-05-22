@@ -18,9 +18,9 @@ final class MainPageRoutineViewController: UIViewController {
     private var routineView = UITableView()
     private var bezierView: MainPageRoutineBorderView?
     
-    private var previousDateDummy = [Dates]()
-    private var currentDateDummy = Dates.dummy()
-    private var nextDateDummy = [Dates]()
+    private var dateDummy: [[Dates]] = [Dates.pdummy(),
+                                        Dates.dummy(),
+                                        Dates.ndummy()]
     
     private let routineDummy = Routine.dummy()
     
@@ -45,14 +45,13 @@ final class MainPageRoutineViewController: UIViewController {
         
         headerView.dateScrollView.delegate = self
         headerView.dateScrollView.contentOffset.x = UIScreen.main.bounds.width
-
+        
         [headerView.previousSelectDateCollectionView, headerView.currentSelectDateCollectionView, headerView.nextSelectDateCollectionView].forEach {
             $0.dataSource = self
             $0.register(SelectDateCVC.self, forCellWithReuseIdentifier: SelectDateCVC.identifier)
             $0.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectDateHeaderFooter.identifier)
             $0.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier)
         }
-
     }
     
     private func setStyle() {
@@ -107,15 +106,7 @@ extension MainPageRoutineViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainPageRoutineTVC.identifier, for: indexPath) as? MainPageRoutineTVC else { return UITableViewCell() }
-        if indexPath.row == 0 && indexPath.row == routineDummy.count - 1 {
-            cell.configCell(index: indexPath.row, routineDummy[indexPath.row], isFirstCell: true, isLastCell: true)
-        } else if indexPath.row == 0 {
-            cell.configCell(index: indexPath.row, routineDummy[indexPath.row], isFirstCell: true)
-        } else if indexPath.row == routineDummy.count - 1 {
-            cell.configCell(index: indexPath.row, routineDummy[indexPath.row], isLastCell: true)
-        } else {
-            cell.configCell(index: indexPath.row, routineDummy[indexPath.row])
-        }
+        cell.configCell(index: indexPath.row, routineDummy[indexPath.row], isFirstCell: indexPath.row == 0, isLastCell: indexPath.row == routineDummy.count - 1)
         return cell
     }
 }
@@ -123,20 +114,17 @@ extension MainPageRoutineViewController: UITableViewDataSource {
 extension MainPageRoutineViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == headerView.previousSelectDateCollectionView {
-            return previousDateDummy.count
-        } else if collectionView == headerView.currentSelectDateCollectionView {
-            return currentDateDummy.count
-        } else if collectionView == headerView.nextSelectDateCollectionView {
-            return nextDateDummy.count
-        } else {
-            return 0
+        if let index = headerView.dateCollectionViews.firstIndex(of: collectionView as! SelectDateCollectionView) {
+            return dateDummy[index].count
         }
+        return 0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectDateCVC.identifier, for: indexPath) as? SelectDateCVC else { return UICollectionViewCell() }
-        cell.configCell(date: currentDateDummy[indexPath.item])
+        if let index = headerView.dateCollectionViews.firstIndex(of: collectionView as! SelectDateCollectionView) {
+            cell.configCell(date: dateDummy[index][indexPath.item])
+        }
         return cell
     }
     
@@ -152,25 +140,52 @@ extension MainPageRoutineViewController: UICollectionViewDataSource {
 }
 
 extension MainPageRoutineViewController: UIScrollViewDelegate {
-
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-
+        
         headerViewStartPoint = targetContentOffset.pointee.x
     }
-
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-
+        
         switch headerViewStartPoint {
         case 0:
-            print("왼쪽 스크롤")
+            p()
         case UIScreen.main.bounds.width:
             break
         case UIScreen.main.bounds.width * 2:
-            print("오른쪽 스크롤")
+            n()
         default:
             break
         }
     }
-
+    
 }
 
+extension MainPageRoutineViewController {
+    func p() {
+        for i in [2, 1] {
+            dateDummy[i] = dateDummy[i - 1]
+        }
+        dateDummy[0] = Dates.pdummy(current: dateDummy[1])
+
+        reloadDateData()
+    }
+    
+    func n() {
+        for i in [0, 1] {
+            dateDummy[i] = dateDummy[i + 1]
+        }
+        dateDummy[2] = Dates.ndummy(current: dateDummy[1])
+        
+        reloadDateData()
+    }
+    
+    func reloadDateData() {
+        headerView.previousSelectDateCollectionView.reloadData()
+        headerView.currentSelectDateCollectionView.reloadData()
+        headerView.nextSelectDateCollectionView.reloadData()
+        
+        headerView.dateScrollView.contentOffset.x = UIScreen.main.bounds.width
+    }
+}

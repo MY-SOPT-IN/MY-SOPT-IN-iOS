@@ -16,6 +16,10 @@ class MainPageRoutineHeaderView: UIView {
     var currentSelectDateCollectionView = SelectDateCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     var nextSelectDateCollectionView = SelectDateCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
+    lazy var dateCollectionViews = [previousSelectDateCollectionView,
+                                    currentSelectDateCollectionView,
+                                    nextSelectDateCollectionView]
+    
     private var dateView = UIView()
     private var dateLabel = UILabel()
     private var editFilterLabel = UILabel()
