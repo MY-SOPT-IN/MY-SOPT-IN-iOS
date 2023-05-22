@@ -26,6 +26,7 @@ final class MainPageTopBarView: UIView {
         super.init(frame: frame)
         
         setStyle()
+        setHierarchy()
         setLayout()
     }
     

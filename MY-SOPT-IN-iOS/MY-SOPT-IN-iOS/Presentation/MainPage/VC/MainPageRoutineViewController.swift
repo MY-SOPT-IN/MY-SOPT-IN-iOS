@@ -30,6 +30,7 @@ final class MainPageRoutineViewController: UIViewController {
         
         target()
         setStyle()
+        setHierarchy()
         setLayout()
     }
     

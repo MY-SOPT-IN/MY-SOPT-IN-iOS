@@ -26,6 +26,7 @@ class MainPageRoutineHeaderView: UIStackView {
         super.init(frame: frame)
         
         setStyle()
+        setHierarchy()
         setLayout()
     }
 
