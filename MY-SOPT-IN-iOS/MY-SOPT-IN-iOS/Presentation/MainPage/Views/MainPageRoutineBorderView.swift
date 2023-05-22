@@ -9,6 +9,10 @@ import UIKit
 
 class MainPageRoutineBorderView: UIView {
     
+    // MARK: - Properties
+    
+    private let borderLine: CGFloat = 3
+    
     // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
@@ -20,10 +24,12 @@ class MainPageRoutineBorderView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        print(self.frame.minY)
-        let path = UIBezierPath(rect: CGRect(x: 1.5, y: 1.5, width: self.frame.width - 3, height: self.frame.height - 3))
+        
+        let path = UIBezierPath(rect: CGRect(x: borderLine / 2, y: borderLine / 2,
+                                             width: self.frame.width - borderLine,
+                                             height: self.frame.height - borderLine))
         UIColor.Primary.primary.setStroke()
-        path.lineWidth = 3
+        path.lineWidth = borderLine
         path.stroke()
     }
 }

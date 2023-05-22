@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class MainPageRecallViewController: UIViewController {
+final class MainPageRecallViewController: UIViewController {
 
     // MARK: - Properties
 
@@ -20,15 +20,20 @@ class MainPageRecallViewController: UIViewController {
         super.viewDidLoad()
         
         setStyle()
+        setHierarchy()
         setLayout()
     }
 
     // MARK: - Methods
     
-    func setStyle() {
+    private func setStyle() {
+        
         view.backgroundColor = .Gray.gray_50
     }
-    func setLayout() {}
+    
+    private func setHierarchy() { }
+    
+    private func setLayout() { }
 
     // MARK: - @objc Function
     

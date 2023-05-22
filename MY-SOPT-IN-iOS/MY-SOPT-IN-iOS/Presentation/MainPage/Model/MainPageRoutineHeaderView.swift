@@ -16,8 +16,8 @@ class MainPageRoutineHeaderView: UIStackView {
     private var dateLabel = UILabel()
     private var editFilterLabel = UILabel()
     
-    let flowLayout = UICollectionViewFlowLayout()
-    let itemSpacing: CGFloat = 16
+    private let flowLayout = UICollectionViewFlowLayout()
+    private let itemSpacing: CGFloat = 16
     private let itemCount: Int = 7
     
     // MARK: - View Life Cycle
@@ -36,6 +36,7 @@ class MainPageRoutineHeaderView: UIStackView {
     // MARK: - Methods
     
     private func setStyle() {
+        
         self.axis = .vertical
         self.distribution = .fillEqually
         
@@ -66,10 +67,17 @@ class MainPageRoutineHeaderView: UIStackView {
         }
     }
     
-    private func setLayout() {
+    private func setHierarchy() {
+        
         self.addArrangedSubviews(selectDateView,
                                  dateView)
         
+        dateView.addSubviews(dateLabel,
+                             editFilterLabel)
+    }
+    
+    private func setLayout() {
+
         selectDateView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
         }
@@ -77,9 +85,6 @@ class MainPageRoutineHeaderView: UIStackView {
         dateView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
         }
-        
-        dateView.addSubviews(dateLabel,
-                             editFilterLabel)
         
         dateLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
@@ -90,7 +95,4 @@ class MainPageRoutineHeaderView: UIStackView {
             $0.trailing.equalToSuperview().inset(15)
         }
     }
-    
-    // MARK: - @objc Function
-
 }

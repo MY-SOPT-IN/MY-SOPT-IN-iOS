@@ -14,10 +14,10 @@ final class MainPageTopBarView: UIView {
 
     // MARK: - Properties
     
-    let stackView = UIStackView()
+    private let stackView = UIStackView()
     let routineLabel = UILabel()
     let recallLabel = UILabel()
-    let indicator = UIView()
+    private let indicator = UIView()
     private let dividingLine = UIView()
 
     // MARK: - View Life Cycle
@@ -35,8 +35,8 @@ final class MainPageTopBarView: UIView {
     
     // MARK: - Methods
     
-    func setStyle() {
-        
+    private func setStyle() {
+
         stackView.do {
             $0.backgroundColor = .Mono.white
             $0.axis = .horizontal
@@ -66,14 +66,17 @@ final class MainPageTopBarView: UIView {
         }
     }
     
-    func setLayout() {
-        
+    private func setHierarchy() {
+
         self.addSubviews(stackView,
                          dividingLine)
 
         stackView.addArrangedSubviews(routineLabel,
                                  recallLabel)
         stackView.addSubview(indicator)
+    }
+
+    private func setLayout() {
         
         stackView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
@@ -119,8 +122,4 @@ final class MainPageTopBarView: UIView {
             print("Paging Index Error")
         }
     }
-
-    // MARK: - @objc Function
-
-
 }

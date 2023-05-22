@@ -20,7 +20,7 @@ class SelectDateCVC: UICollectionViewCell {
     var dateCircleView = UIView()
     var dateLabel = UILabel()
     
-    let dateCircleSize: CGFloat = 34
+    private let dateCircleSize: CGFloat = 34
     
     // MARK: - View Life Cycle
     
@@ -40,13 +40,14 @@ class SelectDateCVC: UICollectionViewCell {
     // MARK: - Methods
     
     func configCell(date: Dates) {
+        
         dateCircleView.backgroundColor = date.color
         guard let dateDate = date.dateComponents.day else { return }
         dateLabel.text = dateDate.description
         weeksdayLabel.text = date.weekday(date: date.dateComponents)
     }
     
-    func setStyle() {
+    private func setStyle() {
         
         weeksdayLabel.do {
             $0.font = .bodyFont()
@@ -65,14 +66,15 @@ class SelectDateCVC: UICollectionViewCell {
         }
     }
     
-    func setHierarchy() {
+    private func setHierarchy() {
+        
         contentView.addSubviews(weeksdayLabel,
                                 dateCircleView)
         
         dateCircleView.addSubviews(dateLabel)
     }
     
-    func setLayout() {
+    private func setLayout() {
         
         dateCircleView.snp.makeConstraints {
             $0.height.equalTo(dateCircleSize)
@@ -90,5 +92,4 @@ class SelectDateCVC: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
     }
-    
 }

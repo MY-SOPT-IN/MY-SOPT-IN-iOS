@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class MainPageRoutineViewController: UIViewController {
+final class MainPageRoutineViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -36,7 +36,8 @@ class MainPageRoutineViewController: UIViewController {
     
     // MARK: - Methods
     
-    func target() {
+    private func target() {
+        
         headerView.selectDateView.delegate = self
         headerView.selectDateView.dataSource = self
         headerView.selectDateView.isPagingEnabled = true
@@ -45,7 +46,8 @@ class MainPageRoutineViewController: UIViewController {
         headerView.selectDateView.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier)
     }
     
-    func setStyle() {
+    private func setStyle() {
+        
         view.backgroundColor = .Gray.gray_50
         
         routineView.do {
@@ -63,9 +65,15 @@ class MainPageRoutineViewController: UIViewController {
         setBazierView()
     }
     
-    
-    func setLayout() {
+    private func setHierarchy() {
+        
         view.addSubviews(routineView)
+        
+        guard let border = bezierView else { return }
+        routineView.addSubview(border)
+    }
+    
+    private func setLayout() {
         
         // FIXME: - bottomInset 수정 필요
         
@@ -73,24 +81,19 @@ class MainPageRoutineViewController: UIViewController {
             $0.bottom.equalToSuperview().inset(89)
             $0.top.leading.trailing.equalToSuperview()
         }
-        
-        guard let border = bezierView else { return }
-        routineView.addSubview(border)
     }
     
-    func setBazierView() {
+    private func setBazierView() {
+        
         bezierView = MainPageRoutineBorderView(frame: CGRect(x: MainPageRoutineTVC.routineBorderLeading, y: routineTableViewHeaderHeight, width: MainPageRoutineTVC.routineBorderWidth, height: routineView.rowHeight * CGFloat(routineDummy.count)))
         bezierView?.backgroundColor = .clear
         bezierView?.makeRounded(radius: 5)
     }
     
-    // MARK: - @objc Function
-    
-    // MARK: - Network
-    
 }
 
 extension MainPageRoutineViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return routineDummy.count
     }
@@ -111,6 +114,8 @@ extension MainPageRoutineViewController: UITableViewDataSource {
 }
 
 extension MainPageRoutineViewController: UITableViewDelegate { }
+
+extension MainPageRoutineViewController: UICollectionViewDelegate { }
 
 extension MainPageRoutineViewController: UICollectionViewDataSource {
     
@@ -138,5 +143,3 @@ extension MainPageRoutineViewController: UICollectionViewDataSource {
         }
     }
 }
-
-extension MainPageRoutineViewController: UICollectionViewDelegate { }
