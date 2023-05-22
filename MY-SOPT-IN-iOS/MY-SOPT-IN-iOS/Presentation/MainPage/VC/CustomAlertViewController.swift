@@ -37,18 +37,26 @@ class CustomAlertViewController: UIViewController {
         $0.font = UIFont.body2Font()
     }
     
-    private let cancelButton = UIButton().then {
+    lazy var cancelButton = UIButton().then {
         $0.setTitle("아니", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.body2Font()
-        $0.addTarget(self, action: #selector(dismissCustomAlert), for: .touchUpInside)
+        let action = UIAction { [weak self] _ in
+            self?.dismissCustomAlert()
+        }
+        $0.addAction(action, for: .touchUpInside)
+//        $0.addTarget(CustomAlertViewController.self, action: #selector(dismissCustomAlert), for: .touchUpInside)
     }
     
-    private let deleteButton = UIButton().then {
+    lazy var deleteButton = UIButton().then {
         $0.setTitle("삭제할래", for: .normal)
         $0.titleLabel?.font = UIFont.body2Font()
         $0.setTitleColor(UIColor.Semantic.semantic_red, for: .normal)
-        $0.addTarget(self, action: #selector(touchdeleteButton), for: .touchUpInside)
+        let action = UIAction{ [weak self] _ in
+            self?.touchdeleteButton()
+        }
+        $0.addAction(action, for: .touchUpInside)
+//        $0.addTarget(CustomAlertViewController.self, action: #selector(touchdeleteButton), for: .touchUpInside)
     }
     
     private let verticalWall = UIView().then {
@@ -63,42 +71,48 @@ class CustomAlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(white: 0, alpha: 0.5) // 반투명한 검은색 배경 추가
         setupUI()
     }
     
     // MARK: - Setup
     
     private func setupUI() {
+        view.backgroundColor = UIColor(white: 0, alpha: 0.5) // 반투명한 검은색 배경 추가
         view.addSubview(alertView)
+        alertView.addSubviews(
+            imageView,
+            titleLabel,
+            subtitleLabel,
+            cancelButton,
+            deleteButton,
+            horizontalWall,
+            verticalWall
+        )
+        
         alertView.snp.makeConstraints {
             $0.width.equalTo(250)
             $0.height.equalTo(264)
             $0.center.equalToSuperview()
         }
         
-        alertView.addSubview(imageView)
         imageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(38)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(49)
         }
         
-        alertView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(21)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(40)
         }
         
-        alertView.addSubview(subtitleLabel)
         subtitleLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(60)
         }
         
-        alertView.addSubview(cancelButton)
         cancelButton.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
@@ -106,7 +120,6 @@ class CustomAlertViewController: UIViewController {
             $0.height.equalTo(53)
         }
         
-        alertView.addSubview(deleteButton)
         deleteButton.snp.makeConstraints {
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
@@ -114,13 +127,12 @@ class CustomAlertViewController: UIViewController {
             $0.height.equalTo(53)
         }
         
-        alertView.addSubview(horizontalWall)
         horizontalWall.snp.makeConstraints {
             $0.height.equalTo(1)
             $0.bottom.equalTo(cancelButton.snp.top)
             $0.trailing.leading.equalToSuperview()
         }
-        alertView.addSubview(verticalWall)
+
         verticalWall.snp.makeConstraints {
             $0.width.equalTo(1)
             $0.top.equalTo(horizontalWall.snp.top)
@@ -131,12 +143,11 @@ class CustomAlertViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc
+    
     private func dismissCustomAlert() {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc
     private func touchdeleteButton() {
         // 삭제 버튼 액션 처리
         dismiss(animated: true, completion: nil)
