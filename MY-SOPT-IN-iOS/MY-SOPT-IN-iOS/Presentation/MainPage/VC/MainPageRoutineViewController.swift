@@ -26,6 +26,8 @@ final class MainPageRoutineViewController: UIViewController {
     private let routineTableViewHeaderHeight: CGFloat = 140
     private var headerViewStartPoint: CGFloat = 0
     
+    private var dateSelectedIndex: Int = 0
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -47,6 +49,7 @@ final class MainPageRoutineViewController: UIViewController {
         
         [headerView.previousSelectDateCollectionView, headerView.currentSelectDateCollectionView, headerView.nextSelectDateCollectionView].forEach {
             $0.dataSource = self
+            $0.delegate = self
             $0.register(SelectDateCVC.self, forCellWithReuseIdentifier: SelectDateCVC.identifier)
             $0.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectDateHeaderFooter.identifier)
             $0.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier)
@@ -107,6 +110,14 @@ extension MainPageRoutineViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainPageRoutineTVC.identifier, for: indexPath) as? MainPageRoutineTVC else { return UITableViewCell() }
         cell.configCell(index: indexPath.row, routineDummy[indexPath.row], isFirstCell: indexPath.row == 0, isLastCell: indexPath.row == routineDummy.count - 1)
         return cell
+    }
+}
+
+extension MainPageRoutineViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let index = headerView.dateCollectionViews.firstIndex(of: collectionView as! SelectDateCollectionView) {
+            headerView.dateLabel.text = dateDummy[index][indexPath.item].getDateString()
+        }
     }
 }
 

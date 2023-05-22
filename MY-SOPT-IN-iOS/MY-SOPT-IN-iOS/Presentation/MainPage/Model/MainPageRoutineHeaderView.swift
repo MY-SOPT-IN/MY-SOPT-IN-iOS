@@ -21,7 +21,7 @@ class MainPageRoutineHeaderView: UIView {
                                     nextSelectDateCollectionView]
     
     private var dateView = UIView()
-    private var dateLabel = UILabel()
+    var dateLabel = UILabel()
     private var editFilterLabel = UILabel()
     
     private let screenWidth = UIScreen.main.bounds.width
@@ -107,11 +107,11 @@ class MainPageRoutineHeaderView: UIView {
         }
         
         dateLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().inset(20)
         }
         editFilterLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview().inset(10)
             $0.trailing.equalToSuperview().inset(15)
         }
     }

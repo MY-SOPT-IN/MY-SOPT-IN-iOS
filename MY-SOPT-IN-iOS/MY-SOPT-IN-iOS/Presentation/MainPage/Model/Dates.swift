@@ -30,11 +30,27 @@ extension Dates {
         return Calendar.current.veryShortWeekdaySymbols[day]
     }
     
+    func getDateString() -> String? {
+        if let y = dateComponents.year, let m = dateComponents.month, let d = dateComponents.day {
+            return String(y) + "년 " + String(m) + "월 " + String(d) + "일"
+        } else { return nil }
+    }
+    
     static func setFormmatter() -> DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd-e"    //e는 1~7(sun~sat)
         formatter.locale = Locale(identifier: "ko")
         return formatter
+    }
+    
+    static func getToday() -> Dates? {
+        let formatter = Dates.setFormmatter()
+        let today = Date()
+        
+        let todayString = formatter.string(from: today).components(separatedBy: "-")
+        guard let y = Int(todayString[0]), let m = Int(todayString[1]), let d = Int(todayString[2]) else { return nil }
+        
+        return Dates(dateComponents: DateComponents(year: y, month: m, day: d))
     }
     
     static func dummy() -> [Dates] {

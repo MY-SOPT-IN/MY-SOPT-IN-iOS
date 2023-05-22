@@ -23,6 +23,18 @@ class SelectDateCVC: UICollectionViewCell {
     
     private let dateCircleSize: CGFloat = 34
     
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                self.backgroundColor = .Gray.gray_800
+                self.weeksdayLabel.textColor = .Mono.white
+            } else {
+                self.backgroundColor = .clear
+                self.weeksdayLabel.textColor = .Gray.gray_800
+            }
+        }
+    }
+    
     // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
@@ -54,7 +66,7 @@ class SelectDateCVC: UICollectionViewCell {
         
         weeksdayLabel.do {
             $0.font = .bodyFont()
-            $0.textColor = .Mono.white
+            $0.textColor = .Gray.gray_800
             $0.textAlignment = .center
         }
         
