@@ -43,6 +43,7 @@ class MainPageRoutineHeaderView: UIView {
         dateScrollView.do {
             $0.isPagingEnabled = true
             $0.showsHorizontalScrollIndicator = false
+            $0.contentSize.width = screenWidth * 3
         }
 
         dateLabel.do {
@@ -81,8 +82,7 @@ class MainPageRoutineHeaderView: UIView {
         previousSelectDateCollectionView.snp.makeConstraints{
             $0.width.equalTo(screenWidth)
             $0.height.equalTo(75)
-            $0.top.bottom.equalToSuperview()
-            $0.leading.equalToSuperview()
+            $0.top.bottom.leading.equalToSuperview()
         }
         
         currentSelectDateCollectionView.snp.makeConstraints{
@@ -97,6 +97,9 @@ class MainPageRoutineHeaderView: UIView {
             $0.leading.equalTo(currentSelectDateCollectionView.snp.trailing)
         }
         
+        dateScrollView.contentOffset.x = UIScreen.main.bounds.width
+        print(dateScrollView.contentOffset)
+                
         dateView.snp.makeConstraints {
             $0.top.equalTo(dateScrollView.snp.bottom)
             $0.bottom.leading.trailing.equalToSuperview()
