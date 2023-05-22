@@ -18,7 +18,10 @@ final class MainPageRoutineViewController: UIViewController {
     private var routineView = UITableView()
     private var bezierView: MainPageRoutineBorderView?
     
-    private var dateDummy = Dates.dummy()
+    private var previousDateDummy = [Dates]()
+    private var currentDateDummy = Dates.dummy()
+    private var nextDateDummy = [Dates]()
+    
     private let routineDummy = Routine.dummy()
     
     private let routineTableViewHeaderHeight: CGFloat = 130
@@ -39,6 +42,9 @@ final class MainPageRoutineViewController: UIViewController {
     // MARK: - Methods
     
     private func target() {
+        
+        headerView.dateScrollView.delegate = self
+        headerView.dateScrollView.contentOffset.x = UIScreen.main.bounds.width
 
         [headerView.previousSelectDateCollectionView, headerView.currentSelectDateCollectionView, headerView.nextSelectDateCollectionView].forEach {
             $0.dataSource = self
@@ -117,50 +123,54 @@ extension MainPageRoutineViewController: UITableViewDataSource {
 extension MainPageRoutineViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dateDummy.count
+        if collectionView == headerView.previousSelectDateCollectionView {
+            return previousDateDummy.count
+        } else if collectionView == headerView.currentSelectDateCollectionView {
+            return currentDateDummy.count
+        } else if collectionView == headerView.nextSelectDateCollectionView {
+            return nextDateDummy.count
+        } else {
+            return 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectDateCVC.identifier, for: indexPath) as? SelectDateCVC else { return UICollectionViewCell() }
-        cell.configCell(date: dateDummy[indexPath.item])
-        print(dateDummy[indexPath.item])
+        cell.configCell(date: currentDateDummy[indexPath.item])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectDateHeaderFooter.identifier, for: indexPath) as? SelectDateHeaderFooter else {
-                return SelectDateHeaderFooter()
-            }
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectDateHeaderFooter.identifier, for: indexPath) as? SelectDateHeaderFooter else { return SelectDateHeaderFooter() }
             return header
         } else {
-            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier, for: indexPath) as? SelectDateHeaderFooter else {
-                return SelectDateHeaderFooter()
-            }
+            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier, for: indexPath) as? SelectDateHeaderFooter else { return SelectDateHeaderFooter() }
             return footer
         }
     }
 }
 
-//extension MainPageRoutineViewController: UIScrollViewDelegate {
-//
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//
-//        headerViewStartPoint = targetContentOffset.pointee.x
-//    }
-//
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//
-//        switch headerViewStartPoint {
-//        case 0:
-//            print("왼쪽 스크롤")
-//        case UIScreen.main.bounds.width:
-//            break
-//        case UIScreen.main.bounds.width * 2:
-//            print("오른쪽 스크롤")
-//        default:
-//            break
-//        }
-//    }
-//
-//}
+extension MainPageRoutineViewController: UIScrollViewDelegate {
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+
+        headerViewStartPoint = targetContentOffset.pointee.x
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+        switch headerViewStartPoint {
+        case 0:
+            print("왼쪽 스크롤")
+        case UIScreen.main.bounds.width:
+            break
+        case UIScreen.main.bounds.width * 2:
+            print("오른쪽 스크롤")
+        default:
+            break
+        }
+    }
+
+}
+

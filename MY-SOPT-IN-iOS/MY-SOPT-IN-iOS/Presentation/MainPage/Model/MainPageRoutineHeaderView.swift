@@ -16,8 +16,6 @@ class MainPageRoutineHeaderView: UIView {
     var currentSelectDateCollectionView = SelectDateCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     var nextSelectDateCollectionView = SelectDateCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
-    private var scrollViewStartPoint: CGFloat = 0
-
     private var dateView = UIView()
     private var dateLabel = UILabel()
     private var editFilterLabel = UILabel()
@@ -46,7 +44,6 @@ class MainPageRoutineHeaderView: UIView {
             $0.isPagingEnabled = true
             $0.showsHorizontalScrollIndicator = false
             $0.contentSize.width = screenWidth * 3
-            $0.delegate = self
         }
 
         dateLabel.do {
@@ -117,27 +114,4 @@ class MainPageRoutineHeaderView: UIView {
             $0.trailing.equalToSuperview().inset(15)
         }
     }
-}
-
-extension MainPageRoutineHeaderView: UIScrollViewDelegate {
-        
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        scrollViewStartPoint = targetContentOffset.pointee.x
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-        switch scrollViewStartPoint {
-        case 0:
-            print("왼쪽 스크롤")
-        case screenWidth:
-            break
-        case screenWidth * 2:
-            print("오른쪽 스크롤")
-        default:
-            break
-        }
-    }
-    
 }
