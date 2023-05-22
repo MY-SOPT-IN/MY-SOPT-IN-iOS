@@ -10,15 +10,15 @@ import UIKit
 import SnapKit
 import Then
 
-class BottomSheetView: UIView {
+final class BottomSheetView: UIView {
     
     // MARK: - UI Components
     
     lazy var editButton = makeButton(title: "수정하기", image: ImageLiterals.Icon.add_ic_edit)
     
-    lazy var copyButton = makeButton(title: "복사하기", image: ImageLiterals.Icon.add_ic_copy)
+    private lazy var copyButton = makeButton(title: "복사하기", image: ImageLiterals.Icon.add_ic_copy)
     
-    lazy var restButton = UIButton().then {
+    private lazy var restButton = UIButton().then {
         $0.setTitle("쉬어가기 \n'쉬고 있는 루틴'에 넣어두고 당분간 하지 않아요", for: .normal)
         $0.setTitleColor(UIColor.Gray.gray_900, for: .normal)
         $0.titleLabel?.font = UIFont.bodyFont()
@@ -39,9 +39,9 @@ class BottomSheetView: UIView {
         $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: -6)
     }
     
-    lazy var completeButton = makeButton(title: "완료하기", image: ImageLiterals.Icon.add_ic_check)
+    private lazy var completeButton = makeButton(title: "완료하기", image: ImageLiterals.Icon.add_ic_check)
     
-    lazy var statisticsButton = makeButton(title: "월별 통계 보기", image: ImageLiterals.Icon.add_ic_bar)
+    private lazy var statisticsButton = makeButton(title: "월별 통계 보기", image: ImageLiterals.Icon.add_ic_bar)
     
     lazy var deleteButton = UIButton().then {
         $0.setTitle("전체 삭제하기", for: .normal)
@@ -68,6 +68,7 @@ class BottomSheetView: UIView {
     // MARK: - setUI
     
     private func setupSubviews() {
+        
         let buttonSpacing: CGFloat = 20  // 버튼 사이의 간격
         
         addSubviews(

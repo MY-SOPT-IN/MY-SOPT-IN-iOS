@@ -10,17 +10,17 @@ import UIKit
 import SnapKit
 import Then
 
-class Customnavigationbar: UIView{
+class Customnavigationbar: UIView {
 
     private let navigationView = UIView().then {
         $0.backgroundColor = .white
     }
     
-    private let navigationBack = UIButton().then{
+     let navigationBack = UIButton().then{
         $0.setImage(ImageLiterals.Icon.add_ic_arrow, for: .normal)
     }
     
-    private let navigationTitle = UILabel().then{
+     let navigationTitle = UILabel().then{
         $0.font = UIFont.title1Font()
         $0.textColor = UIColor.Gray.gray_900
     }
@@ -33,6 +33,7 @@ class Customnavigationbar: UIView{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+        
     
     func setUI(_ title: String){
         self.navigationTitle.text = title
@@ -42,7 +43,7 @@ class Customnavigationbar: UIView{
             navigationTitle
         )
         navigationView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(40)
+            $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(48)
         }

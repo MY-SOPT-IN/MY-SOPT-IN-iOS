@@ -28,19 +28,10 @@ class BottomSheetViewController: UIViewController {
         
         view.backgroundColor = .white
         view.layer.cornerRadius = 25
+        setBottomSheet()
         setupNavigationBar()
         
-        if let sheetPresentationController = sheetPresentationController {
-            sheetPresentationController.detents = [.medium(), .large()]
-        }
-        
-        view.addSubview(bottomSheetView)
-        bottomSheetView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(62)
-            $0.leading.equalToSuperview().offset(33)
-            $0.height.equalToSuperview()
-            $0.width.equalTo(100)
-        }
+      
         
         bottomSheetView.editButton.addTarget(self, action: #selector(pushToEditRoutine), for: .touchUpInside)
         bottomSheetView.deleteButton.addTarget(self, action: #selector(presentToCustomAlert), for: .touchUpInside)
@@ -52,6 +43,20 @@ class BottomSheetViewController: UIViewController {
     
     
     // MARK: - Setup
+    
+    private func setBottomSheet(){
+        if let sheetPresentationController = sheetPresentationController {
+            sheetPresentationController.detents = [.medium(), .large()]
+        }
+        
+        view.addSubview(bottomSheetView)
+        bottomSheetView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(62)
+            $0.leading.equalToSuperview().offset(33)
+            $0.height.equalToSuperview()
+            $0.width.equalTo(100)
+        }
+    }
     
     private func setupNavigationBar() {
         let navBar = UINavigationBar().then {
@@ -80,7 +85,8 @@ class BottomSheetViewController: UIViewController {
     // MARK: - Actions
     
     // dismissBottomSheet
-    @objc private func dismissBottomSheet() {
+    @objc
+    private func dismissBottomSheet() {
         dismiss(animated: true, completion: nil)
     }
     

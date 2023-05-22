@@ -33,8 +33,8 @@ extension UIButton {
         setTitle(text, for: .normal)
         
         // 이미지와 텍스트 간격 조정
-        imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
-        titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+//        imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+//        titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
         
         // 버튼 스타일 설정 (옵션)
         setTitleColor(.black, for: .normal)
