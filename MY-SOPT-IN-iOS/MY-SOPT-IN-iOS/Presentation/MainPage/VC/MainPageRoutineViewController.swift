@@ -18,10 +18,9 @@ final class MainPageRoutineViewController: UIViewController {
     private var routineView = UITableView()
     private var bezierView: MainPageRoutineBorderView?
     
-    private var dateDummy: [[Dates]] = [Dates.pdummy(),
+    private var dateDummy: [[Dates]] = [Dates.getPreviousDateDummy(),
                                         Dates.dummy(),
-                                        Dates.ndummy()]
-    
+                                        Dates.getNextDateDummy()]
     private let routineDummy = Routine.dummy()
     
     private let routineTableViewHeaderHeight: CGFloat = 130
@@ -150,11 +149,11 @@ extension MainPageRoutineViewController: UIScrollViewDelegate {
         
         switch headerViewStartPoint {
         case 0:
-            p()
+            previousDates()
         case UIScreen.main.bounds.width:
             break
         case UIScreen.main.bounds.width * 2:
-            n()
+            nextDates()
         default:
             break
         }
@@ -163,20 +162,20 @@ extension MainPageRoutineViewController: UIScrollViewDelegate {
 }
 
 extension MainPageRoutineViewController {
-    func p() {
+    func previousDates() {
         for i in [2, 1] {
             dateDummy[i] = dateDummy[i - 1]
         }
-        dateDummy[0] = Dates.pdummy(current: dateDummy[1])
+        dateDummy[0] = Dates.getPreviousDateDummy(current: dateDummy[1])
 
         reloadDateData()
     }
     
-    func n() {
+    func nextDates() {
         for i in [0, 1] {
             dateDummy[i] = dateDummy[i + 1]
         }
-        dateDummy[2] = Dates.ndummy(current: dateDummy[1])
+        dateDummy[2] = Dates.getNextDateDummy(current: dateDummy[1])
         
         reloadDateData()
     }

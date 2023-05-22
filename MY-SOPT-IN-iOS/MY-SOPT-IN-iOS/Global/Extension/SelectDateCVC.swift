@@ -44,7 +44,7 @@ class SelectDateCVC: UICollectionViewCell {
         dateCircleView.backgroundColor = date.color
         guard let dateDate = date.dateComponents.day else { return }
         dateLabel.text = dateDate.description
-        weeksdayLabel.text = date.weekday(date: date.dateComponents)
+        weeksdayLabel.text = date.getWeekday(date: date.dateComponents)
     }
     
     private func setStyle() {
