@@ -23,7 +23,7 @@ final class MainPageRoutineViewController: UIViewController {
                                         Dates.getNextDateDummy()]
     private let routineDummy = Routine.dummy()
     
-    private let routineTableViewHeaderHeight: CGFloat = 130
+    private let routineTableViewHeaderHeight: CGFloat = 140
     private var headerViewStartPoint: CGFloat = 0
     
     // MARK: - View Life Cycle

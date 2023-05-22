@@ -79,13 +79,13 @@ class MainPageRoutineHeaderView: UIView {
     private func setLayout() {
         
         dateScrollView.snp.makeConstraints {
-            $0.height.equalTo(75)
+            $0.height.equalTo(85)
             $0.top.leading.trailing.equalToSuperview()
         }
         
         previousSelectDateCollectionView.snp.makeConstraints{
             $0.width.equalTo(screenWidth)
-            $0.height.equalTo(75)
+            $0.height.equalTo(85)
             $0.top.bottom.leading.equalToSuperview()
         }
         
@@ -100,10 +100,7 @@ class MainPageRoutineHeaderView: UIView {
             $0.top.bottom.trailing.equalToSuperview()
             $0.leading.equalTo(currentSelectDateCollectionView.snp.trailing)
         }
-        
-        dateScrollView.contentOffset.x = UIScreen.main.bounds.width
-        print(dateScrollView.contentOffset)
-                
+                        
         dateView.snp.makeConstraints {
             $0.top.equalTo(dateScrollView.snp.bottom)
             $0.bottom.leading.trailing.equalToSuperview()

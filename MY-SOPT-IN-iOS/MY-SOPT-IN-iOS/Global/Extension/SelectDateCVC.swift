@@ -16,6 +16,7 @@ class SelectDateCVC: UICollectionViewCell {
     
     static let identifier = "SelectDateCell"
     
+    private let cellView = UIView()
     var weeksdayLabel = UILabel()
     var dateCircleView = UIView()
     var dateLabel = UILabel()
@@ -49,9 +50,11 @@ class SelectDateCVC: UICollectionViewCell {
     
     private func setStyle() {
         
+        self.makeRounded(radius: 15)
+        
         weeksdayLabel.do {
             $0.font = .bodyFont()
-            $0.textColor = .Gray.gray_800
+            $0.textColor = .Mono.white
             $0.textAlignment = .center
         }
         
@@ -68,13 +71,20 @@ class SelectDateCVC: UICollectionViewCell {
     
     private func setHierarchy() {
         
-        contentView.addSubviews(weeksdayLabel,
+        contentView.addSubview(cellView)
+        
+        cellView.addSubviews(weeksdayLabel,
                                 dateCircleView)
         
         dateCircleView.addSubviews(dateLabel)
     }
     
     private func setLayout() {
+        
+        cellView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview().inset(7)
+            $0.leading.trailing.equalToSuperview().inset(6)
+        }
         
         dateCircleView.snp.makeConstraints {
             $0.height.equalTo(dateCircleSize)
@@ -85,7 +95,7 @@ class SelectDateCVC: UICollectionViewCell {
         
         weeksdayLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(dateCircleView.snp.top).offset(-2)
+            $0.top.equalToSuperview()
         }
         
         dateLabel.snp.makeConstraints {
