@@ -39,12 +39,12 @@ final class MainPageRoutineViewController: UIViewController {
     
     private func target() {
         
-        headerView.selectDateView.delegate = self
-        headerView.selectDateView.dataSource = self
-        headerView.selectDateView.isPagingEnabled = true
-        headerView.selectDateView.register(SelectDateCVC.self, forCellWithReuseIdentifier: SelectDateCVC.identifier)
-        headerView.selectDateView.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectDateHeaderFooter.identifier)
-        headerView.selectDateView.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier)
+        headerView.currentSelectDateCollectionView.delegate = self
+        headerView.currentSelectDateCollectionView.dataSource = self
+        headerView.currentSelectDateCollectionView.isPagingEnabled = true
+        headerView.currentSelectDateCollectionView.register(SelectDateCVC.self, forCellWithReuseIdentifier: SelectDateCVC.identifier)
+        headerView.currentSelectDateCollectionView.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectDateHeaderFooter.identifier)
+        headerView.currentSelectDateCollectionView.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier)
     }
     
     private func setStyle() {
@@ -121,12 +121,13 @@ extension MainPageRoutineViewController: UICollectionViewDelegate { }
 extension MainPageRoutineViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        dateDummy.count
+        return dateDummy.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectDateCVC.identifier, for: indexPath) as? SelectDateCVC else { return UICollectionViewCell() }
         cell.configCell(date: dateDummy[indexPath.item])
+        print(dateDummy[indexPath.item])
         return cell
     }
     
