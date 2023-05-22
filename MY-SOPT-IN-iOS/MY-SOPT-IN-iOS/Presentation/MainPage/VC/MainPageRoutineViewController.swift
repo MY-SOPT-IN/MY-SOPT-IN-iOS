@@ -18,10 +18,11 @@ final class MainPageRoutineViewController: UIViewController {
     private var routineView = UITableView()
     private var bezierView: MainPageRoutineBorderView?
     
-    private let dateDummy = Dates.dummy()
+    private var dateDummy = Dates.dummy()
     private let routineDummy = Routine.dummy()
     
     private let routineTableViewHeaderHeight: CGFloat = 130
+    private var headerViewStartPoint: CGFloat = 0
     
     // MARK: - View Life Cycle
     
@@ -38,13 +39,14 @@ final class MainPageRoutineViewController: UIViewController {
     // MARK: - Methods
     
     private func target() {
-        
-        headerView.currentSelectDateCollectionView.delegate = self
-        headerView.currentSelectDateCollectionView.dataSource = self
-        headerView.currentSelectDateCollectionView.isPagingEnabled = true
-        headerView.currentSelectDateCollectionView.register(SelectDateCVC.self, forCellWithReuseIdentifier: SelectDateCVC.identifier)
-        headerView.currentSelectDateCollectionView.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectDateHeaderFooter.identifier)
-        headerView.currentSelectDateCollectionView.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier)
+
+        [headerView.previousSelectDateCollectionView, headerView.currentSelectDateCollectionView, headerView.nextSelectDateCollectionView].forEach {
+            $0.dataSource = self
+            $0.register(SelectDateCVC.self, forCellWithReuseIdentifier: SelectDateCVC.identifier)
+            $0.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectDateHeaderFooter.identifier)
+            $0.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier)
+        }
+
     }
     
     private func setStyle() {
@@ -52,7 +54,6 @@ final class MainPageRoutineViewController: UIViewController {
         view.backgroundColor = .Gray.gray_50
         
         routineView.do {
-            $0.delegate = self
             $0.dataSource = self
             $0.register(MainPageRoutineTVC.self,
                         forCellReuseIdentifier: MainPageRoutineTVC.identifier)
@@ -90,7 +91,6 @@ final class MainPageRoutineViewController: UIViewController {
         bezierView?.backgroundColor = .clear
         bezierView?.makeRounded(radius: 5)
     }
-    
 }
 
 extension MainPageRoutineViewController: UITableViewDataSource {
@@ -113,10 +113,6 @@ extension MainPageRoutineViewController: UITableViewDataSource {
         return cell
     }
 }
-
-extension MainPageRoutineViewController: UITableViewDelegate { }
-
-extension MainPageRoutineViewController: UICollectionViewDelegate { }
 
 extension MainPageRoutineViewController: UICollectionViewDataSource {
     
@@ -145,3 +141,26 @@ extension MainPageRoutineViewController: UICollectionViewDataSource {
         }
     }
 }
+
+//extension MainPageRoutineViewController: UIScrollViewDelegate {
+//
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//
+//        headerViewStartPoint = targetContentOffset.pointee.x
+//    }
+//
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//
+//        switch headerViewStartPoint {
+//        case 0:
+//            print("왼쪽 스크롤")
+//        case UIScreen.main.bounds.width:
+//            break
+//        case UIScreen.main.bounds.width * 2:
+//            print("오른쪽 스크롤")
+//        default:
+//            break
+//        }
+//    }
+//
+//}

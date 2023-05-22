@@ -29,13 +29,26 @@ extension Dates {
     }
     
     static func dummy() -> [Dates] {
-        var date: [Dates] = [Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 15), color: .Semantic.semantic_red),
-                                Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 16)),
-                                Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 17)),
-                                Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 18)),
-                                Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 19)),
-                                Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 20)),
-                                Dates(dateComponents: DateComponents(year: 2023, month: 5, day: 21))]
+        var date = [Dates]()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd-e"    //e는 1~7(sun~sat)
+        formatter.locale = Locale(identifier: "ko")
+
+        let today = Date()
+        let todayString = formatter.string(from: today).components(separatedBy: "-") // [0] = YYYY, [1] = MM, [2] = dd, [3] = e
+        
+        guard let interval = Double(todayString[3]) else{ return [Dates]() }
+        var startDay = today.addingTimeInterval( -(86400 * ((interval + 7 - 2).truncatingRemainder(dividingBy: 7))))
+        
+        for _ in 0...6 {
+            let startDayString = formatter.string(from: startDay).components(separatedBy: "-")
+            guard let y = Int(startDayString[0]), let m = Int(startDayString[1]), let d = Int(startDayString[2]) else { break }
+            startDay = startDay.addingTimeInterval(86400)
+            
+            date.append(Dates(dateComponents: DateComponents(year: y, month: m, day: d)))
+        }
+        
         return date
     }
 }
