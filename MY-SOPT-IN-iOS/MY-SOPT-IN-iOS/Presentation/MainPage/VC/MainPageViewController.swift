@@ -93,12 +93,12 @@ final class MainPageViewController: UIViewController {
     
     @objc private func touchRoutineSegment(sender: UITapGestureRecognizer) {
         pageController.setViewControllers([routineViewController], direction: .reverse, animated: true, completion: nil)
-        topBar.updateIndicator(index: 0)
+        topBar.updateTopBar(index: 0)
     }
     
     @objc private func touchRecallSegment(sender: UITapGestureRecognizer) {
         pageController.setViewControllers([recallViewController], direction: .forward, animated: true, completion: nil)
-        topBar.updateIndicator(index: 1)
+        topBar.updateTopBar(index: 1)
     }
 }
 
@@ -108,9 +108,9 @@ extension MainPageViewController: UIPageViewControllerDelegate {
         
         if completed {
             if previousViewControllers is [MainPageRecallViewController] {
-                topBar.updateIndicator(index: 0)
+                topBar.updateTopBar(index: 0)
             } else if previousViewControllers is [MainPageRoutineViewController] {
-                topBar.updateIndicator(index: 1)
+                topBar.updateTopBar(index: 1)
             }
         }
     }

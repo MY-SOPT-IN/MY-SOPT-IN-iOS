@@ -47,7 +47,7 @@ final class MainPageTopBarView: UIView {
         routineLabel.do {
             $0.text = "루틴"
             $0.font = .title1Font()
-            $0.textColor = .Gray.gray_700
+            $0.textColor = .Primary.primary_900
             $0.textAlignment = .center
         }
         
@@ -97,7 +97,7 @@ final class MainPageTopBarView: UIView {
         }
     }
     
-    func updateIndicator(index: Int) {
+    func updateTopBar(index: Int) {
         switch index {
         case 0:
             indicator.snp.remakeConstraints {
@@ -109,6 +109,8 @@ final class MainPageTopBarView: UIView {
             UIView.animate(withDuration: 0.2, animations: {
                 self.layoutIfNeeded()
             })
+            routineLabel.textColor = .Primary.primary_900
+            recallLabel.textColor = .Gray.gray_700
         case 1:
             indicator.snp.remakeConstraints {
                 $0.height.equalTo(3)
@@ -119,8 +121,11 @@ final class MainPageTopBarView: UIView {
             UIView.animate(withDuration: 0.2, animations: {
                 self.layoutIfNeeded()
             })
+            routineLabel.textColor = .Gray.gray_700
+            recallLabel.textColor = .Primary.primary_900
         default:
             print("Paging Index Error")
         }
     }
+    
 }
