@@ -51,7 +51,7 @@ class MainPageRoutineHeaderView: UIView {
         }
 
         dateLabel.do {
-            $0.text = "2023년 5월 19일"
+            $0.text = Dates.getDateString(Dates.getToday()!)()
             $0.font = .title2Font()
             $0.textColor = .Gray.gray_800
         }

@@ -33,7 +33,7 @@ extension Dates {
     func getDateString() -> String? {
         if let y = dateComponents.year, let m = dateComponents.month, let d = dateComponents.day {
             return String(y) + "년 " + String(m) + "월 " + String(d) + "일"
-        } else { return nil }
+        } else { return "" }
     }
     
     static func setFormmatter() -> DateFormatter {
