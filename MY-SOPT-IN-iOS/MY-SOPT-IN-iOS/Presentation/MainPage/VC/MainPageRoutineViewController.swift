@@ -118,6 +118,11 @@ final class MainPageRoutineViewController: UIViewController {
         addRoutineViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(addRoutineViewController, animated: true)
     }
+    
+    @objc
+    private func presentToBottomSheet() {
+        showBottomSheet()
+    }
 }
 
 extension MainPageRoutineViewController: UITableViewDataSource {
@@ -129,6 +134,7 @@ extension MainPageRoutineViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainPageRoutineTVC.identifier, for: indexPath) as? MainPageRoutineTVC else { return UITableViewCell() }
         cell.configCell(index: indexPath.row, routineDummy[indexPath.row], isFirstCell: indexPath.row == 0, isLastCell: indexPath.row == routineDummy.count - 1, selected: routineDummy[indexPath.row].doTapped)
+        cell.routineTapGesture = UITapGestureRecognizer(target: self, action: #selector(presentToBottomSheet))
         return cell
     }
 }
@@ -220,4 +226,17 @@ extension MainPageRoutineViewController: UIScrollViewDelegate {
     }
 }
 
-
+extension MainPageRoutineViewController: BottomSheetDelegate {
+    
+    func showBottomSheet() {
+        let bottomSheet = BottomSheetViewController()
+        bottomSheet.delegate = self
+        present(bottomSheet, animated: true, completion: nil)
+    }
+    
+    func didTapButtonInBottomSheet() {
+        let editViewController = EditRoutineViewController()
+        editViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(editViewController, animated: true)
+    }
+}

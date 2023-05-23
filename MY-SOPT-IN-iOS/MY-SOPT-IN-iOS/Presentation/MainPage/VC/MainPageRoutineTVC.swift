@@ -23,6 +23,12 @@ class MainPageRoutineTVC: UITableViewCell {
     private let whenDoRoutineLabel = UILabel()
     private let routineContentLabel = UILabel()
     
+    var routineTapGesture: UITapGestureRecognizer = UITapGestureRecognizer() {
+        didSet {
+            whenDoRoutineView.addGestureRecognizer(routineTapGesture)
+        }
+    }
+
     private var selectedRoutine: Bool = false {
         didSet {
             if selectedRoutine {
