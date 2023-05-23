@@ -11,6 +11,7 @@ struct Dates {
     let dateComponents: DateComponents
     let dates: String? = nil
     var color: UIColor = .Semantic.semantic_orange
+    var isSelected: Bool = false
 }
 
 extension Dates {

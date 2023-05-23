@@ -23,9 +23,9 @@ class SelectDateCVC: UICollectionViewCell {
     
     private let dateCircleSize: CGFloat = 34
     
-    override var isSelected: Bool {
+    var selectedDate: Bool = false {
         didSet {
-            if isSelected {
+            if selectedDate {
                 self.backgroundColor = .Gray.gray_800
                 self.weeksdayLabel.textColor = .Mono.white
             } else {
@@ -52,17 +52,19 @@ class SelectDateCVC: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configCell(date: Dates) {
+    func configCell(date: Dates, selected: Bool) {
         
         dateCircleView.backgroundColor = date.color
         guard let dateDate = date.dateComponents.day else { return }
         dateLabel.text = dateDate.description
         weeksdayLabel.text = date.getWeekday(date: date.dateComponents)
+        selectedDate = selected
     }
     
     private func setStyle() {
         
         self.makeRounded(radius: 15)
+//        selectedDate = false
         
         weeksdayLabel.do {
             $0.font = .bodyFont()
