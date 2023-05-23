@@ -1,13 +1,13 @@
 //
-//  MainPageRoutineHeaderView.swift
+//  MainPageRecallHeaderView.swift
 //  MY-SOPT-IN-iOS
 //
-//  Created by 김다예 on 2023/05/19.
+//  Created by 김다예 on 2023/05/23.
 //
 
 import UIKit
 
-class MainPageRoutineHeaderView: UIView {
+class MainPageRecallHeaderView: UIView {
 
     // MARK: - Properties
 
@@ -21,7 +21,7 @@ class MainPageRoutineHeaderView: UIView {
                                     nextSelectDateCollectionView]
     
     private var dateView = UIView()
-    private var editFilterLabel = UILabel()
+    private var achieveRecallBtn = UIButton()
     var dateLabel = UILabel()
     
     private let screenWidth = UIScreen.main.bounds.width
@@ -56,10 +56,11 @@ class MainPageRoutineHeaderView: UIView {
             $0.textColor = .Gray.gray_800
         }
         
-        editFilterLabel.do {
-            $0.text = " 편집 | 필터 "
-            $0.font = .bodyFont()
-            $0.textColor = .Gray.gray_500
+        achieveRecallBtn.do {
+            $0.setTitle("회고 모아보기", for: .normal)
+            $0.setTitleColor(.Gray.gray_800, for: .normal)
+            $0.titleLabel?.font = .subtitleFont()
+
         }
     }
     
@@ -73,7 +74,7 @@ class MainPageRoutineHeaderView: UIView {
                                    nextSelectDateCollectionView)
         
         dateView.addSubviews(dateLabel,
-                             editFilterLabel)
+                             achieveRecallBtn)
     }
     
     private func setLayout() {
@@ -110,9 +111,12 @@ class MainPageRoutineHeaderView: UIView {
             $0.top.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().inset(20)
         }
-        editFilterLabel.snp.makeConstraints {
+        achieveRecallBtn.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
             $0.trailing.equalToSuperview().inset(15)
         }
     }
 }
+
+
+
