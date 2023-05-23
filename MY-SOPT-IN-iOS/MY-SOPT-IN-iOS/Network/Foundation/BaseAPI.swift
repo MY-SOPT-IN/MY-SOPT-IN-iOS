@@ -1,5 +1,5 @@
 //
-//  NetworkBase.swift
+//  BaseAPI.swift
 //  MY-SOPT-IN-iOS
 //
 //  Created by 김인영 on 2023/05/24.
@@ -9,7 +9,15 @@ import Foundation
 
 import Alamofire
 
-struct NetworkBase {
+class BaseAPI {
+    
+    let AFManager: Session = {
+        var session = AF
+        let configuration = URLSessionConfiguration.af.default
+        let eventLogger = AlamofireLogger()
+        session = Session(configuration: configuration, eventMonitors: [eventLogger])
+        return session
+    }()
     
     public func disposeNetwork<T: Codable>(_ result: AFDataResponse<Data>, dataModel: T.Type, completion: @escaping (NetworkResult<Any>) -> Void){
         switch result.result {

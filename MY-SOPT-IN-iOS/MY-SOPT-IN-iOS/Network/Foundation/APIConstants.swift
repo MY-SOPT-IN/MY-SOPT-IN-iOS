@@ -10,6 +10,9 @@ import Foundation
 struct APIConstants {
     static let contentType = "Content-Type"
     static let applicationJSON = "application/json"
+    
+    static let retro = "retro/"
+    static let routine = "routine/"
 }
 
 extension APIConstants {
