@@ -57,8 +57,8 @@ final class TabBarController: UITabBarController {
         socialViewController.tabBarItem = UITabBarItem(title: "소셜", image: ImageLiterals.TabBar.social, tag: 3)
         let socialNavigationController = UINavigationController(rootViewController: socialViewController)
         
-        let myProfileViewController = UIViewController()
-        myProfileViewController.view.backgroundColor = .Gray.gray_400
+        let myProfileViewController = RecallViewController()
+//        myProfileViewController.view.backgroundColor = .Gray.gray_400
         myProfileViewController.tabBarItem = UITabBarItem(title: "내정보", image: ImageLiterals.TabBar.myProfile, tag: 4)
         let myProfileNavigationController = UINavigationController(rootViewController: myProfileViewController)
         

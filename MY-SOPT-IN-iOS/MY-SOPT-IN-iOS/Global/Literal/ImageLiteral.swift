@@ -26,6 +26,7 @@ struct ImageLiterals {
     struct RecallProperty {
         static let defaultRecall = UIImage(named: "Property 1=Default.png")
         static let variantRecall = UIImage(named: "Property 1=Variant2.png")
+        static let moreRecall = UIImage(named: "more")
     }
     
     struct Icon {
