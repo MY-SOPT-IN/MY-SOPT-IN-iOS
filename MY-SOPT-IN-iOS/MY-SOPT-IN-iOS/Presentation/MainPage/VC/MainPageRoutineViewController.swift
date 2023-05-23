@@ -28,6 +28,8 @@ final class MainPageRoutineViewController: UIViewController {
     
     private var selectedDay = Dates.getToday()?.dateComponents
     
+    private lazy var addButton = UIButton()
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -72,12 +74,18 @@ final class MainPageRoutineViewController: UIViewController {
             $0.tableFooterView?.frame.size.height = 20
         }
         
+        addButton.do {
+            $0.setImage(ImageLiterals.Icon.add_ic_addButton, for: .normal)
+            $0.addTarget(self, action: #selector(pushToAddRoutine), for: .touchUpInside)
+        }
+        
         setBazierView()
     }
     
     private func setHierarchy() {
         
-        view.addSubviews(routineView)
+        view.addSubviews(routineView,
+                         addButton)
         
         guard let border = bezierView else { return }
         routineView.addSubview(border)
@@ -86,8 +94,12 @@ final class MainPageRoutineViewController: UIViewController {
     private func setLayout() {
                 
         routineView.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.top.leading.trailing.equalToSuperview()
+            $0.edges.equalToSuperview()
+        }
+        
+        addButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(80)
         }
     }
     
@@ -96,6 +108,15 @@ final class MainPageRoutineViewController: UIViewController {
         bezierView = MainPageRoutineBorderView(frame: CGRect(x: MainPageRoutineTVC.routineBorderLeading, y: routineTableViewHeaderHeight, width: MainPageRoutineTVC.routineBorderWidth, height: routineView.rowHeight * CGFloat(routineDummy.count)))
         bezierView?.backgroundColor = .clear
         bezierView?.makeRounded(radius: 5)
+    }
+    
+    // MARK: - objc Func
+    
+    @objc
+    private func pushToAddRoutine() {
+        let addRoutineViewController = AddRoutineViewController()
+        addRoutineViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(addRoutineViewController, animated: true)
     }
 }
 
