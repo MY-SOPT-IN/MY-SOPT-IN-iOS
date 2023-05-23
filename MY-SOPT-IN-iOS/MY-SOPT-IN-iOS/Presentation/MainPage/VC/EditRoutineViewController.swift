@@ -26,7 +26,7 @@ final class EditRoutineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI(
+        setUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
