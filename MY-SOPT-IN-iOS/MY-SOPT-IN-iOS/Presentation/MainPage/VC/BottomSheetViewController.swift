@@ -13,7 +13,6 @@ protocol BottomSheetDelegate: AnyObject {
     func didTapButtonInBottomSheet()
 }
 
-
 final class BottomSheetViewController: UIViewController {
     
     // MARK: - Properties
@@ -35,10 +34,6 @@ final class BottomSheetViewController: UIViewController {
         bottomSheetView.deleteButton.addTarget(self, action: #selector(presentToCustomAlert), for: .touchUpInside)
     }
     
-    
-    
-    
-    
     // MARK: - Setup
     
     private func setBottomSheet() {
@@ -47,6 +42,7 @@ final class BottomSheetViewController: UIViewController {
         }
 
         view.addSubview(bottomSheetView)
+        
         bottomSheetView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(62)
             $0.leading.equalToSuperview().offset(33)
@@ -59,6 +55,7 @@ final class BottomSheetViewController: UIViewController {
         let navBar = UINavigationBar().then {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
+        
         view.addSubview(navBar)
         
         navBar.snp.makeConstraints {

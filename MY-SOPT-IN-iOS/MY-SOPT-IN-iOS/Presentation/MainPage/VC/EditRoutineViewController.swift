@@ -14,7 +14,10 @@ final class EditRoutineViewController: UIViewController {
     
     
     private let editNavigationbar = Customnavigationbar("루틴 수정하기").then {
-        $0.navigationBack.addTarget(self, action: #selector(popToEditRoutineViewController), for: .touchUpInside)
+        $0.navigationBack.addTarget(self,
+                                    action: #selector(popToEditRoutineViewController),
+                                    for: .touchUpInside
+        )
     }
     
     private let editRoutine = RoutineView()
@@ -23,8 +26,7 @@ final class EditRoutineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
-        
+        setUI(
     }
     
     override func viewWillAppear(_ animated: Bool) {

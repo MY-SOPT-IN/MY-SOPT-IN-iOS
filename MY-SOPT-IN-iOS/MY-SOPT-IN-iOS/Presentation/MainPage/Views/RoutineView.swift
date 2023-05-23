@@ -15,7 +15,10 @@ class RoutineView: UIView {
     // MARK: - UI Components
     
     private let routineNameTextField = UITextField().then {
-        $0.attributedPlaceholder = NSAttributedString(string: "루틴 이름", attributes: [NSAttributedString.Key.foregroundColor: UIColor.Gray.gray_400])
+        $0.attributedPlaceholder = NSAttributedString(
+            string: "루틴 이름",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.Gray.gray_400]
+        )
         $0.textColor = UIColor.Gray.gray_900
         $0.font = UIFont.bodyFont()
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
@@ -30,6 +33,7 @@ class RoutineView: UIView {
     private let completeImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)).then {
         $0.image = ImageLiterals.Icon.add_ic_checkbox
     }
+    
     private let secondSection = UIView().then {
         $0.backgroundColor = .white
     }
@@ -37,27 +41,32 @@ class RoutineView: UIView {
     private let alarmImage = UIImageView().then {
         $0.image = ImageLiterals.Icon.add_ic_bell
     }
+    
     private let alarmLabel = UILabel().then {
         $0.text = "알람"
         $0.font = UIFont.subtitleFont()
         $0.textColor = UIColor.Gray.gray_900
     }
+    
     private let alarmSwitch = UISwitch()
     
     
     private let whenImage = UIImageView().then {
         $0.image = ImageLiterals.Icon.add_ic_checkbox
     }
+    
     private let whenLabel = UILabel().then {
         $0.text = "언제 할래요?"
         $0.font = UIFont.subtitleFont()
         $0.textColor = UIColor.Gray.gray_900
     }
+    
     private let exampleLabel = UILabel().then {
         $0.text = "ex) 8:00/출근길/ALL"
         $0.font = UIFont.bodyFont()
         $0.textColor = UIColor.Gray.gray_500
     }
+    
     private let whenButton = UIButton().then {
         $0.setImage(ImageLiterals.Icon.add_ic_vector, for: .normal)
     }
@@ -65,16 +74,19 @@ class RoutineView: UIView {
     private let routineImage = UIImageView().then {
         $0.image = ImageLiterals.Icon.add_ic_calender
     }
+    
     private let routineLabel = UILabel().then {
         $0.text = "루틴 반복 주기"
         $0.font = UIFont.subtitleFont()
         $0.textColor = UIColor.Gray.gray_900
     }
+    
     private let routineSetLabel = UILabel().then {
         $0.text = "일, 월, 화, 수, 목, 금 ,토"
         $0.font = UIFont.bodyFont()
         $0.textColor = UIColor.Gray.gray_900
     }
+    
     private let routineButton = UIButton().then {
         $0.setImage(ImageLiterals.Icon.add_ic_vector, for: .normal)
     }
@@ -183,6 +195,7 @@ class RoutineView: UIView {
     private let horizontalWall4 = UIView().then {
         $0.backgroundColor = UIColor.Gray.gray_100
     }
+    
     private let horizontalWall5 = UIView().then {
         $0.backgroundColor = UIColor.Gray.gray_100
     }

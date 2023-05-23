@@ -14,7 +14,10 @@ final class AddRoutineViewController: UIViewController {
     
     
     private let addNavigationbar = Customnavigationbar("루틴 추가하기").then {
-        $0.navigationBack.addTarget(self, action: #selector(popToAddRoutineViewController), for: .touchUpInside)
+        $0.navigationBack.addTarget(self,
+                                    action: #selector(popToAddRoutineViewController),
+                                    for: .touchUpInside
+        )
     }
     
     private let addRoutine = RoutineView()

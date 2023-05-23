@@ -53,12 +53,12 @@ class Customnavigationbar: UIView {
             $0.height.equalTo(48)
         }
         
-        navigationBack.snp.makeConstraints{
+        navigationBack.snp.makeConstraints {
             $0.top.equalTo(navigationView.snp.top).offset(12)
             $0.leading.equalTo(navigationView.snp.leading).offset(16)
         }
         
-        navigationTitle.snp.makeConstraints{
+        navigationTitle.snp.makeConstraints {
             $0.top.equalTo(navigationView.snp.top).offset(12)
             $0.centerX.equalTo(navigationView)
         }

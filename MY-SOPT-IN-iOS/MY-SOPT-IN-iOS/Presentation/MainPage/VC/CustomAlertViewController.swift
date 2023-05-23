@@ -75,8 +75,10 @@ final class CustomAlertViewController: UIViewController {
     // MARK: - Setup
     
     private func setupUI() {
+         
         view.backgroundColor = UIColor(white: 0, alpha: 0.5) // 반투명한 검은색 배경 추가
         view.addSubview(alertView)
+        
         alertView.addSubviews(
             imageView,
             titleLabel,
