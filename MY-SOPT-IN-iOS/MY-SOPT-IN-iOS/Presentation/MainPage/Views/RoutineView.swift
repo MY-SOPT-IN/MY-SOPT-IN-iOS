@@ -14,12 +14,11 @@ class RoutineView: UIView {
     
     // MARK: - UI Components
     
-//    private let navigationView = UIView().then {
-//        $0.backgroundColor = .red
-//    }
-    
     private let routineNameTextField = UITextField().then {
-        $0.attributedPlaceholder = NSAttributedString(string: "루틴 이름", attributes: [NSAttributedString.Key.foregroundColor: UIColor.Gray.gray_400])
+        $0.attributedPlaceholder = NSAttributedString(
+            string: "루틴 이름",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.Gray.gray_400]
+        )
         $0.textColor = UIColor.Gray.gray_900
         $0.font = UIFont.bodyFont()
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
@@ -27,62 +26,71 @@ class RoutineView: UIView {
         $0.backgroundColor = .white
     }
     
-    private let completeSection = UIView(frame: CGRect(x: 0, y: 0, width: 56, height: 56)).then{
+    private let completeSection = UIView(frame: CGRect(x: 0, y: 0, width: 56, height: 56)).then {
         $0.backgroundColor = .white
     }
     
-    private let completeImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)).then{
+    private let completeImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20)).then {
         $0.image = ImageLiterals.Icon.add_ic_checkbox
     }
-    private let secondSection = UIView().then{
+    
+    private let secondSection = UIView().then {
         $0.backgroundColor = .white
     }
     
-    private let alarmImage = UIImageView().then{
+    private let alarmImage = UIImageView().then {
         $0.image = ImageLiterals.Icon.add_ic_bell
     }
-    private let alarmLabel = UILabel().then{
+    
+    private let alarmLabel = UILabel().then {
         $0.text = "알람"
         $0.font = UIFont.subtitleFont()
         $0.textColor = UIColor.Gray.gray_900
     }
+    
     private let alarmSwitch = UISwitch()
     
     
-    private let whenImage = UIImageView().then{
+    private let whenImage = UIImageView().then {
         $0.image = ImageLiterals.Icon.add_ic_checkbox
     }
-    private let whenLabel = UILabel().then{
+    
+    private let whenLabel = UILabel().then {
         $0.text = "언제 할래요?"
         $0.font = UIFont.subtitleFont()
         $0.textColor = UIColor.Gray.gray_900
     }
-    private let exampleLabel = UILabel().then{
+    
+    private let exampleLabel = UILabel().then {
         $0.text = "ex) 8:00/출근길/ALL"
         $0.font = UIFont.bodyFont()
         $0.textColor = UIColor.Gray.gray_500
     }
-    private let whenButton = UIButton().then{
+    
+    private let whenButton = UIButton().then {
         $0.setImage(ImageLiterals.Icon.add_ic_vector, for: .normal)
     }
-
-    private let routineImage = UIImageView().then{
+    
+    private let routineImage = UIImageView().then {
         $0.image = ImageLiterals.Icon.add_ic_calender
     }
-    private let routineLabel = UILabel().then{
+    
+    private let routineLabel = UILabel().then {
         $0.text = "루틴 반복 주기"
         $0.font = UIFont.subtitleFont()
         $0.textColor = UIColor.Gray.gray_900
     }
-    private let routineSetLabel = UILabel().then{
+    
+    private let routineSetLabel = UILabel().then {
         $0.text = "일, 월, 화, 수, 목, 금 ,토"
         $0.font = UIFont.bodyFont()
         $0.textColor = UIColor.Gray.gray_900
     }
-    private let routineButton = UIButton().then{
+    
+    private let routineButton = UIButton().then {
         $0.setImage(ImageLiterals.Icon.add_ic_vector, for: .normal)
     }
-
+    
     private let horizontalWall1 = UIView().then {
         $0.backgroundColor = UIColor.Gray.gray_100
     }
@@ -91,47 +99,47 @@ class RoutineView: UIView {
         $0.backgroundColor = UIColor.Gray.gray_100
     }
     
-    private let headerLabel = UILabel().then{
+    private let headerLabel = UILabel().then {
         $0.text = "추가설정"
         $0.font = UIFont.subtitleFont()
         $0.textColor = UIColor.Gray.gray_900
     }
     
-    private let thirdSection = UIView().then{
+    private let thirdSection = UIView().then {
         $0.backgroundColor = .white
     }
     
-    private let nondisclosureLabel = UILabel().then{
+    private let nondisclosureLabel = UILabel().then {
         $0.text = "비공개"
         $0.font = UIFont.bodyFont()
         $0.textColor = UIColor.Gray.gray_900
     }
     
-    private let nondisclosureImage = UIImageView().then{
+    private let nondisclosureImage = UIImageView().then {
         $0.image = ImageLiterals.Icon.add_ic_question
     }
-   
+    
     private let nondisclosureSwitch = UISwitch()
     
-    private let highlighterLabel = UILabel().then{
+    private let highlighterLabel = UILabel().then {
         $0.text = "형광펜"
         $0.font = UIFont.bodyFont()
         $0.textColor = UIColor.Gray.gray_900
     }
     
-    private let highlighterImage = UIImageView().then{
+    private let highlighterImage = UIImageView().then {
         $0.image = ImageLiterals.Icon.add_ic_question
     }
-   
+    
     private let highlighterSwitch = UISwitch()
     
-    private let startdateLabel = UILabel().then{
+    private let startdateLabel = UILabel().then {
         $0.text = "시작일"
         $0.font = UIFont.bodyFont()
         $0.textColor = UIColor.Gray.gray_900
     }
     
-    private let startdateButton = UIButton().then{
+    private let startdateButton = UIButton().then {
         $0.setTitle("2023. 5.19.", for: .normal)
         $0.setTitleColor(UIColor.Gray.gray_900, for: .normal)
         $0.titleLabel?.font = UIFont.bodyFont()
@@ -139,44 +147,44 @@ class RoutineView: UIView {
         $0.layer.cornerRadius = 7
     }
     
-    private let timeFilterLabel = UILabel().then{
+    private let timeFilterLabel = UILabel().then {
         $0.text = "시간 필터"
         $0.font = UIFont.bodyFont()
         $0.textColor = UIColor.Gray.gray_900
     }
     
-    private let timeFilterImage = UIImageView().then{
+    private let timeFilterImage = UIImageView().then {
         $0.image = ImageLiterals.Icon.add_ic_question
     }
     
-    private let sunButton = UIButton().then{
+    private let sunButton = UIButton().then {
         $0.setImage(ImageLiterals.Icon.add_ic_sun, for: .normal)
         $0.tintColor = UIColor.Gray.gray_200
     }
-
-    private let coffeeButton = UIButton().then{
+    
+    private let coffeeButton = UIButton().then {
         $0.setImage(ImageLiterals.Icon.add_ic_coffee, for: .normal)
         $0.tintColor = UIColor.Gray.gray_200
     }
     
-    private let moonButton = UIButton().then{
+    private let moonButton = UIButton().then {
         $0.setImage(ImageLiterals.Icon.add_ic_moon, for: .normal)
         $0.tintColor = UIColor.Gray.gray_200
     }
     
-    private let themeLabel = UILabel().then{
+    private let themeLabel = UILabel().then {
         $0.text = "테마"
         $0.font = UIFont.bodyFont()
         $0.textColor = UIColor.Gray.gray_900
     }
     
-    private let themenilLabel = UILabel().then{
+    private let themenilLabel = UILabel().then {
         $0.text = "없음"
         $0.font = UIFont.bodyFont()
         $0.textColor = UIColor.Gray.gray_500
     }
     
-    private let themeButton = UIButton().then{
+    private let themeButton = UIButton().then {
         $0.setImage(ImageLiterals.Icon.add_ic_vector, for: .normal)
     }
     
@@ -187,6 +195,7 @@ class RoutineView: UIView {
     private let horizontalWall4 = UIView().then {
         $0.backgroundColor = UIColor.Gray.gray_100
     }
+    
     private let horizontalWall5 = UIView().then {
         $0.backgroundColor = UIColor.Gray.gray_100
     }
@@ -195,7 +204,7 @@ class RoutineView: UIView {
         $0.backgroundColor = UIColor.Gray.gray_100
     }
     
-    private let saveButton = UIButton().then(){
+    private let saveroutineButton = UIButton().then() {
         $0.setTitle("시작하기", for: .normal)
         $0.titleLabel?.font = UIFont.subtitleFont()
         $0.setTitleColor(UIColor.Primary.primary_900, for: .normal)
@@ -218,9 +227,8 @@ class RoutineView: UIView {
     // MARK: - setUI
     
     private func setupViews() {
-
+        
         addSubviews(
-//            navigationView,
             routineNameTextField,
             completeSection,
             completeImage,
@@ -260,20 +268,17 @@ class RoutineView: UIView {
             horizontalWall4,
             horizontalWall5,
             horizontalWall6,
-            saveButton
+            saveroutineButton
         )
     }
     
     private func setupLayout() {
-        
-
         
         routineNameTextField.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.leading.equalToSuperview().offset(18)
             $0.trailing.equalTo(completeSection.snp.leading).offset(-7)
             $0.height.equalTo(56)
-            
         }
         
         completeSection.snp.makeConstraints {
@@ -283,31 +288,29 @@ class RoutineView: UIView {
             $0.height.equalTo(56)
         }
         
-        completeImage.snp.makeConstraints{
+        completeImage.snp.makeConstraints {
             $0.centerY.equalTo(completeSection)
             $0.top.leading.equalTo(completeSection).offset(18)
-
         }
         
-        
-        secondSection.snp.makeConstraints{
+        secondSection.snp.makeConstraints {
             $0.top.equalTo(routineNameTextField.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.width.equalTo(343)
             $0.height.equalTo(166)
         }
         
-        alarmImage.snp.makeConstraints{
+        alarmImage.snp.makeConstraints {
             $0.top.equalTo(secondSection.snp.top).offset(19)
             $0.leading.equalTo(secondSection.snp.leading).offset(18)
         }
         
-        alarmLabel.snp.makeConstraints{
+        alarmLabel.snp.makeConstraints {
             $0.top.equalTo(secondSection.snp.top).offset(20)
             $0.leading.equalTo(alarmImage.snp.trailing).offset(7)
         }
         
-        alarmSwitch.snp.makeConstraints{
+        alarmSwitch.snp.makeConstraints {
             $0.top.equalTo(secondSection.snp.top).offset(14)
             $0.trailing.equalTo(secondSection.snp.trailing).offset(-18)
         }
@@ -318,22 +321,22 @@ class RoutineView: UIView {
             $0.trailing.leading.equalTo(secondSection).inset(17)
         }
         
-        whenImage.snp.makeConstraints{
+        whenImage.snp.makeConstraints {
             $0.top.equalTo(horizontalWall1.snp.bottom).offset(17.5)
             $0.leading.equalTo(secondSection.snp.leading).offset(18)
         }
         
-        whenLabel.snp.makeConstraints{
+        whenLabel.snp.makeConstraints {
             $0.top.equalTo(horizontalWall1.snp.bottom).offset(18.5)
             $0.leading.equalTo(whenImage.snp.trailing).offset(7)
         }
         
-        exampleLabel.snp.makeConstraints{
+        exampleLabel.snp.makeConstraints {
             $0.top.equalTo(horizontalWall1.snp.bottom).offset(19.5)
             $0.trailing.equalTo(secondSection).offset(-43)
         }
         
-        whenButton.snp.makeConstraints{
+        whenButton.snp.makeConstraints {
             $0.top.equalTo(horizontalWall1.snp.bottom).offset(14.5)
             $0.trailing.equalTo(secondSection).offset(-24)
         }
@@ -344,49 +347,49 @@ class RoutineView: UIView {
             $0.trailing.leading.equalTo(secondSection).inset(17)
         }
         
-        routineImage.snp.makeConstraints{
+        routineImage.snp.makeConstraints {
             $0.top.equalTo(horizontalWall2.snp.bottom).offset(17.5)
             $0.leading.equalTo(secondSection.snp.leading).offset(18)
         }
         
-        routineLabel.snp.makeConstraints{
+        routineLabel.snp.makeConstraints {
             $0.top.equalTo(horizontalWall2.snp.bottom).offset(18.5)
             $0.leading.equalTo(routineImage.snp.trailing).offset(7)
         }
         
-        routineSetLabel.snp.makeConstraints{
+        routineSetLabel.snp.makeConstraints {
             $0.top.equalTo(horizontalWall2.snp.bottom).offset(18.5)
             $0.trailing.equalTo(secondSection).offset(-42)
         }
         
-        routineButton.snp.makeConstraints{
+        routineButton.snp.makeConstraints {
             $0.top.equalTo(horizontalWall2.snp.bottom).offset(14.5)
             $0.trailing.equalTo(secondSection).offset(-24)
         }
         
-        headerLabel.snp.makeConstraints{
+        headerLabel.snp.makeConstraints {
             $0.top.equalTo(secondSection.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(16)
         }
         
-        thirdSection.snp.makeConstraints{
+        thirdSection.snp.makeConstraints {
             $0.top.equalTo(headerLabel.snp.bottom).offset(11)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.width.equalTo(343)
             $0.height.equalTo(280)
         }
         
-        nondisclosureLabel.snp.makeConstraints{
+        nondisclosureLabel.snp.makeConstraints {
             $0.top.equalTo(thirdSection.snp.top).offset(23)
             $0.leading.equalTo(thirdSection.snp.leading).offset(17)
         }
         
-        nondisclosureImage.snp.makeConstraints{
+        nondisclosureImage.snp.makeConstraints {
             $0.top.equalTo(thirdSection.snp.top).offset(22)
             $0.leading.equalTo(nondisclosureLabel.snp.trailing).offset(8)
         }
         
-        nondisclosureSwitch.snp.makeConstraints{
+        nondisclosureSwitch.snp.makeConstraints {
             $0.top.equalTo(thirdSection.snp.top).offset(15)
             $0.trailing.equalTo(secondSection.snp.trailing).offset(-17)
         }
@@ -397,17 +400,17 @@ class RoutineView: UIView {
             $0.trailing.leading.equalTo(secondSection).inset(17)
         }
         
-        highlighterLabel.snp.makeConstraints{
+        highlighterLabel.snp.makeConstraints {
             $0.top.equalTo(horizontalWall3.snp.bottom).offset(19.5)
             $0.leading.equalTo(thirdSection.snp.leading).offset(17)
         }
         
-        highlighterImage.snp.makeConstraints{
+        highlighterImage.snp.makeConstraints {
             $0.top.equalTo(horizontalWall3.snp.bottom).offset(18.5)
             $0.leading.equalTo(highlighterLabel.snp.trailing).offset(8)
         }
         
-        highlighterSwitch.snp.makeConstraints{
+        highlighterSwitch.snp.makeConstraints {
             $0.top.equalTo(horizontalWall3.snp.bottom).offset(12.5)
             $0.trailing.equalTo(secondSection.snp.trailing).offset(-17)
         }
@@ -418,78 +421,77 @@ class RoutineView: UIView {
             $0.trailing.leading.equalTo(secondSection).inset(17)
         }
         
-        startdateLabel.snp.makeConstraints{
+        startdateLabel.snp.makeConstraints {
             $0.top.equalTo(horizontalWall4.snp.bottom).offset(18.5)
             $0.leading.equalTo(thirdSection.snp.leading).offset(17)
         }
         
-        startdateButton.snp.makeConstraints{
+        startdateButton.snp.makeConstraints {
             $0.top.equalTo(horizontalWall4.snp.bottom).offset(11.5)
             $0.trailing.equalTo(thirdSection.snp.trailing).offset(-20)
             $0.width.equalTo(92)
             $0.height.equalTo(32)
         }
         
-        horizontalWall5.snp.makeConstraints{
+        horizontalWall5.snp.makeConstraints {
             $0.height.equalTo(1)
             $0.bottom.equalTo(startdateLabel.snp.bottom).offset(20)
             $0.trailing.leading.equalTo(secondSection).inset(17)
         }
         
-        timeFilterLabel.snp.makeConstraints{
+        timeFilterLabel.snp.makeConstraints {
             $0.top.equalTo(horizontalWall5.snp.bottom).offset(19.5)
             $0.leading.equalTo(thirdSection.snp.leading).offset(12)
         }
         
-        timeFilterImage.snp.makeConstraints{
+        timeFilterImage.snp.makeConstraints {
             $0.top.equalTo(horizontalWall5.snp.bottom).offset(18.5)
             $0.leading.equalTo(timeFilterLabel.snp.trailing).offset(8)
         }
         
-        sunButton.snp.makeConstraints{
+        sunButton.snp.makeConstraints {
             $0.top.equalTo(horizontalWall5.snp.bottom).offset(9.5)
             $0.trailing.equalTo(thirdSection.snp.trailing).offset(-121.65)
             $0.width.equalTo(42.35)
             $0.height.equalTo(36)
         }
         
-        coffeeButton.snp.makeConstraints{
+        coffeeButton.snp.makeConstraints {
             $0.top.equalTo(horizontalWall5.snp.bottom).offset(9.5)
             $0.trailing.equalTo(thirdSection.snp.trailing).offset(-71.82)
             $0.width.equalTo(42.35)
             $0.height.equalTo(36)
         }
         
-        moonButton.snp.makeConstraints{
+        moonButton.snp.makeConstraints {
             $0.top.equalTo(horizontalWall5.snp.bottom).offset(9.5)
             $0.trailing.equalTo(thirdSection.snp.trailing).offset(-22)
             $0.width.equalTo(42.35)
             $0.height.equalTo(36)
         }
         
-        horizontalWall6.snp.makeConstraints{
+        horizontalWall6.snp.makeConstraints {
             $0.height.equalTo(1)
             $0.bottom.equalTo(timeFilterLabel.snp.bottom).offset(20)
             $0.trailing.leading.equalTo(secondSection).inset(17)
         }
         
-        themeLabel.snp.makeConstraints{
+        themeLabel.snp.makeConstraints {
             $0.top.equalTo(horizontalWall6.snp.bottom).offset(17.5)
             $0.leading.equalTo(thirdSection.snp.leading).offset(12)
         }
         
-        themenilLabel.snp.makeConstraints{
+        themenilLabel.snp.makeConstraints {
             $0.top.equalTo(horizontalWall6.snp.bottom).offset(18.5)
             $0.trailing.equalTo(thirdSection.snp.trailing).offset(-58)
         }
         
-        themeButton.snp.makeConstraints{
+        themeButton.snp.makeConstraints {
             $0.top.equalTo(horizontalWall6.snp.bottom).offset(17)
             $0.trailing.equalTo(thirdSection.snp.trailing).offset(-34)
-
         }
         
-        saveButton.snp.makeConstraints{
+        saveroutineButton.snp.makeConstraints {
             $0.bottom.equalToSuperview()
             $0.width.equalTo(375)
             $0.height.equalTo(71)
