@@ -11,7 +11,6 @@ struct Dates {
     let dateComponents: DateComponents
     let dates: String? = nil
     var color: UIColor = .Semantic.semantic_orange
-    var isSelected: Bool = false
 }
 
 extension Dates {
@@ -94,12 +93,16 @@ extension Dates {
         let formatter = Dates.setFormmatter()
         var nowDay = monday
 
-        for _ in 0...6 {
+        for i in 0...6 {
             let startDayString = formatter.string(from: nowDay).components(separatedBy: "-")
             guard let y = Int(startDayString[0]), let m = Int(startDayString[1]), let d = Int(startDayString[2]) else { break }
             nowDay = nowDay.addingTimeInterval(86400)
             
-            date.append(Dates(dateComponents: DateComponents(year: y, month: m, day: d)))
+            if i == 6 {
+                date.append(Dates(dateComponents: DateComponents(year: y, month: m, day: d), color: .Semantic.semantic_red))
+            } else {
+                date.append(Dates(dateComponents: DateComponents(year: y, month: m, day: d)))
+            }
         }
         return date
     }

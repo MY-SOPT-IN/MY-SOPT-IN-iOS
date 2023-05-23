@@ -26,8 +26,7 @@ final class MainPageRoutineViewController: UIViewController {
     private let routineTableViewHeaderHeight: CGFloat = 140
     private var headerViewStartPoint: CGFloat = 0
     
-    private var selectToday = true
-    private var preSelect = [0, 0]
+    private var selectedDay = Dates.getToday()?.dateComponents
     
     // MARK: - View Life Cycle
     
@@ -115,12 +114,10 @@ extension MainPageRoutineViewController: UITableViewDataSource {
 }
 
 extension MainPageRoutineViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let index = headerView.dateCollectionViews.firstIndex(of: collectionView as! SelectDateCollectionView) {
-            selectToday = false
-            dateDummy[preSelect[0]][preSelect[1]].isSelected = false
-
-            dateDummy[index][indexPath.item].isSelected = true
+            selectedDay = dateDummy[index][indexPath.item].dateComponents
             collectionView.reloadData()
             headerView.dateLabel.text = dateDummy[index][indexPath.item].getDateString()
         }
@@ -139,12 +136,10 @@ extension MainPageRoutineViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectDateCVC.identifier, for: indexPath) as? SelectDateCVC else { return UICollectionViewCell() }
         if let index = headerView.dateCollectionViews.firstIndex(of: collectionView as! SelectDateCollectionView) {
-            if dateDummy[index][indexPath.item].dateComponents == Dates.getToday()?.dateComponents && selectToday {
-                    dateDummy[index][indexPath.item].isSelected = true
-            }
-            cell.configCell(date: dateDummy[index][indexPath.item], selected: dateDummy[index][indexPath.item].isSelected)
-            if dateDummy[index][indexPath.item].isSelected {
-                preSelect = [index, indexPath.item]
+            if selectedDay == dateDummy[index][indexPath.item].dateComponents {
+                cell.configCell(date: dateDummy[index][indexPath.item], selected: true)
+            } else {
+                cell.configCell(date: dateDummy[index][indexPath.item], selected: false)
             }
         }
         return cell
@@ -211,5 +206,3 @@ extension MainPageRoutineViewController {
         headerView.dateScrollView.contentOffset.x = UIScreen.main.bounds.width
     }
 }
-
-// 선택하면 날짜 값 지정해줘서 날짜값이랑 셀에 컨피규어 하려는 데이터랑 동일하면 true 넣어주기
