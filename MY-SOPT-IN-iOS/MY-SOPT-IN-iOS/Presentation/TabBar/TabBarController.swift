@@ -36,6 +36,7 @@ final class TabBarController: UITabBarController {
     
     private func setViewController() {
         
+        
         let homeViewController = MainPageViewController()
         homeViewController.tabBarItem = UITabBarItem(title: "홈", image: ImageLiterals.TabBar.home, tag: 0)
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
@@ -46,7 +47,7 @@ final class TabBarController: UITabBarController {
         routineViewController.tabBarItem = UITabBarItem(title: "루틴추천", image: ImageLiterals.TabBar.like, tag: 1)
         let routineNavigationController = UINavigationController(rootViewController: routineViewController)
         
-        let achieveViewController = UIViewController()
+        let achieveViewController = AchieveViewController()
         achieveViewController.view.backgroundColor = .Gray.gray_100
         achieveViewController.tabBarItem = UITabBarItem(title: "성취", image: ImageLiterals.TabBar.achieve, tag: 2)
         let achieveNavigationController = UINavigationController(rootViewController: achieveViewController)
@@ -56,8 +57,8 @@ final class TabBarController: UITabBarController {
         socialViewController.tabBarItem = UITabBarItem(title: "소셜", image: ImageLiterals.TabBar.social, tag: 3)
         let socialNavigationController = UINavigationController(rootViewController: socialViewController)
         
-        let myProfileViewController = UIViewController()
-        myProfileViewController.view.backgroundColor = .Gray.gray_400
+        let myProfileViewController = RecallViewController()
+//        myProfileViewController.view.backgroundColor = .Gray.gray_400
         myProfileViewController.tabBarItem = UITabBarItem(title: "내정보", image: ImageLiterals.TabBar.myProfile, tag: 4)
         let myProfileNavigationController = UINavigationController(rootViewController: myProfileViewController)
         

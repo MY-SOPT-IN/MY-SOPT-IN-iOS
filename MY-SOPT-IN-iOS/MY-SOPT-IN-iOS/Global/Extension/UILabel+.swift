@@ -18,4 +18,14 @@ extension UILabel {
         attributedString.addAttributes([.font: font as Any, .foregroundColor: color as Any], range: range)
         attributedText = attributedString
     }
+    
+    func asFont(targetString: String, font: UIFont) {
+         guard let labelText = text else { return }
+         
+         let attributedString = NSMutableAttributedString(string: labelText)
+         let range = (labelText as NSString).range(of: targetString)
+         attributedString.addAttributes([.font: font], range: range)
+         
+         attributedText = attributedString
+     }
 }

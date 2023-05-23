@@ -12,6 +12,8 @@ class MainPageRoutineTVC: UITableViewCell {
     // MARK: - Properties
 
     static let identifier = "MainPageRoutineCell"
+    static let routineBorderWidth: CGFloat = UIScreen.main.bounds.size.width - 45 - 139
+    static let routineBorderLeading: CGFloat = 125
     
     let whenDoRoutineView = UIView()
     let routineContentView = UIView()
@@ -50,6 +52,7 @@ class MainPageRoutineTVC: UITableViewCell {
     }
     
     func configCell(index: Int, _ routine: Routine, isFirstCell: Bool = false, isLastCell: Bool = false){
+        
         indexLabel.text = String(index)
         whenDoRoutineLabel.text = routine.whendo
         routineContentLabel.text = routine.content
@@ -63,7 +66,7 @@ class MainPageRoutineTVC: UITableViewCell {
     
     // MARK: - Methods
 
-    func setStyle() {
+    private func setStyle() {
         
         contentView.backgroundColor = .Gray.gray_50
         selectionStyle = .none
@@ -104,7 +107,8 @@ class MainPageRoutineTVC: UITableViewCell {
         }
     }
     
-    func setHierarchy() {
+    private func setHierarchy() {
+        
         contentView.addSubviews(indexLabel,
                                 whenDoRoutineView,
                                 routineContentView,
@@ -114,7 +118,7 @@ class MainPageRoutineTVC: UITableViewCell {
         routineContentView.addSubview(routineContentLabel)
     }
     
-    func setLayout() {
+    private func setLayout() {
         
         indexLabel.snp.makeConstraints {
             $0.width.equalTo(15)
@@ -154,6 +158,7 @@ class MainPageRoutineTVC: UITableViewCell {
     }
     
     private func makeCellRound(firstLastCell: FirstLastCell) {
+        
         [whenDoRoutineView, routineContentView, doRoutineButton].forEach {
             $0.layer.cornerRadius = 5
             $0.layer.maskedCorners = firstLastCell.maskedCorner
