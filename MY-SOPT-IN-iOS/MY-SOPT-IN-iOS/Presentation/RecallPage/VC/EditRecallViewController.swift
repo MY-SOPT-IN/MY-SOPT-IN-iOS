@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
+
 class EditRecallViewController: UIViewController {
     
     private let addNavigationbar = Customnavigationbar("회고 수정").then{
