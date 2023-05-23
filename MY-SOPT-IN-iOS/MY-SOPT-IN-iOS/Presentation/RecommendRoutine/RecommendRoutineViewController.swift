@@ -22,7 +22,6 @@ final class RecommendRoutineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
-        view.backgroundColor = .black
     }
     
     @objc
@@ -35,6 +34,7 @@ final class RecommendRoutineViewController: UIViewController {
 
 extension RecommendRoutineViewController {
     private func setLayout() {
+        view.backgroundColor = .black
         view.addSubviews(moreButton)
         
         moreButton.snp.makeConstraints {
