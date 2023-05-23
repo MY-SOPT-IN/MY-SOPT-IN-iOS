@@ -111,10 +111,13 @@ class CustomPresentationController: UIPresentationController {
         
         presentedViewController.view.layer.cornerRadius = 12
         presentedViewController.view.clipsToBounds = true
+<<<<<<< HEAD
     }
     
     @objc private func backgroundViewTapped() {
         presentedViewController.dismiss(animated: true, completion: nil)
+=======
+>>>>>>> #14-회고모아보기뷰구현
     }
 
 }
