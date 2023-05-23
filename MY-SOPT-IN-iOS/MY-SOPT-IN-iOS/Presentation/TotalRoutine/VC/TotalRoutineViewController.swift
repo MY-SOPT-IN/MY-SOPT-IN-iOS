@@ -106,6 +106,9 @@ class CustomPresentationController: UIPresentationController {
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
             backgroundView.alpha = 1
         }, completion: nil)
+        
+        presentedViewController.view.layer.cornerRadius = 12
+        presentedViewController.view.clipsToBounds = true
     }
 
 }
