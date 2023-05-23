@@ -12,7 +12,7 @@ import Then
 
 final class TotalRoutineViewController: UIViewController {
     
-    //MARK: - UI Components
+    // MARK: - UI Components
     
     private let naviBar = UIView()
     
@@ -37,15 +37,6 @@ final class TotalRoutineViewController: UIViewController {
         return button
     }()
     
-    private lazy var doneButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("완료", for: .normal)
-        button.setTitleColor(UIColor.Gray.gray_900, for: .normal)
-        button.addTarget(self, action: #selector(datePickerDone), for: .touchUpInside)
-        button.isHidden = true
-        return button
-    }()
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.showsVerticalScrollIndicator = true
@@ -58,18 +49,7 @@ final class TotalRoutineViewController: UIViewController {
         tableView.dataSource = self
         return tableView
     }()
-    
-    private lazy var datePicker: UIDatePicker = {
-        let picker = UIDatePicker()
-        picker.datePickerMode = .date
-        picker.preferredDatePickerStyle = .inline
-        picker.backgroundColor = .white
-        picker.tintColor = .Gray.gray_900
-        picker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
-        picker.isHidden = true
-        return picker
-    }()
-    
+
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -79,11 +59,6 @@ final class TotalRoutineViewController: UIViewController {
         registerCells()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        datePicker.frame = CGRect(x: tableView.frame.maxX - 350, y: calendarButton.frame.maxY + 80, width: 150, height: 150)
-    }
-    
     private func registerCells() {
         tableView.register(TotalRoutineTableViewCell.self, forCellReuseIdentifier: TotalRoutineTableViewCell.className)
         tableView.register(TotalRoutineHeaderView.self, forHeaderFooterViewReuseIdentifier: TotalRoutineHeaderView.className)
@@ -91,26 +66,48 @@ final class TotalRoutineViewController: UIViewController {
     
     @objc private func showDatePicker() {
         UIView.animate(withDuration: 0.3) {
-            self.calendarButton.isHidden = true
-            self.doneButton.isHidden = false
-            self.datePicker.isHidden = false
+            let modal = DatePickerViewController()
+            modal.modalPresentationStyle = .custom
+            modal.transitioningDelegate = self
+            self.present(modal, animated: true)
         }
     }
-        
-    @objc private func datePickerValueChanged() {
-        let selectedDate = datePicker.date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let formattedDate = dateFormatter.string(from: selectedDate)
-        print("Selected Date: \(formattedDate)")
-        self.dismiss(animated: false)
+}
+
+// MARK: - UIViewControllerTransitioningDelegate
+
+extension TotalRoutineViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return CustomPresentationController(presentedViewController: presented, presenting: presenting)
+    }
+}
+
+// MARK: - PresentationController
+
+class CustomPresentationController: UIPresentationController {
+    
+    override var frameOfPresentedViewInContainerView: CGRect {
+        guard let containerView = containerView else { return .zero }
+        let yOffset: CGFloat = 300
+        let yOrigin = containerView.bounds.height - yOffset
+        return CGRect(x: 0, y: yOrigin, width: containerView.bounds.width, height: yOffset)
     }
     
-    @objc private func datePickerDone(_ sender: UIButton) {
-        datePicker.isHidden = true
-        calendarButton.isHidden = false
-        doneButton.isHidden = true
+    
+    override func presentationTransitionWillBegin() {
+        guard let containerView = containerView else { return }
+        
+        // 배경 뷰 생성
+        let backgroundView = UIView(frame: containerView.bounds)
+        backgroundView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        backgroundView.alpha = 0
+        containerView.insertSubview(backgroundView, at: 0)
+        
+        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
+            backgroundView.alpha = 1
+        }, completion: nil)
     }
+
 }
 
 // MARK: - UI & Layout
@@ -122,8 +119,8 @@ extension TotalRoutineViewController {
     }
     
     private func setLayout() {
-        view.addSubviews(naviBar, tableView, datePicker)
-        naviBar.addSubviews(backButton, naviTitle, calendarButton, doneButton)
+        view.addSubviews(naviBar, tableView)
+        naviBar.addSubviews(backButton, naviTitle, calendarButton)
         
         naviBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -146,11 +143,6 @@ extension TotalRoutineViewController {
             $0.top.equalTo(backButton)
             $0.trailing.equalToSuperview().inset(24)
             $0.size.equalTo(18)
-        }
-        
-        doneButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(24)
         }
         
         tableView.snp.makeConstraints {
