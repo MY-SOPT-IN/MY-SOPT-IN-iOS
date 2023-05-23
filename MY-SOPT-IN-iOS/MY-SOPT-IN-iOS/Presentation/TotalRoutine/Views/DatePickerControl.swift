@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class DatePickerControl: UIControl {
+final class DatePickerControl: UIControl {
     
     // MARK: - Properties
     

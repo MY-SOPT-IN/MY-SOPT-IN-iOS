@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class DatePickerViewController: UIViewController {
+final class DatePickerViewController: UIViewController {
     
     // MARK: - UI Components
     

@@ -27,7 +27,7 @@ enum RoutineTitleStyle {
     }
 }
 
-class TotalRoutineTableViewCell: UITableViewCell {
+final class TotalRoutineTableViewCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
