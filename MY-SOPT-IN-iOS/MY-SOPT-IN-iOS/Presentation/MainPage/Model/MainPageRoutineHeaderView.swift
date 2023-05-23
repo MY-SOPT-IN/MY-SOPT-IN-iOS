@@ -21,8 +21,8 @@ class MainPageRoutineHeaderView: UIView {
                                     nextSelectDateCollectionView]
     
     private var dateView = UIView()
-    var dateLabel = UILabel()
     private var editFilterLabel = UILabel()
+    var dateLabel = UILabel()
     
     private let screenWidth = UIScreen.main.bounds.width
     

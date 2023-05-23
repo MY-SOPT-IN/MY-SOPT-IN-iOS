@@ -39,7 +39,6 @@ final class MainPageRoutineViewController: UIViewController {
         setLayout()
     }
     
-    
     // MARK: - Methods
     
     private func target() {
@@ -69,6 +68,8 @@ final class MainPageRoutineViewController: UIViewController {
             $0.backgroundColor = .Gray.gray_50
             $0.tableHeaderView = headerView
             $0.tableHeaderView?.frame.size.height = routineTableViewHeaderHeight
+            $0.tableFooterView = UIView()
+            $0.tableFooterView?.frame.size.height = 20
         }
         
         setBazierView()
@@ -83,11 +84,9 @@ final class MainPageRoutineViewController: UIViewController {
     }
     
     private func setLayout() {
-        
-        // FIXME: - bottomInset 수정 필요
-        
+                
         routineView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(89)
+            $0.bottom.equalToSuperview()
             $0.top.leading.trailing.equalToSuperview()
         }
     }
@@ -159,12 +158,10 @@ extension MainPageRoutineViewController: UICollectionViewDataSource {
 extension MainPageRoutineViewController: UIScrollViewDelegate {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
         headerViewStartPoint = targetContentOffset.pointee.x
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
         switch headerViewStartPoint {
         case 0:
             previousDates()
@@ -177,28 +174,23 @@ extension MainPageRoutineViewController: UIScrollViewDelegate {
         }
     }
     
-}
-
-extension MainPageRoutineViewController {
-    func previousDates() {
+    private func previousDates() {
         for i in [2, 1] {
             dateDummy[i] = dateDummy[i - 1]
         }
         dateDummy[0] = Dates.getPreviousDateDummy(current: dateDummy[1])
-
         reloadDateData()
     }
     
-    func nextDates() {
+    private func nextDates() {
         for i in [0, 1] {
             dateDummy[i] = dateDummy[i + 1]
         }
         dateDummy[2] = Dates.getNextDateDummy(current: dateDummy[1])
-        
         reloadDateData()
     }
     
-    func reloadDateData() {
+    private func reloadDateData() {
         headerView.previousSelectDateCollectionView.reloadData()
         headerView.currentSelectDateCollectionView.reloadData()
         headerView.nextSelectDateCollectionView.reloadData()
@@ -206,3 +198,5 @@ extension MainPageRoutineViewController {
         headerView.dateScrollView.contentOffset.x = UIScreen.main.bounds.width
     }
 }
+
+

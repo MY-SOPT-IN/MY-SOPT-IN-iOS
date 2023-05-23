@@ -117,9 +117,7 @@ extension MainPageViewController: UIPageViewControllerDelegate {
 }
 
 extension MainPageViewController: UIPageViewControllerDataSource {
-    
-    // FIXME: - index가 2개이므로 더 간결하게 줄일 수 있지 않을까..?
-    
+        
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         if viewController is MainPageRecallViewController {

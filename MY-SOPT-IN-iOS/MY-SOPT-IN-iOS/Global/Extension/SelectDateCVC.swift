@@ -17,9 +17,9 @@ class SelectDateCVC: UICollectionViewCell {
     static let identifier = "SelectDateCell"
     
     private let cellView = UIView()
-    var weeksdayLabel = UILabel()
-    var dateCircleView = UIView()
-    var dateLabel = UILabel()
+    private var weeksdayLabel = UILabel()
+    private var dateCircleView = UIView()
+    private var dateLabel = UILabel()
     
     private let dateCircleSize: CGFloat = 34
     
@@ -64,7 +64,6 @@ class SelectDateCVC: UICollectionViewCell {
     private func setStyle() {
         
         self.makeRounded(radius: 15)
-//        selectedDate = false
         
         weeksdayLabel.do {
             $0.font = .bodyFont()

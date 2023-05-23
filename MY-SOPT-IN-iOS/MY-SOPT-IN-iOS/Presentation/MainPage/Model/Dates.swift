@@ -31,12 +31,14 @@ extension Dates {
     }
     
     func getDateString() -> String? {
+        
         if let y = dateComponents.year, let m = dateComponents.month, let d = dateComponents.day {
             return String(y) + "년 " + String(m) + "월 " + String(d) + "일"
         } else { return "" }
     }
     
     static func setFormmatter() -> DateFormatter {
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd-e"    //e는 1~7(sun~sat)
         formatter.locale = Locale(identifier: "ko")
@@ -44,6 +46,7 @@ extension Dates {
     }
     
     static func getToday() -> Dates? {
+        
         let formatter = Dates.setFormmatter()
         let today = Date()
         
@@ -54,6 +57,7 @@ extension Dates {
     }
     
     static func dummy() -> [Dates] {
+        
         let formatter: DateFormatter = setFormmatter()
 
         let today = Date()
@@ -68,6 +72,7 @@ extension Dates {
     }
     
     static func getPreviousDateDummy(current: [Dates] = dummy()) -> [Dates] {
+        
         let myDateComponents = current[0].dateComponents
         let calendar = Calendar.current
         guard let myDate = calendar.date(from: myDateComponents) else { return [Dates]() }
@@ -78,6 +83,7 @@ extension Dates {
     }
     
     static func getNextDateDummy(current: [Dates] = dummy()) -> [Dates] {
+        
         let myDateComponents = current[0].dateComponents
         let calendar = Calendar.current
         guard let myDate = calendar.date(from: myDateComponents) else { return [Dates]() }
@@ -88,6 +94,7 @@ extension Dates {
     }
     
     static func getWeeks(monday: Date) -> [Dates] {
+        
         var date = [Dates]()
         
         let formatter = Dates.setFormmatter()
