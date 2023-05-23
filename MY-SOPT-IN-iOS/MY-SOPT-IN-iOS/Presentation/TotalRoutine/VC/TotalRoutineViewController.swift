@@ -93,7 +93,6 @@ class CustomPresentationController: UIPresentationController {
         return CGRect(x: 0, y: yOrigin, width: containerView.bounds.width, height: yOffset)
     }
     
-    
     override func presentationTransitionWillBegin() {
         guard let containerView = containerView else { return }
         
@@ -103,9 +102,19 @@ class CustomPresentationController: UIPresentationController {
         backgroundView.alpha = 0
         containerView.insertSubview(backgroundView, at: 0)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backgroundViewTapped))
+        backgroundView.addGestureRecognizer(tapGesture)
+        
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
             backgroundView.alpha = 1
         }, completion: nil)
+        
+        presentedViewController.view.layer.cornerRadius = 12
+        presentedViewController.view.clipsToBounds = true
+    }
+    
+    @objc private func backgroundViewTapped() {
+        presentedViewController.dismiss(animated: true, completion: nil)
     }
 
 }
