@@ -13,8 +13,7 @@ protocol BottomSheetDelegate: AnyObject {
     func didTapButtonInBottomSheet()
 }
 
-
-class BottomSheetViewController: UIViewController {
+final class BottomSheetViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -28,35 +27,35 @@ class BottomSheetViewController: UIViewController {
         
         view.backgroundColor = .white
         view.layer.cornerRadius = 25
+        setBottomSheet()
         setupNavigationBar()
         
+        bottomSheetView.editButton.addTarget(self, action: #selector(pushToEditRoutine), for: .touchUpInside)
+        bottomSheetView.deleteButton.addTarget(self, action: #selector(presentToCustomAlert), for: .touchUpInside)
+    }
+    
+    // MARK: - Setup
+    
+    private func setBottomSheet() {
         if let sheetPresentationController = sheetPresentationController {
             sheetPresentationController.detents = [.medium(), .large()]
         }
-        
+
         view.addSubview(bottomSheetView)
+        
         bottomSheetView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(62)
             $0.leading.equalToSuperview().offset(33)
             $0.height.equalToSuperview()
             $0.width.equalTo(100)
         }
-        
-        bottomSheetView.editButton.addTarget(self, action: #selector(pushToEditRoutine), for: .touchUpInside)
-        bottomSheetView.deleteButton.addTarget(self, action: #selector(presentToCustomAlert), for: .touchUpInside)
-
     }
-    
-    
-    
-    
-    
-    // MARK: - Setup
     
     private func setupNavigationBar() {
         let navBar = UINavigationBar().then {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
+        
         view.addSubview(navBar)
         
         navBar.snp.makeConstraints {
@@ -79,8 +78,8 @@ class BottomSheetViewController: UIViewController {
     
     // MARK: - Actions
     
-    // dismissBottomSheet
-    @objc private func dismissBottomSheet() {
+    @objc
+    private func dismissBottomSheet() {
         dismiss(animated: true, completion: nil)
     }
     
