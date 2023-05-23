@@ -60,7 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		148675B62A1D08A00082D579 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Config.swift; path = "MY-SOPT-IN-iOS/Network/Config.swift"; sourceTree = SOURCE_ROOT; };
+		148675B62A1D08A00082D579 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Config.swift; path = "MY-SOPT-IN-iOS/Network/Config/Config.swift"; sourceTree = SOURCE_ROOT; };
 		148675B82A1D0A9D0082D579 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkResult.swift; path = "MY-SOPT-IN-iOS/Network/Foundation/NetworkResult.swift"; sourceTree = SOURCE_ROOT; };
 		148675BA2A1D0AFF0082D579 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIConstants.swift; path = "MY-SOPT-IN-iOS/Network/Foundation/APIConstants.swift"; sourceTree = SOURCE_ROOT; };
 		148675BC2A1D0CBE0082D579 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseResponse.swift; path = "MY-SOPT-IN-iOS/Network/Foundation/BaseResponse.swift"; sourceTree = SOURCE_ROOT; };
@@ -138,6 +138,51 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
+		148675C92A1D1ABE0082D579 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				148675CB2A1D1C5F0082D579 /* Routine */,
+				148675CA2A1D1C3F0082D579 /* Retro */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		148675CA2A1D1C3F0082D579 /* Retro */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Retro;
+			sourceTree = "<group>";
+		};
+		148675CB2A1D1C5F0082D579 /* Routine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Routine;
+			sourceTree = "<group>";
+		};
+		148675CC2A1D1C730082D579 /* Routine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Routine;
+			path = "MY-SOPT-IN-iOS/Network/API/Routine";
+			sourceTree = "<group>";
+		};
+		148675CD2A1D1C780082D579 /* Retro */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Retro;
+			sourceTree = "<group>";
+		};
+		148675CE2A1D1E430082D579 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
 		251030AA2A1C8C3900AD5292 /* VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,7 +258,8 @@
 		6B44E4812A126D0500E9CAF9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				148675B62A1D08A00082D579 /* Config.swift */,
+				148675CE2A1D1E430082D579 /* DTO */,
+				148675C92A1D1ABE0082D579 /* Router */,
 				148675BE2A1D0CEB0082D579 /* Foundation */,
 				6B44E4822A126D0D00E9CAF9 /* API */,
 				6B44E4832A126D1300E9CAF9 /* Config */,
@@ -224,6 +270,8 @@
 		6B44E4822A126D0D00E9CAF9 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				148675CC2A1D1C730082D579 /* Routine */,
+				148675CD2A1D1C780082D579 /* Retro */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -231,6 +279,7 @@
 		6B44E4832A126D1300E9CAF9 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				148675B62A1D08A00082D579 /* Config.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -526,6 +575,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BASE_URL = "http://43.201.9.136:8080";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -586,6 +636,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BASE_URL = "http://43.201.9.136:8080";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
