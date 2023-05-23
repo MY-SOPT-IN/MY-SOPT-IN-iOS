@@ -14,7 +14,7 @@ protocol BottomSheetDelegate: AnyObject {
 }
 
 
-class BottomSheetViewController: UIViewController {
+final class BottomSheetViewController: UIViewController {
     
     // MARK: - Properties
     
