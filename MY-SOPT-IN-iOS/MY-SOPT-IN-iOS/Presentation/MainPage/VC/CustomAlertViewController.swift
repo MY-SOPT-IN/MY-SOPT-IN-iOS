@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class CustomAlertViewController: UIViewController {
+final class CustomAlertViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -37,7 +37,7 @@ class CustomAlertViewController: UIViewController {
         $0.font = UIFont.body2Font()
     }
     
-    lazy var cancelButton = UIButton().then {
+    private lazy var cancelButton = UIButton().then {
         $0.setTitle("아니", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.titleLabel?.font = UIFont.body2Font()
@@ -45,10 +45,9 @@ class CustomAlertViewController: UIViewController {
             self?.dismissCustomAlert()
         }
         $0.addAction(action, for: .touchUpInside)
-//        $0.addTarget(CustomAlertViewController.self, action: #selector(dismissCustomAlert), for: .touchUpInside)
     }
     
-    lazy var deleteButton = UIButton().then {
+    private lazy var deleteButton = UIButton().then {
         $0.setTitle("삭제할래", for: .normal)
         $0.titleLabel?.font = UIFont.body2Font()
         $0.setTitleColor(UIColor.Semantic.semantic_red, for: .normal)
@@ -56,7 +55,6 @@ class CustomAlertViewController: UIViewController {
             self?.touchdeleteButton()
         }
         $0.addAction(action, for: .touchUpInside)
-//        $0.addTarget(CustomAlertViewController.self, action: #selector(touchdeleteButton), for: .touchUpInside)
     }
     
     private let verticalWall = UIView().then {
@@ -142,7 +140,6 @@ class CustomAlertViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
     
     private func dismissCustomAlert() {
         dismiss(animated: true, completion: nil)

@@ -7,10 +7,13 @@
 
 import UIKit
 
-class EditRoutineViewController: UIViewController {
+import SnapKit
+import Then
+
+final class EditRoutineViewController: UIViewController {
     
     
-    private let editNavigationbar = Customnavigationbar("루틴 수정하기").then{
+    private let editNavigationbar = Customnavigationbar("루틴 수정하기").then {
         $0.navigationBack.addTarget(self, action: #selector(popToEditRoutineViewController), for: .touchUpInside)
     }
     
@@ -35,12 +38,12 @@ class EditRoutineViewController: UIViewController {
             editNavigationbar,
             editRoutine
         )
-        editNavigationbar.snp.makeConstraints{
+        editNavigationbar.snp.makeConstraints {
             $0.top.equalToSuperview().offset(40)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(44)
         }
-        editRoutine.snp.makeConstraints{
+        editRoutine.snp.makeConstraints {
             $0.top.equalTo(editNavigationbar.snp.bottom)
             $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()

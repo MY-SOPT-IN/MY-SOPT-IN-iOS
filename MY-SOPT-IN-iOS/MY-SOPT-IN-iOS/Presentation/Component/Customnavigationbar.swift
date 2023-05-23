@@ -12,19 +12,23 @@ import Then
 
 class Customnavigationbar: UIView {
 
+    // MARK: - UI Components
+
     private let navigationView = UIView().then {
         $0.backgroundColor = .white
     }
     
-     let navigationBack = UIButton().then{
+     let navigationBack = UIButton().then {
         $0.setImage(ImageLiterals.Icon.add_ic_arrow, for: .normal)
     }
     
-     let navigationTitle = UILabel().then{
+     let navigationTitle = UILabel().then {
         $0.font = UIFont.title1Font()
         $0.textColor = UIColor.Gray.gray_900
     }
     
+    // MARK: - Initialization
+
     init(_ title: String) {
         super.init(frame: .zero)
         setUI(title)
@@ -33,7 +37,8 @@ class Customnavigationbar: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+    
+    // MARK: - setUI
     
     func setUI(_ title: String){
         self.navigationTitle.text = title
@@ -57,6 +62,5 @@ class Customnavigationbar: UIView {
             $0.top.equalTo(navigationView.snp.top).offset(12)
             $0.centerX.equalTo(navigationView)
         }
-        
     }
 }

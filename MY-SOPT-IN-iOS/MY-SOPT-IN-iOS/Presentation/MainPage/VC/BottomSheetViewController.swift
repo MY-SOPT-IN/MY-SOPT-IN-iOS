@@ -31,11 +31,8 @@ class BottomSheetViewController: UIViewController {
         setBottomSheet()
         setupNavigationBar()
         
-      
-        
         bottomSheetView.editButton.addTarget(self, action: #selector(pushToEditRoutine), for: .touchUpInside)
         bottomSheetView.deleteButton.addTarget(self, action: #selector(presentToCustomAlert), for: .touchUpInside)
-
     }
     
     
@@ -44,11 +41,11 @@ class BottomSheetViewController: UIViewController {
     
     // MARK: - Setup
     
-    private func setBottomSheet(){
+    private func setBottomSheet() {
         if let sheetPresentationController = sheetPresentationController {
             sheetPresentationController.detents = [.medium(), .large()]
         }
-        
+
         view.addSubview(bottomSheetView)
         bottomSheetView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(62)
@@ -84,7 +81,6 @@ class BottomSheetViewController: UIViewController {
     
     // MARK: - Actions
     
-    // dismissBottomSheet
     @objc
     private func dismissBottomSheet() {
         dismiss(animated: true, completion: nil)
