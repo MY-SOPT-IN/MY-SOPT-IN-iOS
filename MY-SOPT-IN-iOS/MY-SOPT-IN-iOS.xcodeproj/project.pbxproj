@@ -39,6 +39,7 @@
 		6B822EEC2A17A5650080FB7C /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B822EEB2A17A5650080FB7C /* Dates.swift */; };
 		6B822EEE2A17E2220080FB7C /* SelectDateHeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B822EED2A17E2220080FB7C /* SelectDateHeaderFooter.swift */; };
 		6B8EC7FA2A1B3B8000926510 /* SelectDateCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8EC7F92A1B3B8000926510 /* SelectDateCollectionView.swift */; };
+		6B8EC7FC2A1CB44400926510 /* MainPageRecallHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8EC7FB2A1CB44400926510 /* MainPageRecallHeaderView.swift */; };
 		6BAFCD242A136B0D00994100 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD232A136B0D00994100 /* TabBarController.swift */; };
 		6BAFCD2C2A153C1300994100 /* MainPageTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD2B2A153C1300994100 /* MainPageTopBarView.swift */; };
 		6BAFCD2E2A1541CB00994100 /* MainPageRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFCD2D2A1541CB00994100 /* MainPageRoutineViewController.swift */; };
@@ -83,6 +84,7 @@
 		6B822EEB2A17A5650080FB7C /* Dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
 		6B822EED2A17E2220080FB7C /* SelectDateHeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectDateHeaderFooter.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/Model/SelectDateHeaderFooter.swift"; sourceTree = SOURCE_ROOT; };
 		6B8EC7F92A1B3B8000926510 /* SelectDateCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateCollectionView.swift; sourceTree = "<group>"; };
+		6B8EC7FB2A1CB44400926510 /* MainPageRecallHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRecallHeaderView.swift; sourceTree = "<group>"; };
 		6BAFCD232A136B0D00994100 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		6BAFCD2B2A153C1300994100 /* MainPageTopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainPageTopBarView.swift; path = "MY-SOPT-IN-iOS/Presentation/MainPage/VC/MainPageTopBarView.swift"; sourceTree = SOURCE_ROOT; };
 		6BAFCD2D2A1541CB00994100 /* MainPageRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRoutineViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				6BF052E12A16B09700893084 /* MainPageRoutineTVC.swift */,
 				6BF052EA2A173A6900893084 /* MainPageRoutineHeaderView.swift */,
 				6BDE9A5B2A19C71700416719 /* MainPageRoutineBorderView.swift */,
+				6B8EC7FB2A1CB44400926510 /* MainPageRecallHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				6B822EEE2A17E2220080FB7C /* SelectDateHeaderFooter.swift in Sources */,
 				6BAFCD302A15438F00994100 /* MainPageRecallViewController.swift in Sources */,
 				6B44E4A52A12A8EB00E9CAF9 /* UITextField+.swift in Sources */,
+				6B8EC7FC2A1CB44400926510 /* MainPageRecallHeaderView.swift in Sources */,
 				6BF052E92A16BE3400893084 /* Routine.swift in Sources */,
 				6BAFCD242A136B0D00994100 /* TabBarController.swift in Sources */,
 				6B44E49F2A12A72C00E9CAF9 /* UIStackView+.swift in Sources */,
