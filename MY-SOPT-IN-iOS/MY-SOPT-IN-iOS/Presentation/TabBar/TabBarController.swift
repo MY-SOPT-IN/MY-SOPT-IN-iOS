@@ -42,8 +42,8 @@ final class TabBarController: UITabBarController {
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
         homeNavigationController.setNavigationBarHidden(true, animated: true)
         
-        let routineViewController = UIViewController()
-        routineViewController.view.backgroundColor = .Gray.gray_50
+        let routineViewController = RecommendRoutineViewController()
+//        routineViewController.view.backgroundColor = .Gray.gray_50
         routineViewController.tabBarItem = UITabBarItem(title: "루틴추천", image: ImageLiterals.TabBar.like, tag: 1)
         let routineNavigationController = UINavigationController(rootViewController: routineViewController)
         
