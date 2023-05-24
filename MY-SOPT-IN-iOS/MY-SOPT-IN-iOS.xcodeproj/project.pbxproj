@@ -19,6 +19,13 @@
 		251030B02A1C8C7B00AD5292 /* EditRecallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251030AF2A1C8C7B00AD5292 /* EditRecallViewController.swift */; };
 		25491B502A17ADF800B16FA8 /* Customnavigationbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25491B4F2A17ADF800B16FA8 /* Customnavigationbar.swift */; };
 		25491B532A189DF200B16FA8 /* AchieveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25491B522A189DF200B16FA8 /* AchieveViewController.swift */; };
+		144624F42A1BDC1F008EAE22 /* DatePickerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144624F32A1BDC1F008EAE22 /* DatePickerControl.swift */; };
+		146BBB4A2A17EEEB00A6C21A /* RecommendRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BBB492A17EEEB00A6C21A /* RecommendRoutineViewController.swift */; };
+		146BBB4D2A17F0DF00A6C21A /* TotalRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BBB4C2A17F0DF00A6C21A /* TotalRoutineViewController.swift */; };
+		146BBB542A18D6CF00A6C21A /* TotalRoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BBB532A18D6CF00A6C21A /* TotalRoutineTableViewCell.swift */; };
+		146BBB562A18DC5600A6C21A /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BBB552A18DC5600A6C21A /* NSObject+.swift */; };
+		146BBB5A2A18E7A000A6C21A /* TotalRoutineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BBB592A18E79F00A6C21A /* TotalRoutineHeaderView.swift */; };
+		148675B52A1CDE630082D579 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148675B42A1CDE630082D579 /* DatePickerViewController.swift */; };
 		6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D74F2A126B5A0033BB21 /* AppDelegate.swift */; };
 		6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7512A126B5A0033BB21 /* SceneDelegate.swift */; };
 		6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7532A126B5A0033BB21 /* MainPageViewController.swift */; };
@@ -64,6 +71,13 @@
 		251030AF2A1C8C7B00AD5292 /* EditRecallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecallViewController.swift; sourceTree = "<group>"; };
 		25491B4F2A17ADF800B16FA8 /* Customnavigationbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Customnavigationbar.swift; path = "MY-SOPT-IN-iOS/Presentation/Component/Customnavigationbar.swift"; sourceTree = SOURCE_ROOT; };
 		25491B522A189DF200B16FA8 /* AchieveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveViewController.swift; sourceTree = "<group>"; };
+		144624F32A1BDC1F008EAE22 /* DatePickerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerControl.swift; sourceTree = "<group>"; };
+		146BBB492A17EEEB00A6C21A /* RecommendRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendRoutineViewController.swift; sourceTree = "<group>"; };
+		146BBB4C2A17F0DF00A6C21A /* TotalRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalRoutineViewController.swift; sourceTree = "<group>"; };
+		146BBB532A18D6CF00A6C21A /* TotalRoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalRoutineTableViewCell.swift; sourceTree = "<group>"; };
+		146BBB552A18DC5600A6C21A /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
+		146BBB592A18E79F00A6C21A /* TotalRoutineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalRoutineHeaderView.swift; sourceTree = "<group>"; };
+		148675B42A1CDE630082D579 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		6B27D74C2A126B5A0033BB21 /* MY-SOPT-IN-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MY-SOPT-IN-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B27D74F2A126B5A0033BB21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B27D7512A126B5A0033BB21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +155,42 @@
 				25491B4F2A17ADF800B16FA8 /* Customnavigationbar.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		146BBB482A17EEBE00A6C21A /* RecommendRoutine */ = {
+			isa = PBXGroup;
+			children = (
+				146BBB492A17EEEB00A6C21A /* RecommendRoutineViewController.swift */,
+			);
+			path = RecommendRoutine;
+			sourceTree = "<group>";
+		};
+		146BBB4B2A17F0AC00A6C21A /* TotalRoutine */ = {
+			isa = PBXGroup;
+			children = (
+				146BBB582A18E74E00A6C21A /* VC */,
+				146BBB572A18E74400A6C21A /* Views */,
+			);
+			path = TotalRoutine;
+			sourceTree = "<group>";
+		};
+		146BBB572A18E74400A6C21A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				146BBB532A18D6CF00A6C21A /* TotalRoutineTableViewCell.swift */,
+				146BBB592A18E79F00A6C21A /* TotalRoutineHeaderView.swift */,
+				144624F32A1BDC1F008EAE22 /* DatePickerControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		146BBB582A18E74E00A6C21A /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				146BBB4C2A17F0DF00A6C21A /* TotalRoutineViewController.swift */,
+				148675B42A1CDE630082D579 /* DatePickerViewController.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 		6B27D7432A126B5A0033BB21 = {
@@ -225,6 +275,7 @@
 				6B44E4A22A12A86300E9CAF9 /* UILabel+.swift */,
 				6B44E4A42A12A8EB00E9CAF9 /* UITextField+.swift */,
 				250DDF422A15AFC1008B8661 /* UIButton+.swift */,
+				146BBB552A18DC5600A6C21A /* NSObject+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -259,6 +310,8 @@
 			isa = PBXGroup;
 			children = (
 				25491B472A179AF300B16FA8 /* RecallPage */,
+				146BBB4B2A17F0AC00A6C21A /* TotalRoutine */,
+				146BBB482A17EEBE00A6C21A /* RecommendRoutine */,
 				6BAFCD222A136AC800994100 /* TabBar */,
 				6B44E48F2A12707A00E9CAF9 /* MainPage */,
 				25491B512A17AE9E00B16FA8 /* Component */,
@@ -434,29 +487,36 @@
 				250DDF432A15AFC1008B8661 /* UIButton+.swift in Sources */,
 				250DDF572A169122008B8661 /* CustomAlertViewController.swift in Sources */,
 				6B822EEE2A17E2220080FB7C /* SelectDateHeaderFooter.swift in Sources */,
+				148675B52A1CDE630082D579 /* DatePickerViewController.swift in Sources */,
 				6BAFCD302A15438F00994100 /* MainPageRecallViewController.swift in Sources */,
 				6B44E4A52A12A8EB00E9CAF9 /* UITextField+.swift in Sources */,
 				6B8EC7FC2A1CB44400926510 /* MainPageRecallHeaderView.swift in Sources */,
+				146BBB542A18D6CF00A6C21A /* TotalRoutineTableViewCell.swift in Sources */,
 				6BF052E92A16BE3400893084 /* Routine.swift in Sources */,
+				146BBB4D2A17F0DF00A6C21A /* TotalRoutineViewController.swift in Sources */,
 				6BAFCD242A136B0D00994100 /* TabBarController.swift in Sources */,
 				6B44E49F2A12A72C00E9CAF9 /* UIStackView+.swift in Sources */,
 				250DDF482A15BA0C008B8661 /* EditRoutineViewController.swift in Sources */,
 				6B8EC7FA2A1B3B8000926510 /* SelectDateCollectionView.swift in Sources */,
+				144624F42A1BDC1F008EAE22 /* DatePickerControl.swift in Sources */,
 				6BAFCD2C2A153C1300994100 /* MainPageTopBarView.swift in Sources */,
 				6B44E4992A12743400E9CAF9 /* FontLiteral.swift in Sources */,
 				6BF052EB2A173A6900893084 /* MainPageRoutineHeaderView.swift in Sources */,
 				6B44E49D2A12A01D00E9CAF9 /* ImageLiteral.swift in Sources */,
 				25491B532A189DF200B16FA8 /* AchieveViewController.swift in Sources */,
+				146BBB562A18DC5600A6C21A /* NSObject+.swift in Sources */,
 				6BF052E22A16B09700893084 /* MainPageRoutineTVC.swift in Sources */,
 				6B822EEC2A17A5650080FB7C /* Dates.swift in Sources */,
 				251030B02A1C8C7B00AD5292 /* EditRecallViewController.swift in Sources */,
 				6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */,
 				250C939F2A13A319005599DA /* BottomSheetViewController.swift in Sources */,
 				250C93A12A13A4E0005599DA /* BottomSheetView.swift in Sources */,
+				146BBB5A2A18E7A000A6C21A /* TotalRoutineHeaderView.swift in Sources */,
 				6B44E4A12A12A75400E9CAF9 /* UIView+.swift in Sources */,
 				6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */,
 				250DDF462A15B9B3008B8661 /* RoutineView.swift in Sources */,
 				6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */,
+				146BBB4A2A17EEEB00A6C21A /* RecommendRoutineViewController.swift in Sources */,
 				6B44E49B2A1296A700E9CAF9 /* ColorLiteral.swift in Sources */,
 				251030AC2A1C8C4F00AD5292 /* RecallView.swift in Sources */,
 				251030AE2A1C8C6B00AD5292 /* RecallViewController.swift in Sources */,
