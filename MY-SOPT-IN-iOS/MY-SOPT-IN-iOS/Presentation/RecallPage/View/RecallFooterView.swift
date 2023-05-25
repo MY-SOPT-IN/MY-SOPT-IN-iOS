@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class RecallFooterView: UITableViewHeaderFooterView {
+final class RecallFooterView: UITableViewHeaderFooterView {
     
     let saveButton = UIButton().then {
         $0.setTitle("저장하기", for: .normal)

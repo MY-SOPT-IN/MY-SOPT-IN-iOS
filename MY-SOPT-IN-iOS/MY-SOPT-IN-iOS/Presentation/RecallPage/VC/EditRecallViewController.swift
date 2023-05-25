@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 
-class EditRecallViewController: UIViewController {
+final class EditRecallViewController: UIViewController {
     
     private let addNavigationbar = Customnavigationbar("회고 수정").then{
         $0.navigationBack.addTarget(self, action: #selector(popToEditRecallViewController), for: .touchUpInside)

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class RecallView: UIView {
+final class RecallView: UIView {
     
     // MARK: - Properties
     

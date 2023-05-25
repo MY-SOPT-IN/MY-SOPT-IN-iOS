@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class RecallTableViewCell: UITableViewCell {
+final class RecallTableViewCell: UITableViewCell {
     
     let recallView = RecallView()
     

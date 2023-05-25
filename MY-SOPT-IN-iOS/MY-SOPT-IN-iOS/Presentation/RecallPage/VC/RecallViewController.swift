@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 
-class RecallViewController: UIViewController {
+final class RecallViewController: UIViewController {
 
     private let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
@@ -19,10 +19,6 @@ class RecallViewController: UIViewController {
     private let contentView = UIView()
 
     private let recallView = RecallView()
-
-//    private let privateButton = UIButton().then {
-//        $0.setImage(ImageLiterals.RecallProperty.defaultRecall, for: .normal)
-//    }
 
     private let recalldateLabel = UILabel().then {
         $0.text = "2023년 5월 7일"
@@ -63,7 +59,6 @@ class RecallViewController: UIViewController {
             recalldateLabel,
             moreLabel,
             recallView,
-//            privateButton,
             saveButton
         )
 
@@ -100,11 +95,6 @@ class RecallViewController: UIViewController {
             $0.top.equalTo(recalldateLabel.snp.bottom).offset(57)
             $0.leading.trailing.equalToSuperview()
         }
-
-//        privateButton.snp.makeConstraints {
-//            $0.trailing.equalToSuperview().inset(18)
-//            $0.bottom.equalTo(recallView.recallTextView.snp.top).offset(-10)
-//        }
 
         saveButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(26)
