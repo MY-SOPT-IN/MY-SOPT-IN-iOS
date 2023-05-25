@@ -467,9 +467,9 @@
 			isa = PBXGroup;
 			children = (
 				250DDF452A15B9B3008B8661 /* RoutineView.swift */,
+				6BF052F02A17631E00893084 /* SelectDateCVC.swift */,
 				250C93A02A13A4E0005599DA /* BottomSheetView.swift */,
 				6BAFCD2B2A153C1300994100 /* MainPageTopBarView.swift */,
-				6BF052F02A17631E00893084 /* SelectDateCVC.swift */,
 				6B8EC7F92A1B3B8000926510 /* SelectDateCollectionView.swift */,
 				6B822EED2A17E2220080FB7C /* SelectDateHeaderFooter.swift */,
 				6BF052E12A16B09700893084 /* MainPageRoutineTVC.swift */,
