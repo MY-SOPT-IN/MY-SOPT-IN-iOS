@@ -53,6 +53,9 @@ final class MainPageRecallViewController: UIViewController {
             $0.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier)
         }
         
+        headerView.achieveRecallBtn.addTarget(self, action: #selector(moreButtonDidTapped), for: .touchUpInside)
+        
+        
         recall.dataSource = self
         recall.delegate = self
         recall.register(RecallTableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -87,6 +90,13 @@ final class MainPageRecallViewController: UIViewController {
     
     @objc private func saveButtonTapped() {
         // 저장하기 버튼 클릭에 따른 메소드 미구현
+    }
+    
+    @objc
+    private func moreButtonDidTapped() {
+        let totalRoutineVC = TotalRoutineViewController()
+        navigationController?.pushViewController(totalRoutineVC, animated: true)
+        navigationController?.navigationBar.isHidden = true
     }
     
     // MARK: - Network

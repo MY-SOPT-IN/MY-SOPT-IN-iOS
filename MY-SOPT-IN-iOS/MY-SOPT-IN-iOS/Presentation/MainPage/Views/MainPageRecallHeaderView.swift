@@ -21,7 +21,7 @@ class MainPageRecallHeaderView: UIView {
                                     nextSelectDateCollectionView]
     
     private var dateView = UIView()
-    private var achieveRecallBtn = UIButton()
+    lazy var achieveRecallBtn = UIButton()
     var dateLabel = UILabel()
     
     private let screenWidth = UIScreen.main.bounds.width
