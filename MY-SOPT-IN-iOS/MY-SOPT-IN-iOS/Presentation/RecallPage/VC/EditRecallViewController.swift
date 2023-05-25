@@ -29,10 +29,6 @@ class EditRecallViewController: UIViewController {
         $0.textColor = UIColor.Gray.gray_800
     }
     
-    private let privateButton = UIButton().then {
-        $0.setImage(ImageLiterals.RecallProperty.defaultRecall, for: .normal)
-    }
-    
     private let saverecallButton = UIButton().then() {
         $0.setTitle("저장하기", for: .normal)
         $0.titleLabel?.font = UIFont.subtitleFont()
@@ -59,7 +55,6 @@ class EditRecallViewController: UIViewController {
             addNavigationbar,
             backcolor,
             editdateLabel,
-            privateButton,
             recallView,
             saverecallButton
         )
@@ -79,11 +74,6 @@ class EditRecallViewController: UIViewController {
             $0.leading.equalToSuperview().offset(16)
         }
         
-        privateButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().offset(-19)
-            $0.centerY.equalTo(editdateLabel)
-        }
-        
         recallView.snp.makeConstraints {
             $0.top.equalTo(addNavigationbar.snp.bottom).offset(55)
             $0.bottom.equalToSuperview()
@@ -92,7 +82,7 @@ class EditRecallViewController: UIViewController {
         
         saverecallButton.snp.makeConstraints {
             $0.bottom.equalToSuperview()
-            $0.width.equalTo(375)
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(71)
         }
     }
