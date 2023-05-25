@@ -23,6 +23,22 @@ class MainPageRoutineTVC: UITableViewCell {
     private let whenDoRoutineLabel = UILabel()
     private let routineContentLabel = UILabel()
     
+    var routineTapGesture: UITapGestureRecognizer = UITapGestureRecognizer() {
+        didSet {
+            whenDoRoutineView.addGestureRecognizer(routineTapGesture)
+        }
+    }
+
+    private var selectedRoutine: Bool = false {
+        didSet {
+            if selectedRoutine {
+                doRoutineButton.setImage(ImageLiterals.Icon.add_ic_checkbox, for: .normal)
+            } else {
+                doRoutineButton.setImage(.none, for: .normal)
+            }
+        }
+    }
+    
     private enum FirstLastCell {
         case first
         case last
@@ -51,7 +67,7 @@ class MainPageRoutineTVC: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configCell(index: Int, _ routine: Routine, isFirstCell: Bool = false, isLastCell: Bool = false){
+    func configCell(index: Int, _ routine: Routine, isFirstCell: Bool = false, isLastCell: Bool = false, selected: Bool) {
         
         indexLabel.text = String(index)
         whenDoRoutineLabel.text = routine.whendo
@@ -62,6 +78,7 @@ class MainPageRoutineTVC: UITableViewCell {
         if isLastCell {
             makeCellRound(firstLastCell: FirstLastCell.last)
         }
+        selectedRoutine = selected
     }
     
     // MARK: - Methods
@@ -93,6 +110,7 @@ class MainPageRoutineTVC: UITableViewCell {
             $0.backgroundColor = .Mono.white
             $0.layer.borderColor = UIColor.Gray.gray_200.cgColor
             $0.layer.borderWidth = 1
+            $0.addTarget(self, action: #selector(tappedDoRoutineBtn), for: .touchUpInside)
         }
         
         whenDoRoutineLabel.do {
@@ -163,5 +181,11 @@ class MainPageRoutineTVC: UITableViewCell {
             $0.layer.cornerRadius = 5
             $0.layer.maskedCorners = firstLastCell.maskedCorner
         }
+    }
+    
+    // MARK: - Methods
+
+    @objc func tappedDoRoutineBtn() {
+        selectedRoutine.toggle()
     }
 }
