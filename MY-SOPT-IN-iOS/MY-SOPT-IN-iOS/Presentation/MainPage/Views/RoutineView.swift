@@ -72,7 +72,7 @@ class RoutineView: UIView {
     }
     
     private let routineImage = UIImageView().then {
-        $0.image = ImageLiterals.Icon.add_ic_calender
+        $0.image = ImageLiterals.Icon.add_ic_calendar
     }
     
     private let routineLabel = UILabel().then {
@@ -493,7 +493,7 @@ class RoutineView: UIView {
         
         saveroutineButton.snp.makeConstraints {
             $0.bottom.equalToSuperview()
-            $0.width.equalTo(375)
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(71)
         }
     }
