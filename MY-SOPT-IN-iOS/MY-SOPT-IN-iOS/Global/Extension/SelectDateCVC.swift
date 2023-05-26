@@ -52,7 +52,7 @@ class SelectDateCVC: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func configCell(date: Dates, selected: Bool) {
+    func configCell(date: MyDates, selected: Bool) {
         
         dateCircleView.backgroundColor = date.color
         guard let dateDate = date.dateComponents.day else { return }

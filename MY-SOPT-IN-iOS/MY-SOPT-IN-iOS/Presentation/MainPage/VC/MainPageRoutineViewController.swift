@@ -18,15 +18,15 @@ final class MainPageRoutineViewController: UIViewController {
     private var routineView = UITableView()
     private var bezierView: MainPageRoutineBorderView?
     
-    private var dateDummy: [[Dates]] = [Dates.getPreviousDateDummy(),
-                                        Dates.dummy(),
-                                        Dates.getNextDateDummy()]
+    private var dateDummy: [[MyDates]] = [MyDates.getPreviousDateDummy(),
+                                        MyDates.dummy(),
+                                        MyDates.getNextDateDummy()]
     private let routineDummy = Routine.dummy()
     
     private let routineTableViewHeaderHeight: CGFloat = 140
     private var headerViewStartPoint: CGFloat = 0
     
-    private var selectedDay = Dates.getToday()?.dateComponents
+    private var selectedDay = MyDates.getToday()?.dateComponents
     
     private lazy var addButton = UIButton()
     
@@ -205,7 +205,7 @@ extension MainPageRoutineViewController: UIScrollViewDelegate {
         for i in [2, 1] {
             dateDummy[i] = dateDummy[i - 1]
         }
-        dateDummy[0] = Dates.getPreviousDateDummy(current: dateDummy[1])
+        dateDummy[0] = MyDates.getPreviousDateDummy(current: dateDummy[1])
         reloadDateData()
     }
     
@@ -213,7 +213,7 @@ extension MainPageRoutineViewController: UIScrollViewDelegate {
         for i in [0, 1] {
             dateDummy[i] = dateDummy[i + 1]
         }
-        dateDummy[2] = Dates.getNextDateDummy(current: dateDummy[1])
+        dateDummy[2] = MyDates.getNextDateDummy(current: dateDummy[1])
         reloadDateData()
     }
     

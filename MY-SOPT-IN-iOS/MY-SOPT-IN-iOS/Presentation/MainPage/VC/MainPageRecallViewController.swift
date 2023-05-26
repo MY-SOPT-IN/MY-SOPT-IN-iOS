@@ -18,13 +18,13 @@ final class MainPageRecallViewController: UIViewController {
     
     private let recall = UITableView()
     
-    private var dateDummy: [[Dates]] = [Dates.getPreviousDateDummy(),
-                                        Dates.dummy(),
-                                        Dates.getNextDateDummy()]
+    private var dateDummy: [[MyDates]] = [MyDates.getPreviousDateDummy(),
+                                        MyDates.dummy(),
+                                        MyDates.getNextDateDummy()]
     
     private var headerViewStartPoint: CGFloat = 0
     
-    private var selectedDay = Dates.getToday()?.dateComponents
+    private var selectedDay = MyDates.getToday()?.dateComponents
     
     
     // MARK: - View Life Cycle
@@ -169,7 +169,7 @@ extension MainPageRecallViewController: UIScrollViewDelegate {
         for i in [2, 1] {
             dateDummy[i] = dateDummy[i - 1]
         }
-        dateDummy[0] = Dates.getPreviousDateDummy(current: dateDummy[1])
+        dateDummy[0] = MyDates.getPreviousDateDummy(current: dateDummy[1])
         reloadDateData()
     }
     
@@ -177,7 +177,7 @@ extension MainPageRecallViewController: UIScrollViewDelegate {
         for i in [0, 1] {
             dateDummy[i] = dateDummy[i + 1]
         }
-        dateDummy[2] = Dates.getNextDateDummy(current: dateDummy[1])
+        dateDummy[2] = MyDates.getNextDateDummy(current: dateDummy[1])
         reloadDateData()
     }
     
