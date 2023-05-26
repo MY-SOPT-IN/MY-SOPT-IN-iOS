@@ -8,6 +8,12 @@
 import Foundation
 
 struct TotalRetroResponseDTO: Codable {
+    let code: Int
+    let message: String
+    let data: [TotalRetroData]
+}
+
+struct TotalRetroData: Codable {
     let retrospectID: Int
     let descRoutine, descBest, descSelf, writtenDate: String
     let datumPublic, isPublic: Bool
