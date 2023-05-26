@@ -10,7 +10,7 @@ import UIKit
 struct Routine {
     let whendo: String
     let content: String
-    var doTapped: Bool
+    var doTapped: Bool = false
 }
 
 extension Routine {
