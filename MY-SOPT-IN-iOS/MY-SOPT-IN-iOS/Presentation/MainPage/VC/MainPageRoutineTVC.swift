@@ -16,9 +16,9 @@ class MainPageRoutineTVC: UITableViewCell {
     static let routineBorderLeading: CGFloat = 125
     
     private let touchBottomSheetView = UIView()
-    let whenDoRoutineView = UIView()
-    let routineContentView = UIView()
-    let doRoutineButton = UIButton()
+    private let whenDoRoutineView = UIView()
+    private let routineContentView = UIView()
+    private let doRoutineButton = UIButton()
     
     private let indexLabel = UILabel()
     private let whenDoRoutineLabel = UILabel()
@@ -26,8 +26,6 @@ class MainPageRoutineTVC: UITableViewCell {
     
     var routineTapGesture: UITapGestureRecognizer = UITapGestureRecognizer() {
         didSet {
-//            whenDoRoutineView.addGestureRecognizer(routineTapGesture)
-//            routineContentView.addGestureRecognizer(routineTapGesture)
             touchBottomSheetView.addGestureRecognizer(routineTapGesture)
         }
     }
