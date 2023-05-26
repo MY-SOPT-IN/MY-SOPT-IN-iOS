@@ -32,4 +32,10 @@ class MainPageRoutineBorderView: UIView {
         path.lineWidth = borderLine
         path.stroke()
     }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let hitView: UIView? = super.hitTest(point, with: event)
+        if (self == hitView) { return nil }
+        return hitView
+    }
 }

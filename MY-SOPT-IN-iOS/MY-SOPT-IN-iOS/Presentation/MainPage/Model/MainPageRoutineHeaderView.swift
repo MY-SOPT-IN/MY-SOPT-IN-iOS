@@ -51,7 +51,7 @@ class MainPageRoutineHeaderView: UIView {
         }
 
         dateLabel.do {
-            $0.text = Dates.getDateString(Dates.getToday()!)()
+            $0.text = MyDates.getDateString(MyDates.getToday()!)()
             $0.font = .title2Font()
             $0.textColor = .Gray.gray_800
         }

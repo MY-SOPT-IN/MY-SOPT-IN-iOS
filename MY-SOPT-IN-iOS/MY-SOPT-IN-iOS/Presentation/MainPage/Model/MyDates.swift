@@ -7,13 +7,12 @@
 
 import UIKit
 
-struct Dates {
+struct MyDates {
     let dateComponents: DateComponents
-    let dates: String? = nil
     var color: UIColor = .Semantic.semantic_orange
 }
 
-extension Dates {
+extension MyDates {
     
     func getWeekday(date: DateComponents) -> String? {
         
@@ -45,18 +44,18 @@ extension Dates {
         return formatter
     }
     
-    static func getToday() -> Dates? {
+    static func getToday() -> MyDates? {
         
-        let formatter = Dates.setFormmatter()
+        let formatter = MyDates.setFormmatter()
         let today = Date()
         
         let todayString = formatter.string(from: today).components(separatedBy: "-")
         guard let y = Int(todayString[0]), let m = Int(todayString[1]), let d = Int(todayString[2]) else { return nil }
         
-        return Dates(dateComponents: DateComponents(year: y, month: m, day: d))
+        return MyDates(dateComponents: DateComponents(year: y, month: m, day: d))
     }
     
-    static func dummy() -> [Dates] {
+    static func dummy() -> [MyDates] {
         
         let formatter: DateFormatter = setFormmatter()
 
@@ -65,39 +64,39 @@ extension Dates {
         // [0] = YYYY, [1] = MM, [2] = dd, [3] = e
         
         // 오늘 기준 주의 월요일을 구함
-        guard let interval = Double(todayString[3]) else{ return [Dates]() }
+        guard let interval = Double(todayString[3]) else{ return [MyDates]() }
         let monday = today.addingTimeInterval( -(86400 * ((interval + 7 - 2).truncatingRemainder(dividingBy: 7))))
 
         return getWeeks(monday: monday)
     }
     
-    static func getPreviousDateDummy(current: [Dates] = dummy()) -> [Dates] {
+    static func getPreviousDateDummy(current: [MyDates] = dummy()) -> [MyDates] {
         
         let myDateComponents = current[0].dateComponents
         let calendar = Calendar.current
-        guard let myDate = calendar.date(from: myDateComponents) else { return [Dates]() }
+        guard let myDate = calendar.date(from: myDateComponents) else { return [MyDates]() }
         
         let monday = myDate.addingTimeInterval( -(86400 * 7))
 
         return getWeeks(monday: monday)
     }
     
-    static func getNextDateDummy(current: [Dates] = dummy()) -> [Dates] {
+    static func getNextDateDummy(current: [MyDates] = dummy()) -> [MyDates] {
         
         let myDateComponents = current[0].dateComponents
         let calendar = Calendar.current
-        guard let myDate = calendar.date(from: myDateComponents) else { return [Dates]() }
+        guard let myDate = calendar.date(from: myDateComponents) else { return [MyDates]() }
         
         let monday = myDate.addingTimeInterval(86400 * 7)
 
         return getWeeks(monday: monday)
     }
     
-    static func getWeeks(monday: Date) -> [Dates] {
+    static func getWeeks(monday: Date) -> [MyDates] {
         
-        var date = [Dates]()
+        var date = [MyDates]()
         
-        let formatter = Dates.setFormmatter()
+        let formatter = MyDates.setFormmatter()
         var nowDay = monday
 
         for i in 0...6 {
@@ -106,9 +105,9 @@ extension Dates {
             nowDay = nowDay.addingTimeInterval(86400)
             
             if i == 6 {
-                date.append(Dates(dateComponents: DateComponents(year: y, month: m, day: d), color: .Semantic.semantic_red))
+                date.append(MyDates(dateComponents: DateComponents(year: y, month: m, day: d), color: .Semantic.semantic_red))
             } else {
-                date.append(Dates(dateComponents: DateComponents(year: y, month: m, day: d)))
+                date.append(MyDates(dateComponents: DateComponents(year: y, month: m, day: d)))
             }
         }
         return date

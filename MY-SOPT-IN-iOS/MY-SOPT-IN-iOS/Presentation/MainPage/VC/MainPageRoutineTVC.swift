@@ -15,9 +15,10 @@ class MainPageRoutineTVC: UITableViewCell {
     static let routineBorderWidth: CGFloat = UIScreen.main.bounds.size.width - 45 - 139
     static let routineBorderLeading: CGFloat = 125
     
-    let whenDoRoutineView = UIView()
-    let routineContentView = UIView()
-    let doRoutineButton = UIButton()
+    private let touchBottomSheetView = UIView()
+    private let whenDoRoutineView = UIView()
+    private let routineContentView = UIView()
+    private let doRoutineButton = UIButton()
     
     private let indexLabel = UILabel()
     private let whenDoRoutineLabel = UILabel()
@@ -25,7 +26,7 @@ class MainPageRoutineTVC: UITableViewCell {
     
     var routineTapGesture: UITapGestureRecognizer = UITapGestureRecognizer() {
         didSet {
-            whenDoRoutineView.addGestureRecognizer(routineTapGesture)
+            touchBottomSheetView.addGestureRecognizer(routineTapGesture)
         }
     }
 
@@ -128,9 +129,10 @@ class MainPageRoutineTVC: UITableViewCell {
     private func setHierarchy() {
         
         contentView.addSubviews(indexLabel,
-                                whenDoRoutineView,
-                                routineContentView,
+                                touchBottomSheetView,
                                 doRoutineButton)
+        
+        touchBottomSheetView.addSubviews(whenDoRoutineView, routineContentView)
         
         whenDoRoutineView.addSubview(whenDoRoutineLabel)
         routineContentView.addSubview(routineContentLabel)
@@ -144,18 +146,21 @@ class MainPageRoutineTVC: UITableViewCell {
             $0.leading.equalToSuperview().inset(15)
         }
         
-        whenDoRoutineView.snp.makeConstraints {
+        touchBottomSheetView.snp.makeConstraints {
             $0.height.equalTo(50)
-            $0.width.equalTo(93)
-            $0.centerY.equalToSuperview()
             $0.leading.equalTo(indexLabel.snp.trailing).offset(5)
+            $0.trailing.equalTo(doRoutineButton.snp.leading)
+        }
+        
+        whenDoRoutineView.snp.makeConstraints {
+            $0.width.equalTo(93)
+            $0.leading.top.bottom.equalToSuperview()
         }
         
         routineContentView.snp.makeConstraints {
             $0.height.equalTo(50)
-            $0.centerY.equalToSuperview()
             $0.leading.equalTo(whenDoRoutineView.snp.trailing)
-            $0.trailing.equalTo(doRoutineButton.snp.leading)
+            $0.trailing.top.bottom.equalToSuperview()
         }
         
         doRoutineButton.snp.makeConstraints {
