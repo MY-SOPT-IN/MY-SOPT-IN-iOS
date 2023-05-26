@@ -17,6 +17,7 @@ final class MainPageRoutineViewController: UIViewController {
     private var headerView = MainPageRoutineHeaderView()
     private var routineView = UITableView()
     private var bezierView: MainPageRoutineBorderView?
+    private var borderView = UIView()
     
     private var dateDummy: [[MyDates]] = [MyDates.getPreviousDateDummy(),
                                           MyDates.dummy(),
@@ -107,11 +108,13 @@ final class MainPageRoutineViewController: UIViewController {
         bezierView?.makeRounded(radius: 5)
         
         guard let border = bezierView else { return }
-        routineView.addSubview(border)
+        borderView = border
+        routineView.addSubview(borderView)
     }
     
     private func getRoutineData(date: String = MyDates.getToday()?.getDateRequest() ?? "") {
         routineDummy.removeAll()
+        borderView.removeFromSuperview()
         RoutineAPI.shared.getDateTotal(dateRequest: date, completion: { result in
             switch result {
             case .success(let data):
@@ -123,7 +126,7 @@ final class MainPageRoutineViewController: UIViewController {
                 }
                 self.routineView.reloadData()
                 self.setBazierView()
-
+                
             default:
                 print("Failed")
                 return
