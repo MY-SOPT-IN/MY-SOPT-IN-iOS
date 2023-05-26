@@ -41,6 +41,10 @@ final class TotalRecallHeaderView: UITableViewHeaderFooterView {
     @objc private func editButtonDidTapped() {
         editButtonTappedClosure?()
     }
+    
+    func dataBind(date: String){
+        dateLabel.text = date
+    }
 }
 
 extension TotalRecallHeaderView {

@@ -187,17 +187,17 @@ extension TotalRecallViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return totalRecallArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TotalRecallTableViewCell.className, for: indexPath) as? TotalRecallTableViewCell else { return UITableViewCell() }
         if indexPath.row == 0 {
-            cell.dataBind(style: .routineRecall, detail: "회고회고")
+            cell.dataBind(style: .routineRecall, detail: totalRecallArray[indexPath.row].descRoutine)
         } else if indexPath.row == 1 {
-            cell.dataBind(style: .bestThing, detail: "행복행복")
+            cell.dataBind(style: .bestThing, detail: totalRecallArray[indexPath.row].descBest)
         } else {
-            cell.dataBind(style: .selfMessage, detail: "나에게 한마디")
+            cell.dataBind(style: .selfMessage, detail: totalRecallArray[indexPath.row].descSelf)
         }
         return cell
     }
@@ -214,6 +214,9 @@ extension TotalRecallViewController: UITableViewDelegate, UITableViewDataSource 
             self?.navigationController?.pushViewController(editRecallViewController, animated: true)
             
         }
+        
+        view.dataBind(date: self.totalRecallArray[section].writtenDate)
+        
         return view
     }
     
@@ -243,8 +246,7 @@ extension TotalRecallViewController {
                 for data in dataArray {
                     self.totalRecallArray.append(data)
                 }
-                print(self.totalRecallArray)
-                
+                self.tableView.reloadData()
             default:
                 print("🍀🍀🍀  왜 안 와  🍀🍀🍀")
                 print(response)
