@@ -36,6 +36,20 @@ extension MyDates {
         } else { return "" }
     }
     
+    func getDateRequest() -> String? {
+        
+        if let y = dateComponents.year, let m = dateComponents.month, let d = dateComponents.day {
+            return String(y) + "-" + getStringMonthAndDay(dates: m) + "-" + getStringMonthAndDay(dates: d)
+        } else { return "" }
+    }
+    
+    func getStringMonthAndDay(dates: Int) -> String {
+        if dates < 10 {
+            return "0" + String(dates)
+        } else {
+            return String(dates)
+        }
+    }
     static func setFormmatter() -> DateFormatter {
         
         let formatter = DateFormatter()

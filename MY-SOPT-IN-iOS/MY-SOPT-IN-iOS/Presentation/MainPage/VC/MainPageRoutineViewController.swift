@@ -21,7 +21,7 @@ final class MainPageRoutineViewController: UIViewController {
     private var dateDummy: [[MyDates]] = [MyDates.getPreviousDateDummy(),
                                         MyDates.dummy(),
                                         MyDates.getNextDateDummy()]
-    private let routineDummy = Routine.dummy()
+    private var routineDummy = [Routine]()
     
     private let routineTableViewHeaderHeight: CGFloat = 140
     private var headerViewStartPoint: CGFloat = 0
@@ -39,6 +39,7 @@ final class MainPageRoutineViewController: UIViewController {
         setStyle()
         setHierarchy()
         setLayout()
+        getRoutineData()
     }
     
     // MARK: - Methods
@@ -110,6 +111,25 @@ final class MainPageRoutineViewController: UIViewController {
         bezierView?.makeRounded(radius: 5)
     }
     
+    private func getRoutineData(date: String = MyDates.getToday()?.getDateRequest() ?? "") {
+        routineDummy.removeAll()
+        RoutineAPI.shared.getDateTotal(dateRequest: date, completion: { result in
+                switch result {
+                case .success(let data):
+                    print("Success")
+                    guard let responseDTO = data as? DateRoutineResponseDTO else { return }
+                    let dataArray = responseDTO.data
+                    for data in dataArray {
+                        self.routineDummy.append(Routine(whendo: data.routineAt, content: data.routineName))
+                    }
+                    self.routineView.reloadData()
+                default:
+                    print("Failed")
+                    return
+                }
+            })
+        }
+    
     // MARK: - objc Func
     
     @objc
@@ -146,6 +166,7 @@ extension MainPageRoutineViewController: UICollectionViewDelegate {
             selectedDay = dateDummy[index][indexPath.item].dateComponents
             collectionView.reloadData()
             headerView.dateLabel.text = dateDummy[index][indexPath.item].getDateString()
+            getRoutineData(date: dateDummy[index][indexPath.item].getDateRequest() ?? "")
         }
     }
 }
