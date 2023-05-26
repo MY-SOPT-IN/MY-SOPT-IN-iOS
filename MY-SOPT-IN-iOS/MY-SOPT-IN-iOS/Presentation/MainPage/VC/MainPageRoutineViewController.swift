@@ -19,8 +19,8 @@ final class MainPageRoutineViewController: UIViewController {
     private var bezierView: MainPageRoutineBorderView?
     
     private var dateDummy: [[MyDates]] = [MyDates.getPreviousDateDummy(),
-                                        MyDates.dummy(),
-                                        MyDates.getNextDateDummy()]
+                                          MyDates.dummy(),
+                                          MyDates.getNextDateDummy()]
     private var routineDummy = [Routine]()
     
     private let routineTableViewHeaderHeight: CGFloat = 140
@@ -80,20 +80,16 @@ final class MainPageRoutineViewController: UIViewController {
             $0.addTarget(self, action: #selector(pushToAddRoutine), for: .touchUpInside)
         }
         
-        setBazierView()
     }
     
     private func setHierarchy() {
         
         view.addSubviews(routineView,
                          addButton)
-        
-        guard let border = bezierView else { return }
-        routineView.addSubview(border)
     }
     
     private func setLayout() {
-                
+        
         routineView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -109,26 +105,31 @@ final class MainPageRoutineViewController: UIViewController {
         bezierView = MainPageRoutineBorderView(frame: CGRect(x: MainPageRoutineTVC.routineBorderLeading, y: routineTableViewHeaderHeight, width: MainPageRoutineTVC.routineBorderWidth, height: routineView.rowHeight * CGFloat(routineDummy.count)))
         bezierView?.backgroundColor = .clear
         bezierView?.makeRounded(radius: 5)
+        
+        guard let border = bezierView else { return }
+        routineView.addSubview(border)
     }
     
     private func getRoutineData(date: String = MyDates.getToday()?.getDateRequest() ?? "") {
         routineDummy.removeAll()
         RoutineAPI.shared.getDateTotal(dateRequest: date, completion: { result in
-                switch result {
-                case .success(let data):
-                    print("Success")
-                    guard let responseDTO = data as? DateRoutineResponseDTO else { return }
-                    let dataArray = responseDTO.data
-                    for data in dataArray {
-                        self.routineDummy.append(Routine(whendo: data.routineAt, content: data.routineName))
-                    }
-                    self.routineView.reloadData()
-                default:
-                    print("Failed")
-                    return
+            switch result {
+            case .success(let data):
+                print("Success")
+                guard let responseDTO = data as? DateRoutineResponseDTO else { return }
+                let dataArray = responseDTO.data
+                for data in dataArray {
+                    self.routineDummy.append(Routine(whendo: data.routineAt, content: data.routineName))
                 }
-            })
-        }
+                self.routineView.reloadData()
+                self.setBazierView()
+
+            default:
+                print("Failed")
+                return
+            }
+        })
+    }
     
     // MARK: - objc Func
     
