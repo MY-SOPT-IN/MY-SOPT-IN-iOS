@@ -1,5 +1,5 @@
 //
-//  TotalRoutineHeaderView.swift
+//  TotalRecallHeaderView.swift
 //  MY-SOPT-IN-iOS
 //
 //  Created by 김인영 on 2023/05/20.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class TotalRoutineHeaderView: UITableViewHeaderFooterView {
+final class TotalRecallHeaderView: UITableViewHeaderFooterView {
 
     var editButtonTappedClosure: (()-> Void)?
     
@@ -41,9 +41,13 @@ final class TotalRoutineHeaderView: UITableViewHeaderFooterView {
     @objc private func editButtonDidTapped() {
         editButtonTappedClosure?()
     }
+    
+    func dataBind(date: String){
+        dateLabel.text = date
+    }
 }
 
-extension TotalRoutineHeaderView {
+extension TotalRecallHeaderView {
     private func setLayout() {
         contentView.addSubviews(dateLabel, editButton)
         

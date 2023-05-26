@@ -1,5 +1,5 @@
 //
-//  TotalRoutineViewController.swift
+//  TotalRecallViewController.swift
 //  MY-SOPT-IN-iOS
 //
 //  Created by 김인영 on 2023/05/20.
@@ -10,7 +10,11 @@ import UIKit
 import SnapKit
 import Then
 
-final class TotalRoutineViewController: UIViewController {
+final class TotalRecallViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private var totalRecallArray: [TotalRetroData] = []
     
     // MARK: - UI Components
     
@@ -59,11 +63,12 @@ final class TotalRoutineViewController: UIViewController {
         setBackgroundColor()
         setLayout()
         registerCells()
+        getTotalRecallAPI(month: 5)
     }
     
     private func registerCells() {
-        tableView.register(TotalRoutineTableViewCell.self, forCellReuseIdentifier: TotalRoutineTableViewCell.className)
-        tableView.register(TotalRoutineHeaderView.self, forHeaderFooterViewReuseIdentifier: TotalRoutineHeaderView.className)
+        tableView.register(TotalRecallTableViewCell.self, forCellReuseIdentifier: TotalRecallTableViewCell.className)
+        tableView.register(TotalRecallHeaderView.self, forHeaderFooterViewReuseIdentifier: TotalRecallHeaderView.className)
     }
     
     @objc private func showDatePicker() {
@@ -83,7 +88,7 @@ final class TotalRoutineViewController: UIViewController {
 
 // MARK: - UIViewControllerTransitioningDelegate
 
-extension TotalRoutineViewController: UIViewControllerTransitioningDelegate {
+extension TotalRecallViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return CustomPresentationController(presentedViewController: presented, presenting: presenting)
     }
@@ -128,7 +133,7 @@ class CustomPresentationController: UIPresentationController {
 
 // MARK: - UI & Layout
 
-extension TotalRoutineViewController {
+extension TotalRecallViewController {
     
     private func setBackgroundColor() {
         view.backgroundColor = UIColor.Gray.gray_100
@@ -171,7 +176,7 @@ extension TotalRoutineViewController {
 
 // MARK: - UITableView Delegate & Datasource
 
-extension TotalRoutineViewController: UITableViewDelegate, UITableViewDataSource {
+extension TotalRecallViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -182,23 +187,23 @@ extension TotalRoutineViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return totalRecallArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TotalRoutineTableViewCell.className, for: indexPath) as? TotalRoutineTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TotalRecallTableViewCell.className, for: indexPath) as? TotalRecallTableViewCell else { return UITableViewCell() }
         if indexPath.row == 0 {
-            cell.dataBind(style: .routineRecall, detail: "회고회고")
+            cell.dataBind(style: .routineRecall, detail: totalRecallArray[indexPath.row].descRoutine)
         } else if indexPath.row == 1 {
-            cell.dataBind(style: .bestThing, detail: "행복행복")
+            cell.dataBind(style: .bestThing, detail: totalRecallArray[indexPath.row].descBest)
         } else {
-            cell.dataBind(style: .selfMessage, detail: "나에게 한마디")
+            cell.dataBind(style: .selfMessage, detail: totalRecallArray[indexPath.row].descSelf)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: TotalRoutineHeaderView.className) as? TotalRoutineHeaderView else { return nil }
+        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: TotalRecallHeaderView.className) as? TotalRecallHeaderView else { return nil }
         
         // 수정 버튼을 눌렀을 때
         view.editButtonTappedClosure = {[weak self] in
@@ -209,6 +214,9 @@ extension TotalRoutineViewController: UITableViewDelegate, UITableViewDataSource
             self?.navigationController?.pushViewController(editRecallViewController, animated: true)
             
         }
+        
+        view.dataBind(date: self.totalRecallArray[section].writtenDate)
+        
         return view
     }
     
@@ -222,5 +230,27 @@ extension TotalRoutineViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
+    }
+}
+
+// MARK: - Network
+
+extension TotalRecallViewController {
+    private func getTotalRecallAPI(month: Int) {
+        RetroAPI.shared.getTotalRetroData(dateRequest: month) { response in
+            switch response {
+            case .success(let data):
+                print("🍀🍀🍀  성 공 이 다  🍀🍀🍀")
+                guard let responseDTO = data as? TotalRetroResponseDTO else { return }
+                let dataArray = responseDTO.data
+                for data in dataArray {
+                    self.totalRecallArray.append(data)
+                }
+                self.tableView.reloadData()
+            default:
+                print("🍀🍀🍀  왜 안 와  🍀🍀🍀")
+                print(response)
+            }
+        }
     }
 }

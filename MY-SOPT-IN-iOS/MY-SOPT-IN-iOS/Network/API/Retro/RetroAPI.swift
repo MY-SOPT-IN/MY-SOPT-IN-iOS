@@ -12,6 +12,8 @@ import Alamofire
 final class RetroAPI: BaseAPI {
     static let shared = RetroAPI()
     
+    private(set) var getTotalRetroData: TotalRetroResponseDTO?
+    
     private override init() {}
 }
 

@@ -94,8 +94,8 @@ final class MainPageRecallViewController: UIViewController {
     
     @objc
     private func moreButtonDidTapped() {
-        let totalRoutineVC = TotalRoutineViewController()
-        navigationController?.pushViewController(totalRoutineVC, animated: true)
+        let totalRecallVC = TotalRecallViewController()
+        navigationController?.pushViewController(totalRecallVC, animated: true)
         navigationController?.navigationBar.isHidden = true
     }
     
