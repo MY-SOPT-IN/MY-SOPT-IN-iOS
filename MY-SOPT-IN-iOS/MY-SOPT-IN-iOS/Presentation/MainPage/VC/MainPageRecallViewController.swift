@@ -11,10 +11,12 @@ import SnapKit
 import Then
 
 final class MainPageRecallViewController: UIViewController {
-
+    
     // MARK: - Properties
-
+    
     private let headerView = MainPageRecallHeaderView()
+    
+    private let recall = UITableView()
     
     private var dateDummy: [[Dates]] = [Dates.getPreviousDateDummy(),
                                         Dates.dummy(),
@@ -23,6 +25,7 @@ final class MainPageRecallViewController: UIViewController {
     private var headerViewStartPoint: CGFloat = 0
     
     private var selectedDay = Dates.getToday()?.dateComponents
+    
     
     // MARK: - View Life Cycle
     
@@ -34,7 +37,7 @@ final class MainPageRecallViewController: UIViewController {
         setHierarchy()
         setLayout()
     }
-
+    
     // MARK: - Methods
     
     private func target() {
@@ -49,6 +52,19 @@ final class MainPageRecallViewController: UIViewController {
             $0.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SelectDateHeaderFooter.identifier)
             $0.register(SelectDateHeaderFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SelectDateHeaderFooter.identifier)
         }
+        
+        headerView.achieveRecallBtn.addTarget(self, action: #selector(moreButtonDidTapped), for: .touchUpInside)
+        
+        
+        recall.dataSource = self
+        recall.delegate = self
+        recall.register(RecallTableViewCell.self, forCellReuseIdentifier: "Cell")
+        recall.register(RecallFooterView.self, forHeaderFooterViewReuseIdentifier: "Footer")
+        recall.separatorColor = .clear
+        recall.tableHeaderView = headerView
+        recall.tableHeaderView?.frame.size.height = 120
+        recall.backgroundColor = .Gray.gray_50
+        recall.showsVerticalScrollIndicator = false
     }
     
     private func setStyle() {
@@ -58,20 +74,33 @@ final class MainPageRecallViewController: UIViewController {
     
     private func setHierarchy() {
         
-        view.addSubviews(headerView)
+        view.addSubviews(
+            recall
+        )
     }
     
     private func setLayout() {
-        
-        headerView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+        recall.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
-    }
 
+    }
+    
     // MARK: - @objc Function
     
+    @objc private func saveButtonTapped() {
+        // 저장하기 버튼 클릭에 따른 메소드 미구현
+    }
+    
+    @objc
+    private func moreButtonDidTapped() {
+        let totalRoutineVC = TotalRoutineViewController()
+        navigationController?.pushViewController(totalRoutineVC, animated: true)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     // MARK: - Network
-
+    
 }
 
 extension MainPageRecallViewController: UICollectionViewDelegate {
@@ -159,4 +188,31 @@ extension MainPageRecallViewController: UIScrollViewDelegate {
         
         headerView.dateScrollView.contentOffset.x = UIScreen.main.bounds.width
     }
+}
+
+extension MainPageRecallViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.selectionStyle = .none // Disable cell selection highlighting
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Footer") as? RecallFooterView
+        footerView?.saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 100
+    }
+    
 }

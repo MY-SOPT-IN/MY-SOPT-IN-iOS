@@ -21,7 +21,7 @@ class MainPageRecallHeaderView: UIView {
                                     nextSelectDateCollectionView]
     
     private var dateView = UIView()
-    private var achieveRecallBtn = UIButton()
+    lazy var achieveRecallBtn = UIButton()
     var dateLabel = UILabel()
     
     private let screenWidth = UIScreen.main.bounds.width
@@ -60,6 +60,10 @@ class MainPageRecallHeaderView: UIView {
             $0.setTitle("회고 모아보기", for: .normal)
             $0.setTitleColor(.Gray.gray_800, for: .normal)
             $0.titleLabel?.font = .subtitleFont()
+            let deleteImage = ImageLiterals.RecallProperty.moreRecall
+            $0.setImage(deleteImage, for: .normal)
+            $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 6)
+
 
         }
     }

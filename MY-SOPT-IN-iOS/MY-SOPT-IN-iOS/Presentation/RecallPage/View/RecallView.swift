@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class RecallView: UIView {
+final class RecallView: UIView {
     
     // MARK: - Properties
     
@@ -59,11 +59,20 @@ class RecallView: UIView {
         $0.font = UIFont.subtitleFont()
     }
     
+    private let privateButton = UIButton().then {
+        $0.setImage(ImageLiterals.RecallProperty.defaultRecall, for: .normal)
+    }
+    
+    
     // MARK: - Initialization
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        recallTextView.delegate = self
+        bestTextView.delegate = self
+        wantsayTextView.delegate = self
+ 
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -81,26 +90,32 @@ class RecallView: UIView {
             wantsayTextView,
             recallLabel,
             todayLabel,
-            saymeLabel
+            saymeLabel,
+            privateButton
         )
         self.snp.makeConstraints {
-                $0.height.equalTo(495)
+            $0.height.equalTo(495)
+        }
+        
+        privateButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(18)
+            $0.bottom.equalTo(recallTextView.snp.top).offset(-10)
         }
         
         recallTextView.snp.makeConstraints {
-            $0.width.equalTo(375)
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(118)
             $0.top.equalToSuperview().offset(55)
         }
         
         bestTextView.snp.makeConstraints {
-            $0.width.equalTo(375)
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(118)
             $0.top.equalTo(recallTextView.snp.bottom).offset(50)
         }
         
         wantsayTextView.snp.makeConstraints {
-            $0.width.equalTo(375)
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(118)
             $0.top.equalTo(bestTextView.snp.bottom).offset(50)
         }
@@ -121,3 +136,49 @@ class RecallView: UIView {
         }
     }
 }
+
+
+extension RecallView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView == recallTextView {
+            if textView.textColor == .Gray.gray_400 {
+                textView.text = nil
+                textView.textColor = .black
+            }
+        } else if textView == bestTextView {
+            if textView.textColor == .Gray.gray_400 {
+                textView.text = nil
+                textView.textColor = .black
+            }
+        }
+        else if textView == wantsayTextView {
+            if textView.textColor == .Gray.gray_400 {
+                textView.text = nil
+                textView.textColor = .black
+            }
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView == recallTextView {
+            if textView.text.isEmpty {
+                textView.text = "오늘 루틴 어땠어요?"
+                textView.textColor = UIColor.Gray.gray_400
+            }
+        } else if textView == bestTextView {
+            if textView.text.isEmpty {
+                textView.text = "오늘은 뭐가 가장 좋았어요?"
+                textView.textColor = UIColor.Gray.gray_400
+            }
+        } else if textView == wantsayTextView {
+            if textView.text.isEmpty {
+                textView.text = "나에게 하고 싶은 말을 적어봐요 :)"
+                textView.textColor = UIColor.Gray.gray_400
+            }
+        }
+    }
+}
+
+
+
+

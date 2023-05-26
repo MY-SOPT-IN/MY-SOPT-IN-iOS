@@ -50,7 +50,7 @@ class Customnavigationbar: UIView {
         navigationView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(48)
+            $0.height.equalTo(54)
         }
         
         navigationBack.snp.makeConstraints {
@@ -60,7 +60,7 @@ class Customnavigationbar: UIView {
         
         navigationTitle.snp.makeConstraints {
             $0.top.equalTo(navigationView.snp.top).offset(12)
-            $0.centerX.equalTo(navigationView)
+            $0.centerX.centerY.equalTo(navigationView)
         }
     }
 }

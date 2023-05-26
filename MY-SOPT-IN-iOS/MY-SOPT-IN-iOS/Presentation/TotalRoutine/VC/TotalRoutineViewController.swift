@@ -19,6 +19,8 @@ final class TotalRoutineViewController: UIViewController {
     private let backButton: UIButton = {
         let btn = UIButton()
         btn.setImage(ImageLiterals.Icon.add_ic_arrow, for: .normal)
+        btn.addTarget(self, action: #selector(popToTotalRoutineViewController), for: .touchUpInside)
+
         return btn
     }()
     
@@ -71,6 +73,11 @@ final class TotalRoutineViewController: UIViewController {
             modal.transitioningDelegate = self
             self.present(modal, animated: true)
         }
+    }
+    
+    @objc
+    private func popToTotalRoutineViewController() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -197,6 +204,10 @@ extension TotalRoutineViewController: UITableViewDelegate, UITableViewDataSource
         view.editButtonTappedClosure = {[weak self] in
             print("edit")
             // 루틴 수정 뷰로
+            let editRecallViewController = EditRecallViewController()
+            editRecallViewController.hidesBottomBarWhenPushed = true
+            self?.navigationController?.pushViewController(editRecallViewController, animated: true)
+            
         }
         return view
     }
