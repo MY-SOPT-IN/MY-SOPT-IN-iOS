@@ -15,8 +15,11 @@ final class MainPageRecallViewController: UIViewController {
     // MARK: - Properties
     
     private var descRoutine: String = ""
+    
     private var descBest: String = ""
+    
     private var descSelf: String = ""
+    
     private var singleserver: Bool = false
     
     // MARK: - UI Components
@@ -117,11 +120,18 @@ final class MainPageRecallViewController: UIViewController {
                 print("🍀🍀🍀  성 공 이 다  🍀🍀🍀")
                 print(data)
                 if let responseDTO = data as? SingleRetroResponseDTO {
-                    let singleRetroData = responseDTO.data
-                    self.descRoutine = singleRetroData.descRoutine
-                    self.descBest = singleRetroData.descBest
-                    self.descSelf = singleRetroData.descSelf
+                    print("\(responseDTO.code)🍀🍀🍀🍀🍀🍀")
+                    if responseDTO.code == 200 {
+                        let singleRetroData = responseDTO.data
+                        self.descRoutine = singleRetroData.descRoutine
+                        self.descBest = singleRetroData.descBest
+                        self.descSelf = singleRetroData.descSelf
+                    }
+                    else if  responseDTO.code == 204 {
+                        self.singleserver = false
+                    }
                 } else {
+                    self.singleserver = false
                     print("SingleRetroResponseDTO 타입으로 다운캐스팅할 수 없습니다.")
                 }
                 self.recall.reloadData()
@@ -129,6 +139,7 @@ final class MainPageRecallViewController: UIViewController {
                 self.singleserver = false
                 print("🍀🍀🍀  왜 안 와  🍀🍀🍀")
                 print(result)
+                self.recall.reloadData()
             }
         }
 
@@ -259,18 +270,22 @@ extension MainPageRecallViewController: UITableViewDataSource, UITableViewDelega
             cell.recallView.bestTextView.textColor = .black
             cell.recallView.wantsayTextView.text = descSelf
             cell.recallView.wantsayTextView.textColor = .black
+            print("\(singleserver)!@!@!@!!@")
             return cell
-        } else {
-            // 204 상태 코드인 경우 원래 테이블 셀이 나오도록 설정
-            // 초기 값으로 설정하거나 다른 처리를 하세요.
+        }
+        else if !singleserver {
+          
             cell.recallView.recallTextView.text = "오늘 루틴 어땠어요?"
             cell.recallView.recallTextView.textColor = UIColor.Gray.gray_400
             cell.recallView.bestTextView.text = "오늘은 뭐가 가장 좋았어요?"
             cell.recallView.bestTextView.textColor = UIColor.Gray.gray_400
             cell.recallView.wantsayTextView.text = "나에게 하고 싶은 말을 적어봐요 :)"
             cell.recallView.wantsayTextView.textColor = UIColor.Gray.gray_400
+            print("\(singleserver)!@!@!@!!@")
             return cell
         }
+        print("\(singleserver)이거는 왜 나오냐 진짜 이해가 안가ㅔ")
+        return cell
         
         
     }
