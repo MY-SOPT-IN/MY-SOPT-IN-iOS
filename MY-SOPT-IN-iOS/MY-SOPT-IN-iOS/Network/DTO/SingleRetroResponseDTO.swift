@@ -10,12 +10,13 @@ import Foundation
 struct SingleRetroResponseDTO: Codable {
     let retrospectId: Int
     let descRoutine, descBest, descSelf, writtenDate: String
-    let `public`, isPublic: Bool
+    let dataPublic, isPublic: Bool
 
     enum CodingKeys: String, CodingKey {
-        case retrospectId
+        case retrospectId = "retrospectID"
         case descRoutine, descBest, descSelf, writtenDate
-        case `public`
+        case dataPublic = "public"
         case isPublic
     }
 }
+
