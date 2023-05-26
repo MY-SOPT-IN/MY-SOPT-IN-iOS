@@ -8,15 +8,23 @@
 import Foundation
 
 struct SingleRetroResponseDTO: Codable {
-    let retrospectId: Int
+    let code: Int
+    let message: String
+    let data: SingleRetroData
+}
+
+
+struct SingleRetroData: Codable {
+    let retrospectID: Int
     let descRoutine, descBest, descSelf, writtenDate: String
     let dataPublic, isPublic: Bool
 
     enum CodingKeys: String, CodingKey {
-        case retrospectId = "retrospectID"
+        case retrospectID = "retrospectId"
         case descRoutine, descBest, descSelf, writtenDate
         case dataPublic = "public"
         case isPublic
     }
 }
+
 
