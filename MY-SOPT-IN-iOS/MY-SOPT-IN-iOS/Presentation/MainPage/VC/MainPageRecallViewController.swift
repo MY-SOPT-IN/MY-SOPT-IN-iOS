@@ -22,6 +22,14 @@ final class MainPageRecallViewController: UIViewController {
     
     private var singleserver: Bool = false
     
+    private var responseCode: Int = 0
+    // 상태 코드에 따라 put인지 post인지 구분하기 위함
+    private var retroId: Int = 0
+    // retroID로 해당하는 회고에 접근하기 위함
+    private var isPublic: Bool = false
+    
+    private var writtenDate: String = ""
+    
     // MARK: - UI Components
     
     private let headerView = MainPageRecallHeaderView()
@@ -98,8 +106,39 @@ final class MainPageRecallViewController: UIViewController {
     
     // MARK: - @objc Function
     
-    @objc private func saveButtonTapped() {
-        // 저장하기 버튼 클릭에 따른 메소드 미구현
+    @objc
+    private func saveButtonTapped() {
+        if responseCode == 200 {
+            let indexPath = IndexPath(row: 0, section: 0)
+            let cell = recall.cellForRow(at: indexPath) as? RecallTableViewCell
+            let recallView = cell?.recallView
+            
+            let recallText = recallView?.recallTextView.text ?? ""
+            let bestText = recallView?.bestTextView.text ?? ""
+            let wantsayText = recallView?.wantsayTextView.text ?? ""
+            
+            let retroId = self.retroId
+            
+            let requestBody = PutRetroRequestBody(
+                retroId: retroId,
+                isPublic: true,
+                descRoutine: recallText,
+                descBest: bestText,
+                descSelf: wantsayText,
+                writtenDate: self.writtenDate
+            )
+            putSingle(retroId: retroId, requestBody: requestBody) { [self] success in
+                        if success {
+                            // PUT 요청이 성공한 경우 수정된 내용을 다시 가져옵니다.
+                            self.getSingle(date: writtenDate)
+                        } else {
+                            print("PUT API를 기다리 도룡뇽")
+                        }
+                    }
+                }
+                else {
+                    print("POST API를 기다리 도룡뇽")
+                }
     }
     
     @objc
@@ -123,27 +162,59 @@ final class MainPageRecallViewController: UIViewController {
                     print("\(responseDTO.code)🍀🍀🍀🍀🍀🍀")
                     if responseDTO.code == 200 {
                         let singleRetroData = responseDTO.data
+                        self.responseCode = 200
                         self.descRoutine = singleRetroData.descRoutine
                         self.descBest = singleRetroData.descBest
                         self.descSelf = singleRetroData.descSelf
+                        self.retroId = singleRetroData.retrospectID
+                        self.isPublic = singleRetroData.isPublic
+                        self.writtenDate = singleRetroData.writtenDate
+                        self.recall.reloadData()
+
                     }
                     else if  responseDTO.code == 204 {
+                        self.responseCode = 204
                         self.singleserver = false
+                        self.recall.reloadData()
+
                     }
                 } else {
                     self.singleserver = false
+                    self.responseCode = 0
                     print("SingleRetroResponseDTO 타입으로 다운캐스팅할 수 없습니다.")
                 }
                 self.recall.reloadData()
             default:
                 self.singleserver = false
+                self.responseCode = 0
                 print("🍀🍀🍀  왜 안 와  🍀🍀🍀")
                 print(result)
                 self.recall.reloadData()
             }
         }
-
     }
+    
+    private func putSingle(retroId: Int, requestBody: PutRetroRequestBody, completion: @escaping (Bool) -> Void) {
+        RetroAPI.shared.putSingleRetroData(retroId: retroId, requestBody: requestBody) { result in
+            switch result {
+            case .success(let data):
+                if let responseDTO = data as? SingleRetroResponseDTO {
+                    // Handle the successful response
+                    let singleRetroData = responseDTO.data
+                    
+                    // 성공적으로 수정된 내용을 받았으므로 completion을 호출하여 알립니다.
+                    completion(true)
+                } else {
+                    // Handle the error
+                    completion(false)
+                }
+            default:
+                // Handle the error
+                completion(false)
+            }
+        }
+    }
+
     
 }
 
@@ -270,7 +341,6 @@ extension MainPageRecallViewController: UITableViewDataSource, UITableViewDelega
             cell.recallView.bestTextView.textColor = .black
             cell.recallView.wantsayTextView.text = descSelf
             cell.recallView.wantsayTextView.textColor = .black
-            print("\(singleserver)!@!@!@!!@")
             return cell
         }
         else if !singleserver {
@@ -281,10 +351,8 @@ extension MainPageRecallViewController: UITableViewDataSource, UITableViewDelega
             cell.recallView.bestTextView.textColor = UIColor.Gray.gray_400
             cell.recallView.wantsayTextView.text = "나에게 하고 싶은 말을 적어봐요 :)"
             cell.recallView.wantsayTextView.textColor = UIColor.Gray.gray_400
-            print("\(singleserver)!@!@!@!!@")
             return cell
         }
-        print("\(singleserver)이거는 왜 나오냐 진짜 이해가 안가ㅔ")
         return cell
         
         
@@ -300,5 +368,4 @@ extension MainPageRecallViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 100
     }
-    
 }
