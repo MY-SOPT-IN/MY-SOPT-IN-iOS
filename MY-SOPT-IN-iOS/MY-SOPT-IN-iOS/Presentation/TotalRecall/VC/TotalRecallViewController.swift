@@ -1,5 +1,5 @@
 //
-//  TotalRoutineViewController.swift
+//  TotalRecallViewController.swift
 //  MY-SOPT-IN-iOS
 //
 //  Created by 김인영 on 2023/05/20.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class TotalRoutineViewController: UIViewController {
+final class TotalRecallViewController: UIViewController {
     
     // MARK: - UI Components
     
@@ -62,8 +62,8 @@ final class TotalRoutineViewController: UIViewController {
     }
     
     private func registerCells() {
-        tableView.register(TotalRoutineTableViewCell.self, forCellReuseIdentifier: TotalRoutineTableViewCell.className)
-        tableView.register(TotalRoutineHeaderView.self, forHeaderFooterViewReuseIdentifier: TotalRoutineHeaderView.className)
+        tableView.register(TotalRecallTableViewCell.self, forCellReuseIdentifier: TotalRecallTableViewCell.className)
+        tableView.register(TotalRecallHeaderView.self, forHeaderFooterViewReuseIdentifier: TotalRecallHeaderView.className)
     }
     
     @objc private func showDatePicker() {
@@ -83,7 +83,7 @@ final class TotalRoutineViewController: UIViewController {
 
 // MARK: - UIViewControllerTransitioningDelegate
 
-extension TotalRoutineViewController: UIViewControllerTransitioningDelegate {
+extension TotalRecallViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return CustomPresentationController(presentedViewController: presented, presenting: presenting)
     }
@@ -128,7 +128,7 @@ class CustomPresentationController: UIPresentationController {
 
 // MARK: - UI & Layout
 
-extension TotalRoutineViewController {
+extension TotalRecallViewController {
     
     private func setBackgroundColor() {
         view.backgroundColor = UIColor.Gray.gray_100
@@ -171,7 +171,7 @@ extension TotalRoutineViewController {
 
 // MARK: - UITableView Delegate & Datasource
 
-extension TotalRoutineViewController: UITableViewDelegate, UITableViewDataSource {
+extension TotalRecallViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -186,7 +186,7 @@ extension TotalRoutineViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TotalRoutineTableViewCell.className, for: indexPath) as? TotalRoutineTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TotalRecallTableViewCell.className, for: indexPath) as? TotalRecallTableViewCell else { return UITableViewCell() }
         if indexPath.row == 0 {
             cell.dataBind(style: .routineRecall, detail: "회고회고")
         } else if indexPath.row == 1 {
@@ -198,7 +198,7 @@ extension TotalRoutineViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: TotalRoutineHeaderView.className) as? TotalRoutineHeaderView else { return nil }
+        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: TotalRecallHeaderView.className) as? TotalRecallHeaderView else { return nil }
         
         // 수정 버튼을 눌렀을 때
         view.editButtonTappedClosure = {[weak self] in
@@ -223,4 +223,10 @@ extension TotalRoutineViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
+}
+
+// MARK: - Network
+
+extension TotalRecallViewController {
+    
 }

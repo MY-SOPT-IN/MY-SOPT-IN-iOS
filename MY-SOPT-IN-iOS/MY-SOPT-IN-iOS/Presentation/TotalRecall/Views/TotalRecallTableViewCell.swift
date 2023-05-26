@@ -1,5 +1,5 @@
 //
-//  TotalRoutineTableViewCell.swift
+//  TotalRecallTableViewCell.swift
 //  MY-SOPT-IN-iOS
 //
 //  Created by 김인영 on 2023/05/20.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-enum RoutineTitleStyle {
+enum RecallTitleStyle {
     case routineRecall
     case bestThing
     case selfMessage
@@ -27,7 +27,7 @@ enum RoutineTitleStyle {
     }
 }
 
-final class TotalRoutineTableViewCell: UITableViewCell {
+final class TotalRecallTableViewCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -54,14 +54,14 @@ final class TotalRoutineTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func dataBind(style: RoutineTitleStyle, detail: String) {
+    func dataBind(style: RecallTitleStyle, detail: String) {
         titleLabel.text = style.title
         detailLabel.text = detail
     }
     
 }
 
-extension TotalRoutineTableViewCell {
+extension TotalRecallTableViewCell {
     
     private func setLayout() {
         contentView.addSubviews(titleLabel, detailLabel)
