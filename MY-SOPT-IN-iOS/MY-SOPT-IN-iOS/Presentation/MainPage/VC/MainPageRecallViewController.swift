@@ -128,17 +128,14 @@ final class MainPageRecallViewController: UIViewController {
                 writtenDate: self.writtenDate
             )
             putSingle(retroId: retroId, requestBody: requestBody) { [self] success in
-                        if success {
-                            // PUT 요청이 성공한 경우 수정된 내용을 다시 가져옵니다.
-                            self.getSingle(date: writtenDate)
-                        } else {
-                            print("PUT API를 기다리 도룡뇽")
-                        }
-                    }
+                if success {
+                    self.getSingle(date: writtenDate)
                 }
-                else {
-                    print("POST API를 기다리 도룡뇽")
-                }
+            }
+        }
+        else if responseCode == 204 {
+            print("POST API를 기다리 도룡뇽")
+        }
     }
     
     @objc
@@ -170,13 +167,13 @@ final class MainPageRecallViewController: UIViewController {
                         self.isPublic = singleRetroData.isPublic
                         self.writtenDate = singleRetroData.writtenDate
                         self.recall.reloadData()
-
+                        
                     }
                     else if  responseDTO.code == 204 {
                         self.responseCode = 204
                         self.singleserver = false
                         self.recall.reloadData()
-
+                        
                     }
                 } else {
                     self.singleserver = false
@@ -214,7 +211,7 @@ final class MainPageRecallViewController: UIViewController {
             }
         }
     }
-
+    
     
 }
 
@@ -333,7 +330,7 @@ extension MainPageRecallViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecallTableViewCell
         cell.selectionStyle = .none // Disable cell selection highlighting
-
+        
         if singleserver {
             cell.recallView.recallTextView.text = descRoutine
             cell.recallView.recallTextView.textColor = .black
@@ -344,7 +341,7 @@ extension MainPageRecallViewController: UITableViewDataSource, UITableViewDelega
             return cell
         }
         else if !singleserver {
-          
+            
             cell.recallView.recallTextView.text = "오늘 루틴 어땠어요?"
             cell.recallView.recallTextView.textColor = UIColor.Gray.gray_400
             cell.recallView.bestTextView.text = "오늘은 뭐가 가장 좋았어요?"
