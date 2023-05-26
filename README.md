@@ -7,6 +7,7 @@
 
 | 김인영 | 천성우 | 김다예 |
 | :-----------------: | :-----: | :-----: |
+|![IMG_7518](https://github.com/MY-SOPT-IN/MY-SOPT-IN-iOS/assets/83493636/c9c87ae6-7f7d-4218-bbd7-740f26ec2488) | ![KakaoTalk_Image_2023-05-26-20-34-42](https://github.com/MY-SOPT-IN/MY-SOPT-IN-iOS/assets/83493636/e2e76807-4f6f-4b81-a62c-7570bac8f9e9) |![KakaoTalk_Image_2023-05-26-20-30-12](https://github.com/MY-SOPT-IN/MY-SOPT-IN-iOS/assets/83493636/7a39b5ea-6889-4db9-a7e2-37b757fe4f7b) |
 | `프로젝트 세팅, 회고 모아보기` | `루틴 및 메인페이지` | `회고 페이지` |
 
 
