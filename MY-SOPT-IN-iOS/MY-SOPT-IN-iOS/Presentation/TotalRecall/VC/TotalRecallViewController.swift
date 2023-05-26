@@ -12,6 +12,10 @@ import Then
 
 final class TotalRecallViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    private var totalRecallArray: [TotalRetroData] = []
+    
     // MARK: - UI Components
     
     private let naviBar = UIView()
@@ -59,6 +63,7 @@ final class TotalRecallViewController: UIViewController {
         setBackgroundColor()
         setLayout()
         registerCells()
+        getTotalRecallAPI(month: 5)
     }
     
     private func registerCells() {
@@ -228,5 +233,22 @@ extension TotalRecallViewController: UITableViewDelegate, UITableViewDataSource 
 // MARK: - Network
 
 extension TotalRecallViewController {
-    
+    private func getTotalRecallAPI(month: Int) {
+        RetroAPI.shared.getTotalRetroData(dateRequest: month) { response in
+            switch response {
+            case .success(let data):
+                print("🍀🍀🍀  성 공 이 다  🍀🍀🍀")
+                guard let responseDTO = data as? TotalRetroResponseDTO else { return }
+                let dataArray = responseDTO.data
+                for data in dataArray {
+                    self.totalRecallArray.append(data)
+                }
+                print(self.totalRecallArray)
+                
+            default:
+                print("🍀🍀🍀  왜 안 와  🍀🍀🍀")
+                print(response)
+            }
+        }
+    }
 }

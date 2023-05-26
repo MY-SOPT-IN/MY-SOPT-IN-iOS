@@ -7,13 +7,20 @@
 
 import Foundation
 
-struct BaseResponse<T: Codable>: Codable {
-    var status: Int?
-    var success: Bool?
+struct SimpleResponse: Codable {
+    var status: Int
+    var success: Bool
     var message: String?
-    var data: T?
 }
 
-/// data가 없는 API 통신에서 사용할 BlankData 구조체
-struct BlankData: Codable {
+struct GenericResponse<T: Codable>: Codable {
+    var status_code: Int?
+    var success: Bool?
+    var status_message: String?
+}
+
+struct VoidResult: Codable {
+    var code: Int
+    var data: Bool?
+    var message: String?
 }
