@@ -16,12 +16,15 @@ final class BottomSheetView: UIView {
     
     lazy var editButton = makeButton(
         title: "수정하기",
-        image: ImageLiterals.Icon.add_ic_edit
+        image: ImageLiterals.Icon.add_ic_edit,
+        imageSize: CGSize(width: 16, height: 16)
+
     )
     
     private lazy var copyButton = makeButton(
         title: "복사하기",
-        image: ImageLiterals.Icon.add_ic_copy
+        image: ImageLiterals.Icon.add_ic_copy,
+        imageSize: CGSize(width: 19, height: 19)
     )
     
     private lazy var restButton = UIButton().then {
@@ -45,19 +48,24 @@ final class BottomSheetView: UIView {
         
         $0.setAttributedTitle(attributedText, for: .normal)
         
-        $0.setImage(ImageLiterals.Icon.add_ic_leaf, for: .normal)
+        let restImage = ImageLiterals.Icon.add_ic_leaf?.resize(to: CGSize(width: 14, height: 14))
+        $0.setImage(restImage, for: .normal)
         $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)
         $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: -6)
     }
     
     private lazy var completeButton = makeButton(
         title: "완료하기",
-        image: ImageLiterals.Icon.add_ic_check
+        image: ImageLiterals.Icon.add_ic_check,
+        imageSize: CGSize(width: 14, height: 14)
+
     )
     
     private lazy var statisticsButton = makeButton(
         title: "월별 통계 보기",
-        image: ImageLiterals.Icon.add_ic_bar
+        image: ImageLiterals.Icon.add_ic_bar,
+        imageSize: CGSize(width: 16, height: 16)
+
     )
     
     lazy var deleteButton = UIButton().then {
@@ -85,8 +93,6 @@ final class BottomSheetView: UIView {
     // MARK: - setUI
     
     private func setupSubviews() {
-        
-        let buttonSpacing: CGFloat = 20  // 버튼 사이의 간격
         
         addSubviews(
             editButton,
@@ -129,7 +135,7 @@ final class BottomSheetView: UIView {
     }
     
     private
-    func makeButton(title: String, image: UIImage? = nil, tintColor: UIColor? = nil) -> UIButton {
+    func makeButton(title: String, image: UIImage? = nil, imageSize: CGSize? = nil, tintColor: UIColor? = nil) -> UIButton {
         let button = UIButton().then {
             $0.setTitle(title, for: .normal)
             $0.setTitleColor(UIColor.Gray.gray_900, for: .normal)
@@ -138,7 +144,13 @@ final class BottomSheetView: UIView {
             $0.titleLabel?.numberOfLines = 0
             
             if let image = image {
-                $0.setImage(image, for: .normal)
+                var resizedImage: UIImage?
+                if let imageSize = imageSize {
+                    resizedImage = image.resize(to: imageSize)
+                } else {
+                    resizedImage = image
+                }
+                $0.setImage(resizedImage, for: .normal)
                 $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)
                 $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: -6)
             }
@@ -151,11 +163,12 @@ final class BottomSheetView: UIView {
         let attributedText = NSMutableAttributedString(string: title)
         if let newlineRange = title.range(of: "\n") {
             let location = title.distance(from: title.startIndex, to: newlineRange.lowerBound) + 1
-            attributedText.addAttributes([.font: UIFont.body2Font(), .foregroundColor: UIColor.Gray.gray_700], range: NSRange(location: location, length: attributedText.length - location))
+            attributedText.addAttributes([.font: UIFont.bodyFont(), .foregroundColor: UIColor.Gray.gray_700], range: NSRange(location: location, length: attributedText.length - location))
         }
         button.setAttributedTitle(attributedText, for: .normal)
         
         return button
     }
+
 }
 
