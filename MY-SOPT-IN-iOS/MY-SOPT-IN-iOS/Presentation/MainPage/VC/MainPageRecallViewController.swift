@@ -14,13 +14,23 @@ final class MainPageRecallViewController: UIViewController {
     
     // MARK: - Properties
     
+    private var descRoutine: String = ""
+    
+    private var descBest: String = ""
+    
+    private var descSelf: String = ""
+    
+    private var singleserver: Bool = false
+    
+    // MARK: - UI Components
+    
     private let headerView = MainPageRecallHeaderView()
     
     private let recall = UITableView()
     
     private var dateDummy: [[MyDates]] = [MyDates.getPreviousDateDummy(),
-                                        MyDates.dummy(),
-                                        MyDates.getNextDateDummy()]
+                                          MyDates.dummy(),
+                                          MyDates.getNextDateDummy()]
     
     private var headerViewStartPoint: CGFloat = 0
     
@@ -83,7 +93,7 @@ final class MainPageRecallViewController: UIViewController {
         recall.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-
+        
     }
     
     // MARK: - @objc Function
@@ -100,6 +110,40 @@ final class MainPageRecallViewController: UIViewController {
     }
     
     // MARK: - Network
+    
+    private func getSingle(date: String){
+        let dateRequest = date
+        RetroAPI.shared.getSingleRetroData(dateRequest: dateRequest) { result in
+            switch result {
+            case .success(let data):
+                self.singleserver = true
+                print("🍀🍀🍀  성 공 이 다  🍀🍀🍀")
+                print(data)
+                if let responseDTO = data as? SingleRetroResponseDTO {
+                    print("\(responseDTO.code)🍀🍀🍀🍀🍀🍀")
+                    if responseDTO.code == 200 {
+                        let singleRetroData = responseDTO.data
+                        self.descRoutine = singleRetroData.descRoutine
+                        self.descBest = singleRetroData.descBest
+                        self.descSelf = singleRetroData.descSelf
+                    }
+                    else if  responseDTO.code == 204 {
+                        self.singleserver = false
+                    }
+                } else {
+                    self.singleserver = false
+                    print("SingleRetroResponseDTO 타입으로 다운캐스팅할 수 없습니다.")
+                }
+                self.recall.reloadData()
+            default:
+                self.singleserver = false
+                print("🍀🍀🍀  왜 안 와  🍀🍀🍀")
+                print(result)
+                self.recall.reloadData()
+            }
+        }
+
+    }
     
 }
 
@@ -126,6 +170,22 @@ extension MainPageRecallViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectDateCVC.identifier, for: indexPath) as? SelectDateCVC else { return UICollectionViewCell() }
         if let index = headerView.dateCollectionViews.firstIndex(of: collectionView as! SelectDateCollectionView) {
+            if let day = selectedDay {
+                // DateComponents에서 연, 월, 일 값을 추출합니다.
+                let year = day.year ?? 0 // 기본값 설정
+                let month = day.month ?? 0 // 기본값 설정
+                let dayOfMonth = day.day ?? 0 // 기본값 설정
+                
+                // 날짜를 문자열로 변환합니다.
+                let formattedDate = "\(year)-\(String(format: "%02d", month))-\(String(format: "%02d", dayOfMonth))"
+                
+                // 변환된 값을 저장하거나 활용할 수 있습니다.
+                print(formattedDate) // "2023-05-24"
+                getSingle(date: formattedDate)
+            } else {
+                print("selectedDay 값이 nil입니다.")
+            }
+            
             if selectedDay == dateDummy[index][indexPath.item].dateComponents {
                 cell.configCell(date: dateDummy[index][indexPath.item], selected: true)
             } else {
@@ -200,10 +260,36 @@ extension MainPageRecallViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecallTableViewCell
         cell.selectionStyle = .none // Disable cell selection highlighting
+
+        if singleserver {
+            cell.recallView.recallTextView.text = descRoutine
+            cell.recallView.recallTextView.textColor = .black
+            cell.recallView.bestTextView.text = descBest
+            cell.recallView.bestTextView.textColor = .black
+            cell.recallView.wantsayTextView.text = descSelf
+            cell.recallView.wantsayTextView.textColor = .black
+            print("\(singleserver)!@!@!@!!@")
+            return cell
+        }
+        else if !singleserver {
+          
+            cell.recallView.recallTextView.text = "오늘 루틴 어땠어요?"
+            cell.recallView.recallTextView.textColor = UIColor.Gray.gray_400
+            cell.recallView.bestTextView.text = "오늘은 뭐가 가장 좋았어요?"
+            cell.recallView.bestTextView.textColor = UIColor.Gray.gray_400
+            cell.recallView.wantsayTextView.text = "나에게 하고 싶은 말을 적어봐요 :)"
+            cell.recallView.wantsayTextView.textColor = UIColor.Gray.gray_400
+            print("\(singleserver)!@!@!@!!@")
+            return cell
+        }
+        print("\(singleserver)이거는 왜 나오냐 진짜 이해가 안가ㅔ")
         return cell
+        
+        
     }
+    
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Footer") as? RecallFooterView
