@@ -93,9 +93,6 @@ final class RecallView: UIView {
             saymeLabel,
             privateButton
         )
-        self.snp.makeConstraints {
-            $0.height.equalTo(495)
-        }
         
         privateButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(18)
