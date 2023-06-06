@@ -33,12 +33,14 @@
 		250DDF4A2A15BA28008B8661 /* AddRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250DDF492A15BA28008B8661 /* AddRoutineViewController.swift */; };
 		250DDF572A169122008B8661 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250DDF562A169121008B8661 /* CustomAlertViewController.swift */; };
 		251030AC2A1C8C4F00AD5292 /* RecallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251030AB2A1C8C4F00AD5292 /* RecallView.swift */; };
-		251030AE2A1C8C6B00AD5292 /* RecallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251030AD2A1C8C6B00AD5292 /* RecallViewController.swift */; };
 		251030B02A1C8C7B00AD5292 /* EditRecallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251030AF2A1C8C7B00AD5292 /* EditRecallViewController.swift */; };
+		253BAE062A29C32200658ACE /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253BAE052A29C32200658ACE /* UIImage+.swift */; };
+		253BAE082A29CE4E00658ACE /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253BAE072A29CE4E00658ACE /* StringLiterals.swift */; };
 		25491B502A17ADF800B16FA8 /* Customnavigationbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25491B4F2A17ADF800B16FA8 /* Customnavigationbar.swift */; };
-		25491B532A189DF200B16FA8 /* AchieveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25491B522A189DF200B16FA8 /* AchieveViewController.swift */; };
 		25679F862A1FB01C0051F842 /* RecallFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25679F852A1FB01C0051F842 /* RecallFooterView.swift */; };
 		25679F882A1FB0430051F842 /* RecallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25679F872A1FB0430051F842 /* RecallTableViewCell.swift */; };
+		25679F8C2A208AC80051F842 /* SingleRetroResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25679F8B2A208AC80051F842 /* SingleRetroResponseDTO.swift */; };
+		25FE25902A21199000A7C69F /* PutRetroRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FE258F2A21199000A7C69F /* PutRetroRequestBody.swift */; };
 		6B27D7502A126B5A0033BB21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D74F2A126B5A0033BB21 /* AppDelegate.swift */; };
 		6B27D7522A126B5A0033BB21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7512A126B5A0033BB21 /* SceneDelegate.swift */; };
 		6B27D7542A126B5A0033BB21 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27D7532A126B5A0033BB21 /* MainPageViewController.swift */; };
@@ -100,12 +102,14 @@
 		250DDF492A15BA28008B8661 /* AddRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineViewController.swift; sourceTree = "<group>"; };
 		250DDF562A169121008B8661 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		251030AB2A1C8C4F00AD5292 /* RecallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallView.swift; sourceTree = "<group>"; };
-		251030AD2A1C8C6B00AD5292 /* RecallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallViewController.swift; sourceTree = "<group>"; };
 		251030AF2A1C8C7B00AD5292 /* EditRecallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecallViewController.swift; sourceTree = "<group>"; };
+		253BAE052A29C32200658ACE /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		253BAE072A29CE4E00658ACE /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
 		25491B4F2A17ADF800B16FA8 /* Customnavigationbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Customnavigationbar.swift; path = "MY-SOPT-IN-iOS/Presentation/Component/Customnavigationbar.swift"; sourceTree = SOURCE_ROOT; };
-		25491B522A189DF200B16FA8 /* AchieveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveViewController.swift; sourceTree = "<group>"; };
 		25679F852A1FB01C0051F842 /* RecallFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallFooterView.swift; sourceTree = "<group>"; };
 		25679F872A1FB0430051F842 /* RecallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallTableViewCell.swift; sourceTree = "<group>"; };
+		25679F8B2A208AC80051F842 /* SingleRetroResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRetroResponseDTO.swift; sourceTree = "<group>"; };
+		25FE258F2A21199000A7C69F /* PutRetroRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutRetroRequestBody.swift; sourceTree = "<group>"; };
 		6B27D74C2A126B5A0033BB21 /* MY-SOPT-IN-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MY-SOPT-IN-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B27D74F2A126B5A0033BB21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B27D7512A126B5A0033BB21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 			children = (
 				148675CF2A1D23980082D579 /* TotalRetroResponseDTO.swift */,
 				6BFAF7E52A20B75F007F7F6D /* DateRoutineResponseDTO.swift */,
+				25679F8B2A208AC80051F842 /* SingleRetroResponseDTO.swift */,
+				25FE258F2A21199000A7C69F /* PutRetroRequestBody.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -258,7 +264,6 @@
 		251030AA2A1C8C3900AD5292 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				251030AD2A1C8C6B00AD5292 /* RecallViewController.swift */,
 				251030AF2A1C8C7B00AD5292 /* EditRecallViewController.swift */,
 			);
 			path = VC;
@@ -375,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				6B44E49E2A12A72C00E9CAF9 /* UIStackView+.swift */,
+				253BAE052A29C32200658ACE /* UIImage+.swift */,
 				6B44E4A02A12A75400E9CAF9 /* UIView+.swift */,
 				6B44E4A22A12A86300E9CAF9 /* UILabel+.swift */,
 				6B44E4A42A12A8EB00E9CAF9 /* UITextField+.swift */,
@@ -404,8 +410,8 @@
 			isa = PBXGroup;
 			children = (
 				6B44E4922A12732A00E9CAF9 /* Pretendard-Bold.ttf */,
-				6B44E4932A12732A00E9CAF9 /* Pretendard-ExtraBold.ttf */,
 				6B44E4942A12732A00E9CAF9 /* Pretendard-Regular.ttf */,
+				6B44E4932A12732A00E9CAF9 /* Pretendard-ExtraBold.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -429,6 +435,7 @@
 				6B44E4982A12743400E9CAF9 /* FontLiteral.swift */,
 				6B44E49A2A1296A700E9CAF9 /* ColorLiteral.swift */,
 				6B44E49C2A12A01D00E9CAF9 /* ImageLiteral.swift */,
+				253BAE072A29CE4E00658ACE /* StringLiterals.swift */,
 			);
 			path = Literal;
 			sourceTree = "<group>";
@@ -467,7 +474,6 @@
 				6B27D7532A126B5A0033BB21 /* MainPageViewController.swift */,
 				6BAFCD2D2A1541CB00994100 /* MainPageRoutineViewController.swift */,
 				6BAFCD2F2A15438F00994100 /* MainPageRecallViewController.swift */,
-				25491B522A189DF200B16FA8 /* AchieveViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -594,6 +600,7 @@
 				250DDF572A169122008B8661 /* CustomAlertViewController.swift in Sources */,
 				148675D42A1D29FF0082D579 /* RetroAPI.swift in Sources */,
 				6B822EEE2A17E2220080FB7C /* SelectDateHeaderFooter.swift in Sources */,
+				253BAE062A29C32200658ACE /* UIImage+.swift in Sources */,
 				148675B52A1CDE630082D579 /* DatePickerViewController.swift in Sources */,
 				25679F882A1FB0430051F842 /* RecallTableViewCell.swift in Sources */,
 				6BAFCD302A15438F00994100 /* MainPageRecallViewController.swift in Sources */,
@@ -605,6 +612,7 @@
 				6BAFCD242A136B0D00994100 /* TabBarController.swift in Sources */,
 				6B44E49F2A12A72C00E9CAF9 /* UIStackView+.swift in Sources */,
 				250DDF482A15BA0C008B8661 /* EditRoutineViewController.swift in Sources */,
+				25FE25902A21199000A7C69F /* PutRetroRequestBody.swift in Sources */,
 				6B8EC7FA2A1B3B8000926510 /* SelectDateCollectionView.swift in Sources */,
 				144624F42A1BDC1F008EAE22 /* DatePickerControl.swift in Sources */,
 				148675BD2A1D0CBE0082D579 /* BaseResponse.swift in Sources */,
@@ -612,10 +620,11 @@
 				6B44E4992A12743400E9CAF9 /* FontLiteral.swift in Sources */,
 				6BF052EB2A173A6900893084 /* MainPageRoutineHeaderView.swift in Sources */,
 				6B44E49D2A12A01D00E9CAF9 /* ImageLiteral.swift in Sources */,
-				25491B532A189DF200B16FA8 /* AchieveViewController.swift in Sources */,
 				6BFAF7E22A20B694007F7F6D /* RoutineRouter.swift in Sources */,
 				146BBB562A18DC5600A6C21A /* NSObject+.swift in Sources */,
+				25679F8C2A208AC80051F842 /* SingleRetroResponseDTO.swift in Sources */,
 				6BF052E22A16B09700893084 /* MainPageRoutineTVC.swift in Sources */,
+				253BAE082A29CE4E00658ACE /* StringLiterals.swift in Sources */,
 				6B822EEC2A17A5650080FB7C /* MyDates.swift in Sources */,
 				148675C62A1D11020082D579 /* BaseAPI.swift in Sources */,
 				251030B02A1C8C7B00AD5292 /* EditRecallViewController.swift in Sources */,
@@ -638,7 +647,6 @@
 				251030AC2A1C8C4F00AD5292 /* RecallView.swift in Sources */,
 				148675B72A1D08A00082D579 /* Config.swift in Sources */,
 				6BFAF7E62A20B75F007F7F6D /* DateRoutineResponseDTO.swift in Sources */,
-				251030AE2A1C8C6B00AD5292 /* RecallViewController.swift in Sources */,
 				250DDF4A2A15BA28008B8661 /* AddRoutineViewController.swift in Sources */,
 				148675C82A1D16C80082D579 /* AlamofireLogger.swift in Sources */,
 				148675C02A1D0DC00082D579 /* BaseTargetType.swift in Sources */,

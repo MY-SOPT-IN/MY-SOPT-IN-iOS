@@ -11,6 +11,8 @@ import Alamofire
 
 enum RetroRouter {
     case getTotal(month: Int)
+    case getSingle(date: String)
+    case putRetro(retroId: Int, requestBody: PutRetroRequestBody)
 }
 
 extension RetroRouter: BaseTargetType {
@@ -19,13 +21,22 @@ extension RetroRouter: BaseTargetType {
         switch self {
         case .getTotal:
             return .get
+        case .getSingle:
+            return .get
+        case .putRetro:
+            return .put
         }
+        
     }
     
     var path: String {
         switch self {
         case .getTotal:
             return APIConstants.retro + "all"
+        case .getSingle:
+            return APIConstants.retro
+        case .putRetro(let retroId, _):
+            return APIConstants.retro + "\(retroId)"
         }
     }
     
@@ -33,7 +44,11 @@ extension RetroRouter: BaseTargetType {
         switch self {
         case .getTotal(let month):
             return .query(["month": month])
+        case .getSingle(let date):
+            return .query(["date": date])
+        case .putRetro(_, let requestBody):
+            return .body(requestBody)
         }
     }
-}
 
+}

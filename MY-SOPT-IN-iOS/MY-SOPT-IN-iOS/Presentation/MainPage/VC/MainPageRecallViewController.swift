@@ -14,13 +14,31 @@ final class MainPageRecallViewController: UIViewController {
     
     // MARK: - Properties
     
+    private var descRoutine: String = ""
+    
+    private var descBest: String = ""
+    
+    private var descSelf: String = ""
+    
+    private var singleserver: Bool = false
+    
+    private var responseCode: Int = 0
+    // 상태 코드에 따라 put인지 post인지 구분하기 위함
+    private var retroId: Int = 0
+    // retroID로 해당하는 회고에 접근하기 위함
+    private var isPublic: Bool = false
+    
+    private var writtenDate: String = ""
+    
+    // MARK: - UI Components
+    
     private let headerView = MainPageRecallHeaderView()
     
     private let recall = UITableView()
     
     private var dateDummy: [[MyDates]] = [MyDates.getPreviousDateDummy(),
-                                        MyDates.dummy(),
-                                        MyDates.getNextDateDummy()]
+                                          MyDates.dummy(),
+                                          MyDates.getNextDateDummy()]
     
     private var headerViewStartPoint: CGFloat = 0
     
@@ -83,13 +101,41 @@ final class MainPageRecallViewController: UIViewController {
         recall.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-
+        
     }
     
     // MARK: - @objc Function
     
-    @objc private func saveButtonTapped() {
-        // 저장하기 버튼 클릭에 따른 메소드 미구현
+    @objc
+    private func saveButtonTapped() {
+        if responseCode == 200 {
+            let indexPath = IndexPath(row: 0, section: 0)
+            let cell = recall.cellForRow(at: indexPath) as? RecallTableViewCell
+            let recallView = cell?.recallView
+            
+            let recallText = recallView?.recallTextView.text ?? ""
+            let bestText = recallView?.bestTextView.text ?? ""
+            let wantsayText = recallView?.wantsayTextView.text ?? ""
+            
+            let retroId = self.retroId
+            
+            let requestBody = PutRetroRequestBody(
+                retroId: retroId,
+                isPublic: true,
+                descRoutine: recallText,
+                descBest: bestText,
+                descSelf: wantsayText,
+                writtenDate: self.writtenDate
+            )
+            putSingle(retroId: retroId, requestBody: requestBody) { [self] success in
+                if success {
+                    self.getSingle(date: writtenDate)
+                }
+            }
+        }
+        else if responseCode == 204 {
+            print("POST API를 기다리 도룡뇽")
+        }
     }
     
     @objc
@@ -100,6 +146,72 @@ final class MainPageRecallViewController: UIViewController {
     }
     
     // MARK: - Network
+    
+    private func getSingle(date: String){
+        let dateRequest = date
+        RetroAPI.shared.getSingleRetroData(dateRequest: dateRequest) { result in
+            switch result {
+            case .success(let data):
+                self.singleserver = true
+                print("🍀🍀🍀  성 공 이 다  🍀🍀🍀")
+                print(data)
+                if let responseDTO = data as? SingleRetroResponseDTO {
+                    print("\(responseDTO.code)🍀🍀🍀🍀🍀🍀")
+                    if responseDTO.code == 200 {
+                        let singleRetroData = responseDTO.data
+                        self.responseCode = 200
+                        self.descRoutine = singleRetroData.descRoutine
+                        self.descBest = singleRetroData.descBest
+                        self.descSelf = singleRetroData.descSelf
+                        self.retroId = singleRetroData.retrospectID
+                        self.isPublic = singleRetroData.isPublic
+                        self.writtenDate = singleRetroData.writtenDate
+                        self.recall.reloadData()
+                        
+                    }
+                    else if  responseDTO.code == 204 {
+                        self.responseCode = 204
+                        self.singleserver = false
+                        self.recall.reloadData()
+                        
+                    }
+                } else {
+                    self.singleserver = false
+                    self.responseCode = 0
+                    print("SingleRetroResponseDTO 타입으로 다운캐스팅할 수 없습니다.")
+                }
+                self.recall.reloadData()
+            default:
+                self.singleserver = false
+                self.responseCode = 0
+                print("🍀🍀🍀  왜 안 와  🍀🍀🍀")
+                print(result)
+                self.recall.reloadData()
+            }
+        }
+    }
+    
+    private func putSingle(retroId: Int, requestBody: PutRetroRequestBody, completion: @escaping (Bool) -> Void) {
+        RetroAPI.shared.putSingleRetroData(retroId: retroId, requestBody: requestBody) { result in
+            switch result {
+            case .success(let data):
+                if let responseDTO = data as? SingleRetroResponseDTO {
+                    // Handle the successful response
+                    let singleRetroData = responseDTO.data
+                    
+                    // 성공적으로 수정된 내용을 받았으므로 completion을 호출하여 알립니다.
+                    completion(true)
+                } else {
+                    // Handle the error
+                    completion(false)
+                }
+            default:
+                // Handle the error
+                completion(false)
+            }
+        }
+    }
+    
     
 }
 
@@ -126,6 +238,22 @@ extension MainPageRecallViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectDateCVC.identifier, for: indexPath) as? SelectDateCVC else { return UICollectionViewCell() }
         if let index = headerView.dateCollectionViews.firstIndex(of: collectionView as! SelectDateCollectionView) {
+            if let day = selectedDay {
+                // DateComponents에서 연, 월, 일 값을 추출합니다.
+                let year = day.year ?? 0 // 기본값 설정
+                let month = day.month ?? 0 // 기본값 설정
+                let dayOfMonth = day.day ?? 0 // 기본값 설정
+                
+                // 날짜를 문자열로 변환합니다.
+                let formattedDate = "\(year)-\(String(format: "%02d", month))-\(String(format: "%02d", dayOfMonth))"
+                
+                // 변환된 값을 저장하거나 활용할 수 있습니다.
+                print(formattedDate) // "2023-05-24"
+                getSingle(date: formattedDate)
+            } else {
+                print("selectedDay 값이 nil입니다.")
+            }
+            
             if selectedDay == dateDummy[index][indexPath.item].dateComponents {
                 cell.configCell(date: dateDummy[index][indexPath.item], selected: true)
             } else {
@@ -200,10 +328,33 @@ extension MainPageRecallViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecallTableViewCell
         cell.selectionStyle = .none // Disable cell selection highlighting
+        
+        if singleserver {
+            cell.recallView.recallTextView.text = descRoutine
+            cell.recallView.recallTextView.textColor = .black
+            cell.recallView.bestTextView.text = descBest
+            cell.recallView.bestTextView.textColor = .black
+            cell.recallView.wantsayTextView.text = descSelf
+            cell.recallView.wantsayTextView.textColor = .black
+            return cell
+        }
+        else if !singleserver {
+            
+            cell.recallView.recallTextView.text = "오늘 루틴 어땠어요?"
+            cell.recallView.recallTextView.textColor = UIColor.Gray.gray_400
+            cell.recallView.bestTextView.text = "오늘은 뭐가 가장 좋았어요?"
+            cell.recallView.bestTextView.textColor = UIColor.Gray.gray_400
+            cell.recallView.wantsayTextView.text = "나에게 하고 싶은 말을 적어봐요 :)"
+            cell.recallView.wantsayTextView.textColor = UIColor.Gray.gray_400
+            return cell
+        }
         return cell
+        
+        
     }
+    
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Footer") as? RecallFooterView
@@ -214,5 +365,4 @@ extension MainPageRecallViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 100
     }
-    
 }

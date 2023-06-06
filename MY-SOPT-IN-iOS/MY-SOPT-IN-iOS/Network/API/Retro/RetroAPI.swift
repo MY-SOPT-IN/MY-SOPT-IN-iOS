@@ -28,4 +28,25 @@ extension RetroAPI {
                                 completion: completion)
         }
     }
+    
+    // 2. 단일 회고 조회
+    
+    public func getSingleRetroData(dateRequest: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        AFManager.request(RetroRouter.getSingle(date: dateRequest)).responseData { response in
+            self.disposeNetwork(response,
+                                dataModel: SingleRetroResponseDTO.self,
+                                completion: completion)
+        }
+    }
+    
+    
+    // 3. 단일 회고 수정
+    
+    public func putSingleRetroData(retroId: Int, requestBody: PutRetroRequestBody, completion: @escaping (NetworkResult<Any>) -> Void) {
+        AFManager.request(RetroRouter.putRetro(retroId: retroId, requestBody: requestBody)).responseData { response in
+            self.disposeNetwork(response,
+                                dataModel: SingleRetroResponseDTO.self,
+                                completion: completion)
+        }
+    }
 }

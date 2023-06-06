@@ -12,7 +12,11 @@ import Then
 
 final class RecallTableViewCell: UITableViewCell {
     
-    let recallView = RecallView()
+    let recallView = RecallView().then {
+        $0.snp.makeConstraints {
+            $0.height.equalTo(495)
+        }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

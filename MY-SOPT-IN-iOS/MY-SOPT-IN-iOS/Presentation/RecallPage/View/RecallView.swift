@@ -15,7 +15,7 @@ final class RecallView: UIView {
     // MARK: - Properties
     
     let recallTextView = UITextView().then {
-        $0.text = "오늘 루틴 어땠어요?"
+        $0.text = StringLiterals.Recall.todayRoutine
         $0.textColor = UIColor.Gray.gray_400
         $0.font = UIFont.bodyFont()
         $0.backgroundColor = UIColor.Mono.white
@@ -24,7 +24,7 @@ final class RecallView: UIView {
     }
     
     let bestTextView = UITextView().then {
-        $0.text = "오늘은 뭐가 가장 좋았어요?"
+        $0.text = StringLiterals.Recall.bestPart
         $0.textColor = UIColor.Gray.gray_400
         $0.font = UIFont.bodyFont()
         $0.backgroundColor = UIColor.white
@@ -33,7 +33,7 @@ final class RecallView: UIView {
     }
     
     let wantsayTextView = UITextView().then {
-        $0.text = "나에게 하고 싶은 말을 적어봐요:)"
+        $0.text = StringLiterals.Recall.selfMessage
         $0.textColor = UIColor.Gray.gray_400
         $0.font = UIFont.bodyFont()
         $0.backgroundColor = UIColor.white
@@ -93,9 +93,6 @@ final class RecallView: UIView {
             saymeLabel,
             privateButton
         )
-        self.snp.makeConstraints {
-            $0.height.equalTo(495)
-        }
         
         privateButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(18)
@@ -162,17 +159,17 @@ extension RecallView: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView == recallTextView {
             if textView.text.isEmpty {
-                textView.text = "오늘 루틴 어땠어요?"
+                textView.text = StringLiterals.Recall.todayRoutine
                 textView.textColor = UIColor.Gray.gray_400
             }
         } else if textView == bestTextView {
             if textView.text.isEmpty {
-                textView.text = "오늘은 뭐가 가장 좋았어요?"
+                textView.text = StringLiterals.Recall.bestPart
                 textView.textColor = UIColor.Gray.gray_400
             }
         } else if textView == wantsayTextView {
             if textView.text.isEmpty {
-                textView.text = "나에게 하고 싶은 말을 적어봐요 :)"
+                textView.text = StringLiterals.Recall.selfMessage
                 textView.textColor = UIColor.Gray.gray_400
             }
         }
